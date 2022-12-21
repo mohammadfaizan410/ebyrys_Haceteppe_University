@@ -26,9 +26,9 @@
         <h1 class="header">e-BYRYS-KKDS</h1>
 
         <div class="buttons-wrapper">
-            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-nurse.php">Login
+            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/login-nurse.php">Login
                 as Nurse</a>
-            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-student.php">Login
+            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/login-student.php">Login
                 as Student</a>
 
             <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-nurse.php">Sign Up

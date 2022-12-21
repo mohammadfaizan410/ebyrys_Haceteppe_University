@@ -33,6 +33,10 @@ body {
     height: 600px;
 }
 
+.login-login {
+    height: 450px;
+}
+
 .buttons {
 
     width: 100%;
@@ -69,11 +73,11 @@ body {
 }
 
 
-
-.usernamelabel {
-    margin-top: 20px;
-    font-weight: bold;
+.login-box p {
+    margin-top: 20px !important;
+    font-weight: bold !important;
 }
+
 
 .login-box input {
 

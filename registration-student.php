@@ -24,23 +24,7 @@ require_once("config-students.php");
     <div>
         <?php
         echo 'aaaaa';
-        if (isset($_POST['submit'])) {
-            echo 'aasdafa';
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
 
-            echo $name;
-            $sql = "INSERT INTO students (name, surname, email, password) VALUES(?,?,?,?)";
-            $smtminsert = $db->prepare($sql);
-            $result = $smtminsert->execute([$name, $surname, $email, $password]);
-            if ($result) {
-                echo 'success';
-            } else {
-                echo 'error';
-            }
-        }
         ?>
     </div>
     <div>
@@ -51,24 +35,74 @@ require_once("config-students.php");
                 <h2 class="login">Sign Up as Student</h2>
 
                 <p class="usernamelabel">Name</p>
-                <input type="text" required name="name" placeholder="Enter name here">
+                <input type="text" required name="name" id="name" placeholder="Enter name here">
 
                 <p class="usernamelabel">Surname</p>
-                <input type="text" required name="surname" placeholder="Enter surname here">
+                <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
 
                 <p class="usernamelabel">E-mail</p>
-                <input type="email" required name="email" placeholder="Enter e-mail here">
+                <input type="email" required name="email" id="email" placeholder="Enter e-mail here">
 
                 <p class="passwordlabel">Password</p>
-                <input type="password" name="password" required placeholder="Enter Password here">
+                <input type="password" name="password" id="password" required placeholder="Enter Password here">
 
-                <input type="submit" name="submit" value="Sign Up">
+                <input type="submit" name="submit" id="register" value="Sign Up">
                 <a href="#">Forget Password</a>
         </form>
 
     </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function() {
+            $('#register').click(function(e) {
 
+                var valid = this.form.checkValidity();
+
+                if (valid) {
+
+                    var name = $('#name').val();
+                    var surname = $('#surname').val();
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+
+                    e.preventDefault()
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'process-student.php',
+                        data: {
+                            name: name,
+                            surname: surname,
+                            email: email,
+                            password: password
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                'title': 'Success',
+                                'text': data,
+                                'type': 'success'
+                            })
+                        },
+                        error: function(data) {
+                            Swal.fire({
+                                'title': 'Errors',
+                                'text': 'There were errors',
+                                'type': 'error'
+                            })
+                        }
+                    })
+
+
+                } else {
+
+                }
+
+            })
+
+        })
+    </script>
 </body>
 
 </html>
