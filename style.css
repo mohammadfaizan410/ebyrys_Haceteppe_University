@@ -1,0 +1,116 @@
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+
+* {
+    font-family: 'Circular Std', sans-serif;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
+body {
+
+
+    background-color: darkslateblue;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.login-box {
+    width: 360px;
+    height: 450px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 40px 30px;
+    border-radius: 18px;
+}
+
+
+
+.header {
+
+    margin: 0;
+
+    text-align: center;
+    font-size: 22px;
+
+}
+
+.login {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+
+.username {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.login-box input {
+
+    width: 100%;
+    margin-bottom: 30px;
+
+
+}
+
+.login-box input[type="text"],
+input[type="password"] {
+
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 13px;
+
+
+}
+
+
+
+
+.login-box input[type="submit"] {
+
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: goldenrod;
+
+}
+
+
+.login-box ::placeholder {
+
+    color: #fff;
+}
+
+
+.login-box input[type="submit"]:hover {
+
+    cursor: pointer;
+    background: #39dc79;
+    color: #000;
+}
+
+.login-box a {
+    display: flex;
+    justify-content: center;
+
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+
+
+}
