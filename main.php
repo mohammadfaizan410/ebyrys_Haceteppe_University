@@ -13,7 +13,7 @@
     <link rel="icon" href="img/core-img/favicon.ico">
 
 
-    <link rel="stylesheet" href="style-main.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -26,17 +26,16 @@
         <h1 class="header">e-BYRYS-KKDS</h1>
 
         <div class="buttons-wrapper">
-
-
-            <a class="buttons"
-                href="file:///C:/Users/ATATA/AndroidStudioProjects/Project/Hacettepe-e-BYRYS-KKDS-/Login-Nurse.html">Login
+            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-nurse.php">Login
                 as Nurse</a>
-            <a class="buttons"
-                href="file:///C:/Users/ATATA/AndroidStudioProjects/Project/Hacettepe-e-BYRYS-KKDS-/Login-Student.html">Login
+            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-student.php">Login
+                as Student</a>
+
+            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-nurse.php">Sign Up
+                as Nurse</a>
+            <a class="buttons" href="http://localhost/Hacettepe-e-BYRYS-KKDS/registration-student.php">Sign Up
                 as Student</a>
         </div>
-        <a class="signup"
-            href="file:///C:/Users/ATATA/AndroidStudioProjects/Project/Hacettepe-e-BYRYS-KKDS-/SignUp.html">Sign Up</a>
     </div>
 
 
