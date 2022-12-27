@@ -1,7 +1,8 @@
 <?php
-require_once("config-students.php");
-session_start()
-
+session_start();
+if (isset($_SESSION['userlogin'])) {
+    header("Location: student-main.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +31,12 @@ session_start()
             <div class="login-box login-login">
 
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Login as Student</h2>
+                <h2 class="login">Öğrenci Girişi</h2>
 
                 <p class="labels">Mail</p>
-                <input type="email" required name="email" id="email" placeholder="Enter username here">
-                <p class="labels">Password</p>
-                <input type="password" name="password" id="password" required placeholder="Enter Password here">
+                <input type="text" required name="email" id="email" placeholder="Mail Giriniz">
+                <p class="labels">Şifre</p>
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
                 <input type="submit" name="submit" id="login" value="Login">
                 <a href="#">Forget Password</a>
         </form>
@@ -46,11 +47,13 @@ session_start()
     <script>
         $(function() {
             $('#login').click(function(e) {
+                var valid = this.form.checkValidity();
 
-                var email = $('#email').val();
-                var password = $('#password').val();
-                console.log(email)
-
+                if (valid) {
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+                    console.log(email)
+                }
                 e.preventDefault();
 
                 $.ajax({

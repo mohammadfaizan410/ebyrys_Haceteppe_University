@@ -7,7 +7,7 @@ if (isset($_POST)) {
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $email = $_POST['email'];
-    $password = sha1($_POST['password']);
+    $password = ($_POST['password']);
 
     echo $name;
     $sql = "INSERT INTO nurses (name, surname, email, password) VALUES(?,?,?,?)";

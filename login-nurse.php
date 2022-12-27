@@ -30,14 +30,14 @@ session_start()
             <div class="login-box login-login">
 
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Login as Nurse</h2>
+                <h2 class="login">Hemşire Girişi</h2>
 
                 <p class="labels">Mail</p>
-                <input type="email" required name="email" id="email" placeholder="Enter username here">
-                <p class="labels">Password</p>
-                <input type="password" name="password" id="password" required placeholder="Enter Password here">
+                <input type="text" required name="email" id="email" placeholder="Mail Giriniz">
+                <p class="labels">Şifre</p>
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
                 <input type="submit" name="submit" id="login" value="Login">
-                <a href="#">Forget Password</a>
+                <a href="#">Şifremi Unuttum</a>
         </form>
 
     </div>
