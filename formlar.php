@@ -69,14 +69,12 @@ if (isset($_GET['logout'])) {
                     <p class="usernamelabel">Patient Surname</p>
                     <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
 
-                    <p class="usernamelabel"></p>
-                    <input type="email" required name="email" id="email" placeholder="Enter e-mail here">
+                    <p class="usernamelabel">Patient Age</p>
+                    <input type="text" required name="age" id="age" placeholder="Enter patient age">
 
-                    <p class="passwordlabel">Password</p>
-                    <input type="password" name="password" id="password" required placeholder="Enter Password here">
 
-                    <input type="submit" name="submit" id="register" value="Sign Up">
-                    <a href="#">Forget Password</a>
+                    <input type="submit" name="submit" id="submit" value="Save Patient">
+
             </form>
         </div>
         <div class="dark-blue text-center rounded p-4">
@@ -152,6 +150,59 @@ if (isset($_GET['logout'])) {
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+                    $('#submit').click(function(e) {
+                            var id = $_SESSION['userlogin']['id'];
+                            var name = $('#name').val();
+                            var surname = $('#surname').val();
+                            var age = $('#age').val();
+                            console.log(id, name, surname, age)
+                            var valid = this.form.checkValidity();
+
+                            var id = $_SESSION['userlogin']['id'];
+                            var name = $('#name').val();
+                            var surname = $('#surname').val();
+                            var age = $('#age').val();
+
+
+                            e.preventDefault()
+
+                            $.ajax({
+                                type: 'POST',
+                                url: 'student-patient.php',
+                                data: {
+                                    id: id,
+                                    name: name,
+                                    surname: surname,
+                                    age: age,
+
+                                },
+                                success: function(data) {
+                                    Swal.fire({
+                                        'title': 'Success',
+                                        'text': data,
+                                        'type': 'success'
+                                    })
+                                },
+                                error: function(data) {
+                                    Swal.fire({
+                                        'title': 'Errors',
+                                        'text': 'There were errors',
+                                        'type': 'error'
+                                    })
+                                }
+                            })
+
+
+                        } else {
+
+                        }
+
+
+
+                    });
+    </script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

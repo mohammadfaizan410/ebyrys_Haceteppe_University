@@ -86,38 +86,198 @@ if (isset($_GET['logout'])) {
 
     </div>
     <div class="content" id="content">
+        <div class="container-fluid pt-4 px-4">
+            <?php
+            require_once('config-students.php');
 
-    </div>
-    <script>
-        $(function() {
-            $.ajaxSetup({
-                cache: false
-            }); // disable caching for all requests.
+            $userid = $_SESSION['userlogin']['id'];
+            echo $userid;
+            $sql = "SELECT * FROM students j JOIN patients v ON j.id=v.id WHERE v.id =" . $userid;
+            $smtmselect = $db->prepare($sql);
+            $result = $smtmselect->execute();
+            if ($result) {
+                $values = $smtmselect->fetch(PDO::FETCH_ASSOC);
 
-            // RAW Text/Html data from a file
+                var_dump($values);
+            } else {
+                echo 'error';
+            }
 
-            $(function() {
-                $("a.nav-items").on("click", function(e) {
-                    e.preventDefault();
-                    $("#content").load(this.href);
+            ?>
+            <div class="send-patient">
+
+                <div class=" patiens-save">
+                    <form action="" method="POST">
+                        <p class="usernamelabel">Patient Name</p>
+                        <input type="text" required name="name" id="name" placeholder="Enter name here">
+
+                        <p class="usernamelabel">Patient Surname</p>
+                        <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
+
+                        <p class="usernamelabel">Patient Age</p>
+                        <input type="text" required name="age" id="age" placeholder="Enter patient age">
+
+
+                        <input type="submit" name="submit" id="submit" value="Save Patient">
+
+                    </form>
+                </div>
+                <div class="dark-blue text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Recent Salse</h6>
+                        <a href="">Show All</a>
+                        <?php
+                        echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
+                        ?>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Invoice</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function() {
+                    $('#submit').click(function(e) {
+
+
+
+                        var id = <?php
+
+                                    $userid = $_SESSION['userlogin']['id'];
+                                    echo $userid
+                                    ?>;
+                        var name = $('#name').val();
+                        var surname = $('#surname').val();
+                        var age = $('#age').val();
+
+
+                        e.preventDefault()
+
+                        $.ajax({
+                            type: 'POST',
+                            url: 'student-patient.php',
+                            data: {
+                                id: id,
+                                name: name,
+                                surname: surname,
+                                age: age,
+
+                            },
+                            success: function(data) {
+                                alert(data)
+                                Swal.fire({
+                                    'title': 'Success',
+                                    'text': data,
+                                    'type': 'success'
+                                })
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    'title': 'Errors',
+                                    'text': 'There were errors',
+                                    'type': 'error'
+                                })
+                            }
+                        })
+
+
+
+
+                    })
+
                 })
-            })
+            </script>
+        </div>
+        /* <script>
+            $(function() {
+                $.ajaxSetup({
+                    cache: false
+                }); // disable caching for all requests.
 
-        });
-    </script>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+                // RAW Text/Html data from a file
 
-    <!-- Template Javascript -->
-    <script src="main.js"></script>
+                $(function() {
+                    $("a.nav-items").on("click", function(e) {
+                        e.preventDefault();
+                        $("#content").load(this.href);
+                    })
+                })
+
+            });
+        </script> */
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/chart/chart.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="main.js"></script>
 </body>
 
 </html>
