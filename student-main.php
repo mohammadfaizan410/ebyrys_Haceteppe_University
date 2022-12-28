@@ -89,14 +89,23 @@ if (isset($_GET['logout'])) {
         <div class="container-fluid pt-4 px-4">
             <?php
             require_once('config-students.php');
-
+            $name = "ata";
             $userid = $_SESSION['userlogin']['id'];
             echo $userid;
-            $sql = "SELECT * FROM students j JOIN patients v ON j.id=v.id WHERE v.id =" . $userid;
+            $sql = "SELECT * FROM  patients  WHERE id =" . $userid;
             $smtmselect = $db->prepare($sql);
             $result = $smtmselect->execute();
             if ($result) {
-                $values = $smtmselect->fetch(PDO::FETCH_ASSOC);
+                $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($values as &$value) {
+                    echo "
+                    <tr>
+                       <td>" . $value["name"] . "</td>
+                       <td>" . $value["surname"] . "</td>
+                       <td>" . $value["age"] . "</td>
+                    </tr>";
+                }
+
 
                 var_dump($values);
             } else {
