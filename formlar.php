@@ -44,25 +44,23 @@ if (isset($_GET['logout'])) {
     <div class="container-fluid pt-4 px-4">
         <?php
         require_once('config-students.php');
-
+        $name = "ata";
         $userid = $_SESSION['userlogin']['id'];
-        echo $userid;
-        $sql = "SELECT * FROM students j JOIN patients v ON j.id=v.id WHERE v.id =" . $userid;
+        //echo $userid;
+        $sql = "SELECT * FROM  patients  WHERE id =" . $userid;
         $smtmselect = $db->prepare($sql);
         $result = $smtmselect->execute();
         if ($result) {
-            $values = $smtmselect->fetch(PDO::FETCH_ASSOC);
-
-            var_dump($values);
+            $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
             echo 'error';
         }
 
         ?>
         <div class="send-patient">
-            <form action="" method="post">
-                <div class=" patiens-save">
 
+            <div class=" patiens-save">
+                <form action="" method="POST" class="patients-save-fields">
                     <p class="usernamelabel">Patient Name</p>
                     <input type="text" required name="name" id="name" placeholder="Enter name here">
 
@@ -75,147 +73,112 @@ if (isset($_GET['logout'])) {
 
                     <input type="submit" name="submit" id="submit" value="Save Patient">
 
-            </form>
-        </div>
-        <div class="dark-blue text-center rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Recent Salse</h6>
-                <a href="">Show All</a>
-                <?php
-                echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
-                ?>
+                </form>
             </div>
+            <div class="patients-table dark-blue text-center rounded p-4" id="patients-table">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Patients</h6>
 
-            <div class="table-responsive">
-                <table class="table text-start align-middle table-bordered table-hover mb-0">
-                    <thead>
-                        <tr class="text-white">
-                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Invoice</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2045</td>
-                            <td>INV-0123</td>
-                            <td>Jhon Doe</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                            <tr class="text-white">
+
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Age</th>
+                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($values as &$value)
+                                echo "
+                                <tr>
+                                   
+                                    <td style='
+                                    color: white;'>" . $value["name"] . "</td>
+                                    <td style='
+                                    color: white;'>" . $value["surname"] . "</td>
+                                    <td style='
+                                    color: white;'>" . $value["age"] . "</td>
+                                    <td style='
+                                    color: white;'><a class=\'btn btn-sm btn-primary\' href=\"\">Detail</a></td>
+                                </tr>"
+
+                            ?>
+
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        $(function() {
-                    $('#submit').click(function(e) {
-                            var id = $_SESSION['userlogin']['id'];
-                            var name = $('#name').val();
-                            var surname = $('#surname').val();
-                            var age = $('#age').val();
-                            console.log(id, name, surname, age)
-                            var valid = this.form.checkValidity();
-
-                            var id = $_SESSION['userlogin']['id'];
-                            var name = $('#name').val();
-                            var surname = $('#surname').val();
-                            var age = $('#age').val();
+        <script>
+            $(function() {
+                $('#submit').click(function(e) {
 
 
-                            e.preventDefault()
+                    var valid = this.form.checkValidity();
 
-                            $.ajax({
-                                type: 'POST',
-                                url: 'student-patient.php',
-                                data: {
-                                    id: id,
-                                    name: name,
-                                    surname: surname,
-                                    age: age,
+                    if (valid) {
+                        var id = <?php
 
-                                },
-                                success: function(data) {
-                                    Swal.fire({
-                                        'title': 'Success',
-                                        'text': data,
-                                        'type': 'success'
-                                    })
-                                },
-                                error: function(data) {
-                                    Swal.fire({
-                                        'title': 'Errors',
-                                        'text': 'There were errors',
-                                        'type': 'error'
-                                    })
-                                }
-                            })
+                                    $userid = $_SESSION['userlogin']['id'];
+                                    echo $userid
+                                    ?>;
+                        var name = $('#name').val();
+                        var surname = $('#surname').val();
+                        var age = $('#age').val();
 
 
-                        } else {
+                        e.preventDefault()
 
-                        }
+                        $.ajax({
+                            type: 'POST',
+                            url: 'student-patient.php',
+                            data: {
+                                id: id,
+                                name: name,
+                                surname: surname,
+                                age: age,
+
+                            },
+                            success: function(data) {
+                                alert("Success");
+                                location.reload(true)
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    'title': 'Errors',
+                                    'text': 'There were errors',
+                                    'type': 'error'
+                                })
+                            }
+                        })
 
 
 
-                    });
-    </script>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+                    }
+                })
 
-    <!-- Template Javascript -->
-    <script src="main.js"></script>
+            });
+        </script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/chart/chart.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="main.js"></script>
 </body>
 
 </html>

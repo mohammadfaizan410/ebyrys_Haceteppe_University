@@ -248,3 +248,17 @@ input[type="email"] {
 .name {
     color: white;
 }
+
+.td-patients {
+    color: white !important;
+}
+
+.patients-save-fields {
+    display: flex;
+
+}
+
+.patients-table {
+    margin-top: 50px;
+    background-image: radial-gradient(circle at 15.1% 50%, rgb(144, 17, 105) -20%, rgb(51, 0, 131) 100.2%);
+}
