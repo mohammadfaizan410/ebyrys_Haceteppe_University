@@ -4,7 +4,7 @@ session_start();
 require_once('config-nurses.php');
 
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = sha1(($_POST['password']));
 
 $sql = "SELECT * FROM nurses WHERE email = ? AND password = ? LIMIT 1";
 $smtmselect = $db->prepare($sql);

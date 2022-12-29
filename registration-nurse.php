@@ -31,7 +31,7 @@ session_start()
             $name = $_POST['name'];
             $surname = $_POST['surname'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password = sha1(($_POST['password']));
 
             echo $name;
             $sql = "INSERT INTO nurses (name, surname, email, password) VALUES(?,?,?,?)";
