@@ -38,7 +38,7 @@ if (isset($_SESSION['userlogin'])) {
                 <p class="labels">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
                 <input type="submit" name="submit" id="login" value="Login">
-                <a href="#">Forget Password</a>
+                <a href="#">Şifremi Unuttum</a>
         </form>
 
     </div>

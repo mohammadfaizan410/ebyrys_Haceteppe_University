@@ -52,9 +52,9 @@ if (isset($_GET['logout'])) {
             <div class="navigation-right">
                 <div class="nav-items-wrapper">
                     <a href="formlar-nurse.php" id="formlar" class="nav-link nav-items formlar"> <i class="fa fa-table me-2 "></i>Formlar</a>
-                    <a href="chart.html" class="nav-link nav-items"><i class="fa fa-chart-bar me-2"></i>Sınavlar</a>
-                    <a href="widget.html" class="nav-link"><i class="fa fa-th me-2"></i>Öneriler</a>
-                    <a href="widget.html" class="nav-link"><i class="fa fa-comments me-2"></i>Mesajlar</a>
+                    <a href="" class="nav-link "><i class="fa fa-chart-bar me-2"></i>Sınavlar</a>
+                    <a href="" class="nav-link"><i class="fa fa-th me-2"></i>Öneriler</a>
+                    <a href="" class="nav-link"><i class="fa fa-comments me-2"></i>Mesajlar</a>
                 </div>
                 <div class="nav-item dropdown">
                     <div class="ms-3">
@@ -63,11 +63,9 @@ if (isset($_GET['logout'])) {
                                                                     echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
                                                                     ?></span></a>
                         <span class="status">Student</span>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="student-main.php?logout=true">Logout</a>
-                        </div>
+
+                        <a href="student-main.php?logout=true">Çıkış Yap</a>
+
                     </div>
                 </div>
 
@@ -77,11 +75,7 @@ if (isset($_GET['logout'])) {
 
 
             </div>
-            <div class="dropdown-menu ">
-                <a href="#" class="dropdown-item">My Profile</a>
-                <a href="#" class="dropdown-item">Settings</a>
-                <a href="student-main.php?logout=true">Logout</a>
-            </div>
+
         </div>
 
     </div>

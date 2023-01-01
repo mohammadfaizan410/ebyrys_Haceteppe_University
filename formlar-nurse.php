@@ -61,13 +61,13 @@ if (isset($_GET['logout'])) {
 
             <div class=" patiens-save">
                 <form action="" method="POST" class="patients-save-fields">
-                    <p class="usernamelabel">Patient Name</p>
+                    <p class="usernamelabel">Hasta Adı</p>
                     <input type="text" required name="name" id="name" placeholder="Enter name here">
 
-                    <p class="usernamelabel">Patient Surname</p>
+                    <p class="usernamelabel">Hasta Soyadı</p>
                     <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
 
-                    <p class="usernamelabel">Patient Age</p>
+                    <p class="usernamelabel">Hasta Yaşı</p>
                     <input type="text" required name="age" id="age" placeholder="Enter patient age">
 
 
@@ -77,7 +77,7 @@ if (isset($_GET['logout'])) {
             </div>
             <div class="patients-table dark-blue text-center rounded p-4" id="patients-table">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Patients</h6>
+                    <h6 class="mb-0">Hastalar</h6>
 
                 </div>
 
@@ -86,9 +86,9 @@ if (isset($_GET['logout'])) {
                         <thead>
                             <tr class="text-white">
 
-                                <th scope="col">Name</th>
-                                <th scope="col">Surname</th>
-                                <th scope="col">Age</th>
+                                <th scope="col">İsim</th>
+                                <th scope="col">Soyisim</th>
+                                <th scope="col">Yaş</th>
                                 <th scope="col"><input class="form-check-input" type="checkbox"></th>
 
                             </tr>

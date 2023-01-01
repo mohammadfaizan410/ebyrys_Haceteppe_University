@@ -21,12 +21,7 @@ require_once("config-students.php");
 </head>
 
 <body>
-    <div>
-        <?php
-        echo 'aaaaa';
 
-        ?>
-    </div>
     <div>
         <form action="" method="post">
             <div class="login-box login-signup">
@@ -34,20 +29,20 @@ require_once("config-students.php");
                 <h1 class="header">e-BYRYS-KKDS</h1>
                 <h2 class="login">Sign Up as Student</h2>
 
-                <p class="usernamelabel">Name</p>
+                <p class="usernamelabel">İsim</p>
                 <input type="text" required name="name" id="name" placeholder="Enter name here">
 
-                <p class="usernamelabel">Surname</p>
+                <p class="usernamelabel">Soyisim</p>
                 <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
 
                 <p class="usernamelabel">E-mail</p>
                 <input type="email" required name="email" id="email" placeholder="Enter e-mail here">
 
-                <p class="passwordlabel">Password</p>
+                <p class="passwordlabel">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Enter Password here">
 
                 <input type="submit" name="submit" id="register" value="Sign Up">
-                <a href="#">Forget Password</a>
+                <a href="#">Şifremi Unuttum</a>
         </form>
 
     </div>

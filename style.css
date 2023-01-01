@@ -262,3 +262,7 @@ input[type="email"] {
     margin-top: 50px;
     background-image: radial-gradient(circle at 15.1% 50%, rgb(144, 17, 105) -20%, rgb(51, 0, 131) 100.2%);
 }
+
+.usernamelabel {
+    padding-top: 20px;
+}
