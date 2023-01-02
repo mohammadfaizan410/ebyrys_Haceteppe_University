@@ -20,6 +20,7 @@ if (isset($_SESSION['userlogin'])) {
 
 
     <link rel="stylesheet" href="style.css">
+    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
 
 
 </head>
@@ -37,8 +38,10 @@ if (isset($_SESSION['userlogin'])) {
                 <input type="text" required name="email" id="email" placeholder="Mail Giriniz">
                 <p class="labels">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
-                <input type="submit" name="submit" id="login" value="Login">
-                <a href="#">Şifremi Unuttum</a>
+                <input type="submit" name="submit" id="login" value="Giriş Yap">
+
+                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
+
         </form>
 
     </div>

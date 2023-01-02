@@ -139,6 +139,15 @@ body {
     color: rgb(122, 122, 122);
 }
 
+.nav-items {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.nav-items:focus {
+    color: goldenrod;
+}
+
 .status {
     color: goldenrod;
 }

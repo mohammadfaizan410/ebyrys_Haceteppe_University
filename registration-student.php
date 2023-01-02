@@ -17,7 +17,7 @@ require_once("config-students.php");
 
 
     <link rel="stylesheet" href="style.css">
-
+    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -25,24 +25,24 @@ require_once("config-students.php");
     <div>
         <form action="" method="post">
             <div class="login-box login-signup">
-
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Sign Up as Student</h2>
+                <h2 class="login">Öğrenci Kaydı</h2>
 
                 <p class="usernamelabel">İsim</p>
-                <input type="text" required name="name" id="name" placeholder="Enter name here">
+                <input type="text" required name="name" id="name" placeholder="İsim Giriniz">
 
                 <p class="usernamelabel">Soyisim</p>
-                <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
+                <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz">
 
                 <p class="usernamelabel">E-mail</p>
-                <input type="email" required name="email" id="email" placeholder="Enter e-mail here">
+                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
 
                 <p class="passwordlabel">Şifre</p>
-                <input type="password" name="password" id="password" required placeholder="Enter Password here">
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
 
-                <input type="submit" name="submit" id="register" value="Sign Up">
-                <a href="#">Şifremi Unuttum</a>
+                <input type="submit" name="submit" id="register" value="Kayıt Ol">
+                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
+
         </form>
 
     </div>
@@ -79,6 +79,10 @@ require_once("config-students.php");
                                 'text': data,
                                 'type': 'success'
                             })
+
+
+                            setTimeout('window.location.href = "main.php"', 1000);
+
                         },
                         error: function(data) {
                             Swal.fire({

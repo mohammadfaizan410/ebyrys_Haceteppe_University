@@ -4340,7 +4340,7 @@ fieldset:disabled .btn {
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #bc1212
+    color: goldenrod
 }
 
 .nav-link.disabled {

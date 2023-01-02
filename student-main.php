@@ -58,7 +58,7 @@ if (isset($_GET['logout'])) {
                 </div>
                 <div class="nav-item dropdown">
                     <div class="ms-3">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">
                             <span class="d-none d-lg-inline-flex"><?php
                                                                     echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
                                                                     ?></span></a>
