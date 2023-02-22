@@ -39,9 +39,7 @@ if (isset($_SESSION['userlogin'])) {
                 <p class="labels">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
                 <input type="submit" name="submit" id="login" value="Giriş Yap">
-
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
-
         </form>
 
     </div>

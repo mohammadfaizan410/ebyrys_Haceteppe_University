@@ -13,11 +13,13 @@ require_once("config-students.php");
     <title>e-BYRYS-KKDS</title>
 
 
+
     <link rel="icon" href="img/core-img/favicon.ico">
 
 
     <link rel="stylesheet" href="style.css">
     <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -25,8 +27,9 @@ require_once("config-students.php");
     <div>
         <form action="" method="post">
             <div class="login-box login-signup">
+
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Öğrenci Kaydı</h2>
+                <h2 class="login">Sign Up as Student</h2>
 
                 <p class="usernamelabel">İsim</p>
                 <input type="text" required name="name" id="name" placeholder="İsim Giriniz">
@@ -42,7 +45,6 @@ require_once("config-students.php");
 
                 <input type="submit" name="submit" id="register" value="Kayıt Ol">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
-
         </form>
 
     </div>
@@ -79,8 +81,6 @@ require_once("config-students.php");
                                 'text': data,
                                 'type': 'success'
                             })
-
-
                             setTimeout('window.location.href = "main.php"', 1000);
 
                         },

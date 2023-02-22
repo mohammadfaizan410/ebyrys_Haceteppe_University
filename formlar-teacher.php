@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userlogin'])) {
-    header("Location: login-nurse.php");
+    header("Location: login-teacher.php");
 }
 
 if (isset($_GET['logout'])) {
@@ -43,11 +43,10 @@ if (isset($_GET['logout'])) {
 <body style="background-color:white">
     <div class="container-fluid pt-4 px-4">
         <?php
-        require_once('config-nurses.php');
-        $name = "ata";
+        require_once('config-students.php');
         $userid = $_SESSION['userlogin']['id'];
         //echo $userid;
-        $sql = "SELECT * FROM  patients  WHERE id =" . $userid;
+        $sql = "SELECT * FROM  students";
         $smtmselect = $db->prepare($sql);
         $result = $smtmselect->execute();
         if ($result) {
@@ -55,29 +54,22 @@ if (isset($_GET['logout'])) {
         } else {
             echo 'error';
         }
+        $sql = "SELECT * FROM  patients";
+        $smtmselects = $db->prepare($sql);
+        $results = $smtmselects->execute();
+        if ($result) {
+            $patients = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            echo 'error';
+        }
 
         ?>
         <div class="send-patient">
 
-            <div class=" patiens-save">
-                <form action="" method="POST" class="patients-save-fields">
-                    <p class="usernamelabel">Hasta Adı</p>
-                    <input type="text" required name="name" id="name" placeholder="Enter name here">
 
-                    <p class="usernamelabel">Hasta Soyadı</p>
-                    <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
-
-                    <p class="usernamelabel">Hasta Yaşı</p>
-                    <input type="text" required name="age" id="age" placeholder="Enter patient age">
-
-
-                    <input type="submit" name="submit" id="submit" value="Save Patient">
-
-                </form>
-            </div>
             <div class="patients-table dark-blue text-center rounded p-4" id="patients-table">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Hastalar</h6>
+                    <h6 class="mb-0">Öğrenciler</h6>
 
                 </div>
 
@@ -88,8 +80,9 @@ if (isset($_GET['logout'])) {
 
                                 <th scope="col">İsim</th>
                                 <th scope="col">Soyisim</th>
-                                <th scope="col">Yaş</th>
-                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Hastalar</th>
+
 
                             </tr>
                         </thead>
@@ -103,9 +96,9 @@ if (isset($_GET['logout'])) {
                                     <td style='
                                     color: white;'>" . $value["surname"] . "</td>
                                     <td style='
-                                    color: white;'>" . $value["age"] . "</td>
-                                    <td style='
-                                    color: white;'><a class=\'btn btn-sm btn-primary\' href=\"\">Detail</a></td>
+                                    color: white;'>" . $value["email"] . "</td>
+                                   
+                                    
                                 </tr>"
 
                             ?>
@@ -132,18 +125,20 @@ if (isset($_GET['logout'])) {
                         var name = $('#name').val();
                         var surname = $('#surname').val();
                         var age = $('#age').val();
+                        var not = $('#not').val();
 
 
                         e.preventDefault()
 
                         $.ajax({
                             type: 'POST',
-                            url: 'nurse-patient.php',
+                            url: 'student-patient.php',
                             data: {
                                 id: id,
                                 name: name,
                                 surname: surname,
                                 age: age,
+                                not: not
 
                             },
                             success: function(data) {

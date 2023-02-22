@@ -84,6 +84,10 @@ body {
     display: flex;
 }
 
+.header-left {
+    padding-top: 20px;
+}
+
 .navigation {
     position: relative;
     display: flex;
@@ -264,6 +268,7 @@ input[type="email"] {
 
 .patients-save-fields {
     display: flex;
+    flex-direction: column;
 
 }
 
@@ -274,4 +279,55 @@ input[type="email"] {
 
 .usernamelabel {
     padding-top: 20px;
+    font-size: 20px;
+}
+
+.form-control {
+    background-color: #d1d1d1 !important;
+    margin-bottom: 20px;
+    width: 50%;
+    align-self: center;
+}
+
+.submit {
+    height: 75px;
+    widows: 50%;
+    background: radial-gradient(circle at 15.1% 50%, rgb(144, 17, 105) -20%, rgb(51, 0, 131) 100.2%);
+    color: white;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.checkbox-header {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.braden-header {
+    color: black;
+    font-weight: 500;
+    font-size: 35px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.checkboxes {
+    max-width: 600px;
+}
+
+.braden-label {
+    font-size: 25px;
+}
+
+.not {
+    height: 150px;
+}
+
+.form-check-label {
+    margin-bottom: 15px;
 }

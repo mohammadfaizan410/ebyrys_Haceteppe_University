@@ -1,5 +1,5 @@
 <?php
-require_once("config-nurses.php");
+require_once("config-teachers.php");
 session_start()
 
 ?>
@@ -19,22 +19,21 @@ session_start()
 
 
     <link rel="stylesheet" href="style.css">
+    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
 
 </head>
 
 <body>
     <div>
         <?php
-        echo 'bbbb';
         if (isset($_POST['submit'])) {
-            echo 'aasdafa';
             $name = $_POST['name'];
             $surname = $_POST['surname'];
             $email = $_POST['email'];
-            $password = sha1(($_POST['password']));
+            $password = $_POST['password'];
 
             echo $name;
-            $sql = "INSERT INTO nurses (name, surname, email, password) VALUES(?,?,?,?)";
+            $sql = "INSERT INTO teachers (name, surname, email, password) VALUES(?,?,?,?)";
             $smtminsert = $db->prepare($sql);
             $result = $smtminsert->execute([$name, $surname, $email, $password]);
             if ($result) {
@@ -50,22 +49,22 @@ session_start()
             <div class="login-box login-signup">
 
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Sign Up as Nurse</h2>
+                <h2 class="login">Öğretmen Kaydı</h2>
 
                 <p class="usernamelabel">İsim</p>
-                <input type="text" required name="name" id="name" placeholder="Enter name here">
+                <input type="text" required name="name" id="name" placeholder="İsim Giriniz">
 
                 <p class="usernamelabel">Soyisim</p>
-                <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
+                <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz">
 
                 <p class="usernamelabel">E-mail</p>
-                <input type="email" required name="email" id="email" placeholder="Enter e-mail here">
+                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
 
                 <p class="passwordlabel">Şifre</p>
-                <input type="password" name="password" id="password" required placeholder="Enter Password here">
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
 
-                <input type="submit" name="submit" id="register" value="Sign Up">
-                <a href="#">Şifremi Unuttum</a>
+                <input type="submit" name="submit" id="register" value="Kayıt Ol">
+                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
         </form>
 
     </div>
@@ -89,7 +88,7 @@ session_start()
 
                     $.ajax({
                         type: 'POST',
-                        url: 'process-nurse.php',
+                        url: 'process-teachers.php',
                         data: {
                             name: name,
                             surname: surname,
@@ -102,6 +101,8 @@ session_start()
                                 'text': data,
                                 'type': 'success'
                             })
+                            setTimeout('window.location.href = "main.php"', 1000);
+
                         },
                         error: function(data) {
                             Swal.fire({

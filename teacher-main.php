@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userlogin'])) {
-    header("Location: login-nurse.php");
+    header("Location: login-student.php");
 }
 
 if (isset($_GET['logout'])) {
@@ -44,39 +44,39 @@ if (isset($_GET['logout'])) {
     <div class="stu-body1">
         <div class="navigation-wrapper">
             <div class="navigation-left">
-                <a href="index.html" class="nav-items">
+                <a href="" class="">
                     <h3 class=""><i class="fa fa-user-edit me-2"></i>e-BYRYS-KKDS</h3>
                 </a>
 
             </div>
             <div class="navigation-right">
                 <div class="nav-items-wrapper">
-                    <a href="formlar-nurse.php" id="formlar" class="nav-link nav-items formlar"> <i class="fa fa-table me-2 "></i>Formlar</a>
+                    <a href="formlar-teacher.php" id="formlar" class="nav-link nav-items formlar"> <i class="fa fa-table me-2 "></i>Öğrenciler</a>
                     <a href="" class="nav-link "><i class="fa fa-chart-bar me-2"></i>Sınavlar</a>
-                    <a href="" class="nav-link"><i class="fa fa-th me-2"></i>Öneriler</a>
+                    <a href="" class="nav-link"><i class="fa fa-th me-2"></i>Formlar</a>
                     <a href="" class="nav-link"><i class="fa fa-comments me-2"></i>Mesajlar</a>
                 </div>
-                <div class="nav-item dropdown">
-                    <div class="ms-3">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <span class="d-none d-lg-inline-flex"><?php
-                                                                    echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
-                                                                    ?></span></a>
-                        <span class="status">Student</span>
+                <div>
 
-                        <a href="student-main.php?logout=true">Çıkış Yap</a>
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">
+                        <span class="d-none d-lg-inline-flex"><?php
+                                                                echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
+                                                                ?></span></a>
+                    <span class="status">Öğretmen</span>
 
-                    </div>
+                    <a class="black" href="teacher-main.php?logout=true">Çıkış Yap</a>
+
                 </div>
-
-
-
-
-
-
             </div>
 
+
+
+
+
+
         </div>
+
+    </div>
 
     </div>
     <div class="content" id="content">

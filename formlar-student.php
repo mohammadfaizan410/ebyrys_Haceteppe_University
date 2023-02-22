@@ -44,7 +44,6 @@ if (isset($_GET['logout'])) {
     <div class="container-fluid pt-4 px-4">
         <?php
         require_once('config-students.php');
-        $name = "ata";
         $userid = $_SESSION['userlogin']['id'];
         //echo $userid;
         $sql = "SELECT * FROM  patients  WHERE id =" . $userid;
@@ -59,19 +58,252 @@ if (isset($_GET['logout'])) {
         ?>
         <div class="send-patient">
 
-            <div class=" patiens-save">
+            <div class=" patients-save">
                 <form action="" method="POST" class="patients-save-fields">
                     <p class="usernamelabel">Hasta Adı</p>
-                    <input type="text" required name="name" id="name" placeholder="Enter name here">
+                    <input type="text" class="form-control" required name="name" id="name" placeholder="Hasta Adı Giriniz">
 
                     <p class="usernamelabel">Hasta Soyadı</p>
-                    <input type="text" required name="surname" id="surname" placeholder="Enter surname here">
+                    <input type="text" class="form-control" required name="surname" id="surname" placeholder="Hasta Soyadı Giriniz">
 
                     <p class="usernamelabel">Hasta Yaşı</p>
-                    <input type="text" required name="age" id="age" placeholder="Enter patient age">
+                    <input type="text" class="form-control" required name="age" id="age" placeholder="Hasta Yaşı Giriniz">
+
+                    <p class="usernamelabel">Notlar</p>
+                    <input type="text" class="form-control not" required name="not" id="not" placeholder="Not giriniz">
+                    <h1 class="braden-header">Braden Parametreleri</h1>
+                    <p class="braden-label">Uyaranın Algılanması</p>
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio1" value="option1" checked>
+                                <label class="form-check-label" for="uyaranradio1">
+                                    <span class="checkbox-header"> Skor 1: Tamamen Yetersiz </span>
+                                    Ağrılı uyaranlara yanıt vermiyor.
+                                    Bilinçsizliğe bağlı olarak vücudunda ağrı odaklarını hissedemiyor.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio2" value="option2">
+                                <label class="form-check-label" for="uyaranradio2">
+                                    <span class="checkbox-header"> Skor 2: Çok Yetersiz </span>
+                                    Yalnız ağrılı uyaranlara yanıt veriyor.
+                                    Rahatsızlığını inleme ile belli edebiliyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio3" value="option3">
+                                <label class="form-check-label" for="uyaranradio3">
+                                    <span class="checkbox-header"> Skor 3: Biraz Yeterli </span>
+                                    Sözlü uyaranlara yanıt veriyor.
+                                    Sürekli iletişim kurulamıyor.
+                                    Hastanın yatak İçinde çevrilmesi gerekiyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio4" value="option4">
+                                <label class="form-check-label" for="uyaranradio4">
+                                    <span class="checkbox-header"> Skor 4: Tamamen Yeterli </span>
+                                    Sözlü uyaranlara yanıt veriyor.
+                                    Duyu kusuru yok.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="braden-label">Nemlilik</p>
+
+                    <div class="checkbox-wrapper">
+
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nemlilikradio" id="nemlilikradio1" value="option1" checked>
+                                <label class="form-check-label" for="nemlilikradio1">
+                                    <span class="checkbox-header"> Skor 1: Sürekli Islak </span>
+                                    Deri, ter, İdrar, gaita ile sürekli ıslak. Her çevrildiğinde ıslaklık hissediliyor.
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nemlilikradio" id="nemlilikradio2" value="option2">
+                                <label class="form-check-label" for="nemlilikradio2">
+                                    <span class="checkbox-header"> Skor 2: Çok Islak </span>
+                                    Deri çoğu zaman ıslak.
+                                    Her vardiyada çarşafların bir kez değiştirilmesi gerekiyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nemlilikradio" id="nemlilikradio3" value="option3">
+                                <label class="form-check-label" for="nemlilikradio3">
+                                    <span class="checkbox-header"> Skor 3: Bazen Islak </span>
+                                    Deri bazen ıslak.
+                                    Çarşafların ıslandıkça değiştirilmesi gerekiyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nemlilikradio" id="nemlilikradio4" value="option4">
+                                <label class="form-check-label" for="nemlilikradio4">
+                                    <span class="checkbox-header"> Skor 4: Nadiren Islak</span>
+                                    Deri genellikle kuru.
+                                    Çarşafların rutin olarak değiştirilmesi gerekiyor
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Aktivite</p>
+
+                    <div class="checkbox-wrapper">
+
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="aktiviteradio" id="aktiviteradio1" value="option1" checked>
+                                <label class="form-check-label" for="aktiviteradio1">
+                                    <span class="checkbox-header"> Skor 1: Yatağa Bağımlı </span>
+                                    Her türlü bakım gereksinimi yatakta karşılanıyor.
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="aktiviteradio" id="aktiviteradio2" value="option2">
+                                <label class="form-check-label" for="aktiviteradio2">
+                                    <span class="checkbox-header"> Skor 2: Sandalyeye Bağımlı </span>
+                                    Çok az yürüyebiliyor.
+                                    Sandalyeye oturabilmesi için yardım gerekiyor.
+                                    Kendi ağırlığını kaldırmakta güçlük çekiyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="aktiviteradio" id="aktiviteradio3" value="option3">
+                                <label class="form-check-label" for="aktiviteradio3">
+                                    <span class="checkbox-header"> Skor 3: Bazen Yürüyebiliyor </span>
+                                    Yardımla veya yardımsız kısa mesafede yürüyebiliyor.
+                                    Her vardiyada çoğu zaman yatakta veya sandalyede oturuyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="aktiviteradio" id="aktiviteradio4" value="option4">
+                                <label class="form-check-label" for="aktiviteradio4">
+                                    <span class="checkbox-header"> Skor 4: Sık Sık Yürüyebiliyor</span>
+                                    Günde en az iki defa oda dışına çıkabiliyor.
+                                    Oda içinde 2 saatte bir yürüyebiliyor.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
 
-                    <input type="submit" name="submit" id="submit" value="Save Patient">
+                    <p class="braden-label">Hareket</p>
+
+                    <div class="checkbox-wrapper">
+
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hareketradio" id="hareketradio1" value="option1" checked>
+                                <label class="form-check-label" for="hareketradio1">
+                                    <span class="checkbox-header"> Skor 1: Tamamen Hareketsiz</span>
+                                    Yardımsız pozisyon değiştiremiyor.
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hareketradio" id="hareketradio2" value="option2">
+                                <label class="form-check-label" for="hareketradio2">
+                                    <span class="checkbox-header"> Skor 2: Çok Hareketsiz </span>
+                                    Vücut ve ekstremite pozisyonunda hafif değişiklik yapabiliyor.
+                                    Kendiliğinden pozisyonunu değiştiremiyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hareketradio" id="hareketradio3" value="option3">
+                                <label class="form-check-label" for="hareketradio3">
+                                    <span class="checkbox-header"> Skor 3: Az Hareketli </span>
+                                    Vücut ve ekstremitelerinde sık, ancak hafif değişiklik yapabiliyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="hareketradio" id="hareketradio4" value="option4">
+                                <label class="form-check-label" for="hareketradio4">
+                                    <span class="checkbox-header"> Skor 4: Hareketli</span>
+                                    Pozisyonunu yardımsız sıklıkla değiştirebiliyor.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Beslenme</p>
+
+                    <div class="checkbox-wrapper">
+
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="beslenmeradio" id="beslenmeradio1" value="option1" checked>
+                                <label class="form-check-label" for="beslenmeradio1">
+                                    <span class="checkbox-header"> Skor 1: Çok Yetersiz</span>
+                                    Asla öğününün tamamını yiyemiyor.
+                                    Nadiren verilen yemeğin 1/3'ünü yiyebiliyor.
+                                    İki öğün ya da daha az protein alabiliyor (Et ve süt ürünleri).
+                                    Sıvı alımı az. Ağızdan sıvı desteği alamıyor.
+                                    Beş günden fazla süredir IV ve berrak diyet alıyor.
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="beslenmeradio" id="beslenmeradio2" value="option2">
+                                <label class="form-check-label" for="beslenmeradio2">
+                                    <span class="checkbox-header"> Skor 2: Yetersiz </span>
+                                    Verilen yemeğin yarısını, nadiren tamamını yiyebiliyor.
+                                    Günde 3 defa protein, bazen destekleyici ek gıda alabiliyor.
+                                    Uygun diyetin tüp ile verilen besinin birazını alabiliyor.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="beslenmeradio" id="beslenmeradio3" value="option3">
+                                <label class="form-check-label" for="beslenmeradio3">
+                                    <span class="checkbox-header"> Skor 3: Yeterli</span>
+                                    Öğünün yarısından fazlasını yiyebiliyor.
+                                    Günde 4 kez protein alabiliyor.
+                                    Ara sıra öğünü reddediyor.
+                                    Verilmişse ek diyet ya da total parenteral beslenme alıyor </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="beslenmeradio" id="beslenmeradio4" value="option4">
+                                <label class="form-check-label" for="beslenmeradio4">
+                                    <span class="checkbox-header"> Skor 4: Çok İyi</span>
+                                    Her öğünü çoğunlukla yiyor, öğünleri reddetmiyor.
+                                    Günde 4 defa protein alabiliyor.
+                                    Genellikle öğün aralarında yiyor.
+                                    Ek gıda gerekmiyor. </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Sürtünme Ve Tahriş</p>
+
+                    <div class="checkbox-wrapper">
+
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio1" value="option1" checked>
+                                <label class="form-check-label" for="surtunmeradio1">
+                                    <span class="checkbox-header"> Skor 1: Sorun </span>
+                                    Hareket ederken çok fazla yardıma gereksinimi var.
+                                    Çarşafta kaydırmaksızın tamamen kaldırılması olanaksız.
+                                    Sıklıkla sandalyeden ya da yataktan aşağı kayıyor.
+                                    Yeniden pozisyon vermede çok fazla yardıma gereksinimi var.
+                                    Sertlik, kontraktür ya da huzursuzluk sürekli sürtünmeye yol açabiliyor.
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio2" value="option2" checked>
+                                <label class="form-check-label" for="surtunmeradio2">
+                                    <span class="checkbox-header"> Skor 2: Olası Sorun </span>
+                                    Çok az yardımla az ve güçsüz hareket yapabiliyor.
+                                    Hareket sırasında deri, çarşafa sandalyeye ya da diğer malzemelere sürtünüyor.
+                                    Genellikle yatak ve sandalyede pozisyonunu sürdürüyor, fakat bazen kayıyor. </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio3" value="option3" checked>
+                                <label class="form-check-label" for="surtunmeradio3">
+                                    <span class="checkbox-header"> Skor 3: Sorun Yok</span>
+                                    Yatak ve sandalyede bağımsız hareket edebiliyor.
+                                    Kendini kaldırabilmek için, yeterli kas gücü var.
+                                    Yatak ya da sandalyede her zaman uygun pozisyonda duruyor. </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" class="form-control submit" name="submit" id="submit" value="Kaydet">
 
                 </form>
             </div>
@@ -89,7 +321,7 @@ if (isset($_GET['logout'])) {
                                 <th scope="col">İsim</th>
                                 <th scope="col">Soyisim</th>
                                 <th scope="col">Yaş</th>
-                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                <th scope="col">Notlar</th>
 
                             </tr>
                         </thead>
@@ -105,7 +337,7 @@ if (isset($_GET['logout'])) {
                                     <td style='
                                     color: white;'>" . $value["age"] . "</td>
                                     <td style='
-                                    color: white;'><a class=\'btn btn-sm btn-primary\' href=\"\">Detail</a></td>
+                                    color: white;'> " . $value["notlar"] . " </td>
                                 </tr>"
 
                             ?>
@@ -132,6 +364,7 @@ if (isset($_GET['logout'])) {
                         var name = $('#name').val();
                         var surname = $('#surname').val();
                         var age = $('#age').val();
+                        var not = $('#not').val();
 
 
                         e.preventDefault()
@@ -144,6 +377,7 @@ if (isset($_GET['logout'])) {
                                 name: name,
                                 surname: surname,
                                 age: age,
+                                not: not
 
                             },
                             success: function(data) {

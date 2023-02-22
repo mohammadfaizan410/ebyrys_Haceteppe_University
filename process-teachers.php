@@ -1,16 +1,14 @@
 <?php
-require_once("config-nurses.php");
+require_once("config-teachers.php");
 ?>
 <?php
 if (isset($_POST)) {
-    echo 'aasdafa';
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $email = $_POST['email'];
     $password = sha1(($_POST['password']));
 
-    echo $name;
-    $sql = "INSERT INTO nurses (name, surname, email, password) VALUES(?,?,?,?)";
+    $sql = "INSERT INTO teachers (name, surname, email, password) VALUES(?,?,?,?)";
     $smtminsert = $db->prepare($sql);
     $result = $smtminsert->execute([$name, $surname, $email, $password]);
     if ($result) {

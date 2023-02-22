@@ -1,5 +1,5 @@
 <?php
-require_once("config-nurses.php");
+require_once("config-teachers.php");
 session_start()
 
 ?>
@@ -19,6 +19,7 @@ session_start()
 
 
     <link rel="stylesheet" href="style.css">
+    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
 
 
 </head>
@@ -30,14 +31,14 @@ session_start()
             <div class="login-box login-login">
 
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Hemşire Girişi</h2>
+                <h2 class="login">Öğretmen Girişi</h2>
 
                 <p class="labels">Mail</p>
                 <input type="text" required name="email" id="email" placeholder="Mail Giriniz">
                 <p class="labels">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
-                <input type="submit" name="submit" id="login" value="Login">
-                <a href="#">Şifremi Unuttum</a>
+                <input type="submit" name="submit" id="login" value="Giriş Yap">
+                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
         </form>
 
     </div>
@@ -55,7 +56,7 @@ session_start()
 
                 $.ajax({
                     type: 'POST',
-                    url: 'process-login-nurse.php',
+                    url: 'process-login-teacher.php',
                     data: {
                         email: email,
                         password: password
@@ -63,7 +64,7 @@ session_start()
                     success: function(data) {
                         alert(data)
                         if ($.trim(data) === "Successful") {
-                            setTimeout('window.location.href = "nurse-main.php"', 1000);
+                            setTimeout('window.location.href = "teacher-main.php"', 1000);
                         }
                     },
                     error: function(data) {
