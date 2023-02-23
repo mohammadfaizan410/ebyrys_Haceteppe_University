@@ -24,21 +24,20 @@ if (isset($_GET['logout'])) {
     <link href="img/favicon.ico" rel="icon">
 
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="style.css" rel="stylesheet">
 
 </head>
+<script>
+    $(window).on('load', function() {
+        $("body").removeClass("preload");
+    });
+</script>
 
 <body style="background-color:white">
     <div class="container-fluid pt-4 px-4">
@@ -60,18 +59,23 @@ if (isset($_GET['logout'])) {
 
             <div class=" patients-save">
                 <form action="" method="POST" class="patients-save-fields">
-                    <p class="usernamelabel">Hasta Adı</p>
-                    <input type="text" class="form-control" required name="name" id="name" placeholder="Hasta Adı Giriniz">
+                    <div class="patient-info">
+                        <div class="patient-info-left">
+                            <p class="usernamelabel">Hasta Adı</p>
+                            <input type="text" class="form-control" required name="name" id="name" placeholder="Hasta Adı Giriniz">
 
-                    <p class="usernamelabel">Hasta Soyadı</p>
-                    <input type="text" class="form-control" required name="surname" id="surname" placeholder="Hasta Soyadı Giriniz">
+                            <p class="usernamelabel">Hasta Soyadı</p>
+                            <input type="text" class="form-control" required name="surname" id="surname" placeholder="Hasta Soyadı Giriniz">
 
-                    <p class="usernamelabel">Hasta Yaşı</p>
-                    <input type="text" class="form-control" required name="age" id="age" placeholder="Hasta Yaşı Giriniz">
+                            <p class="usernamelabel">Hasta Yaşı</p>
+                            <input type="text" class="form-control" required name="age" id="age" placeholder="Hasta Yaşı Giriniz">
+                        </div>
+                        <div class="patient-info-left">
 
-                    <p class="usernamelabel">Notlar</p>
-                    <input type="text" class="form-control not" required name="not" id="not" placeholder="Not giriniz">
-
+                            <p class="usernamelabel">Notlar</p>
+                            <input type="text" class="form-control not" required name="not" id="not" placeholder="Not giriniz">
+                        </div>
+                    </div>
                     <h1 class="braden-header">Braden Parametreleri</h1>
 
                     <p class="braden-label">Uyaranın Algılanması</p>
@@ -310,46 +314,7 @@ if (isset($_GET['logout'])) {
 
                 </form>
             </div>
-            <div class="patients-table dark-blue text-center rounded p-4" id="patients-table">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Hastalar</h6>
 
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                            <tr class="text-white">
-
-                                <th scope="col">İsim</th>
-                                <th scope="col">Soyisim</th>
-                                <th scope="col">Yaş</th>
-                                <th scope="col">Notlar</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($values as &$value)
-                                echo "
-                                <tr>
-                                   
-                                    <td style='
-                                    color: white;'>" . $value["name"] . "</td>
-                                    <td style='
-                                    color: white;'>" . $value["surname"] . "</td>
-                                    <td style='
-                                    color: white;'>" . $value["age"] . "</td>
-                                    <td style='
-                                    color: white;'> " . $value["notlar"] . " </td>
-                                </tr>"
-
-                            ?>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
         <script>
             $(function() {
