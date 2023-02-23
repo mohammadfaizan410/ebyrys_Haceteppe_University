@@ -71,28 +71,31 @@ if (isset($_GET['logout'])) {
 
                     <p class="usernamelabel">Notlar</p>
                     <input type="text" class="form-control not" required name="not" id="not" placeholder="Not giriniz">
+
                     <h1 class="braden-header">Braden Parametreleri</h1>
+
                     <p class="braden-label">Uyaranın Algılanması</p>
+
                     <div class="checkbox-wrapper">
                         <div class="checkboxes">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio1" value="option1" checked>
-                                <label class="form-check-label" for="uyaranradio1">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio" value="option1">
+                                <label class="form-check-label" for="uyaranradio">
                                     <span class="checkbox-header"> Skor 1: Tamamen Yetersiz </span>
                                     Ağrılı uyaranlara yanıt vermiyor.
                                     Bilinçsizliğe bağlı olarak vücudunda ağrı odaklarını hissedemiyor.</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio2" value="option2">
-                                <label class="form-check-label" for="uyaranradio2">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio" value="option2">
+                                <label class="form-check-label" for="uyaranradio">
                                     <span class="checkbox-header"> Skor 2: Çok Yetersiz </span>
                                     Yalnız ağrılı uyaranlara yanıt veriyor.
                                     Rahatsızlığını inleme ile belli edebiliyor.
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio3" value="option3">
-                                <label class="form-check-label" for="uyaranradio3">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio" value="option3">
+                                <label class="form-check-label" for="uyaranradio">
                                     <span class="checkbox-header"> Skor 3: Biraz Yeterli </span>
                                     Sözlü uyaranlara yanıt veriyor.
                                     Sürekli iletişim kurulamıyor.
@@ -100,8 +103,8 @@ if (isset($_GET['logout'])) {
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio4" value="option4">
-                                <label class="form-check-label" for="uyaranradio4">
+                                <input class="form-check-input" type="radio" name="uyaranradio" id="uyaranradio" value="option4">
+                                <label class="form-check-label" for="uyaranradio">
                                     <span class="checkbox-header"> Skor 4: Tamamen Yeterli </span>
                                     Sözlü uyaranlara yanıt veriyor.
                                     Duyu kusuru yok.
@@ -115,7 +118,7 @@ if (isset($_GET['logout'])) {
 
                         <div class="checkboxes">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="nemlilikradio" id="nemlilikradio1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="nemlilikradio" id="nemlilikradio1" value="option1">
                                 <label class="form-check-label" for="nemlilikradio1">
                                     <span class="checkbox-header"> Skor 1: Sürekli Islak </span>
                                     Deri, ter, İdrar, gaita ile sürekli ıslak. Her çevrildiğinde ıslaklık hissediliyor.
@@ -153,7 +156,7 @@ if (isset($_GET['logout'])) {
 
                         <div class="checkboxes">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="aktiviteradio" id="aktiviteradio1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="aktiviteradio" id="aktiviteradio1" value="option1">
                                 <label class="form-check-label" for="aktiviteradio1">
                                     <span class="checkbox-header"> Skor 1: Yatağa Bağımlı </span>
                                     Her türlü bakım gereksinimi yatakta karşılanıyor.
@@ -193,7 +196,7 @@ if (isset($_GET['logout'])) {
 
                         <div class="checkboxes">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="hareketradio" id="hareketradio1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="hareketradio" id="hareketradio1" value="option1">
                                 <label class="form-check-label" for="hareketradio1">
                                     <span class="checkbox-header"> Skor 1: Tamamen Hareketsiz</span>
                                     Yardımsız pozisyon değiştiremiyor.
@@ -229,7 +232,7 @@ if (isset($_GET['logout'])) {
 
                         <div class="checkboxes">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="beslenmeradio" id="beslenmeradio1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="beslenmeradio" id="beslenmeradio1" value="option1">
                                 <label class="form-check-label" for="beslenmeradio1">
                                     <span class="checkbox-header"> Skor 1: Çok Yetersiz</span>
                                     Asla öğününün tamamını yiyemiyor.
@@ -274,7 +277,7 @@ if (isset($_GET['logout'])) {
 
                         <div class="checkboxes">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio1" value="option1">
                                 <label class="form-check-label" for="surtunmeradio1">
                                     <span class="checkbox-header"> Skor 1: Sorun </span>
                                     Hareket ederken çok fazla yardıma gereksinimi var.
@@ -284,7 +287,7 @@ if (isset($_GET['logout'])) {
                                     Sertlik, kontraktür ya da huzursuzluk sürekli sürtünmeye yol açabiliyor.
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio2" value="option2" checked>
+                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio2" value="option2">
                                 <label class="form-check-label" for="surtunmeradio2">
                                     <span class="checkbox-header"> Skor 2: Olası Sorun </span>
                                     Çok az yardımla az ve güçsüz hareket yapabiliyor.
@@ -293,7 +296,7 @@ if (isset($_GET['logout'])) {
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio3" value="option3" checked>
+                                <input class="form-check-input" type="radio" name="surtunmeradio" id="surtunmeradio3" value="option3">
                                 <label class="form-check-label" for="surtunmeradio3">
                                     <span class="checkbox-header"> Skor 3: Sorun Yok</span>
                                     Yatak ve sandalyede bağımsız hareket edebiliyor.
@@ -365,8 +368,63 @@ if (isset($_GET['logout'])) {
                         var surname = $('#surname').val();
                         var age = $('#age').val();
                         var not = $('#not').val();
+                        var not = $('#not').val();
 
 
+
+                        var ele = document.getElementsByName('uyaranradio');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var uyaran = ele[i].value;
+
+                        }
+                        console.log(uyaran);
+
+                        var ele = document.getElementsByName('nemlilikradio');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var nemlilik = ele[i].value;
+
+                        }
+                        console.log(nemlilik);
+
+                        var ele = document.getElementsByName('aktiviteradio');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var aktivite = ele[i].value;
+
+                        }
+                        console.log(aktivite);
+
+                        var ele = document.getElementsByName('hareketradio');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var hareket = ele[i].value;
+
+                        }
+                        console.log(hareket);
+
+                        var ele = document.getElementsByName('beslenmeradio');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var beslenme = ele[i].value;
+
+                        }
+                        console.log(beslenme);
+
+                        var ele = document.getElementsByName('surtunmeradio');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var surtunme = ele[i].value;
+
+                        }
+                        console.log(surtunme);
                         e.preventDefault()
 
                         $.ajax({
@@ -377,8 +435,13 @@ if (isset($_GET['logout'])) {
                                 name: name,
                                 surname: surname,
                                 age: age,
-                                not: not
-
+                                not: not,
+                                uyaran: uyaran,
+                                nemlilik: nemlilik,
+                                aktivite: aktivite,
+                                hareket: hareket,
+                                beslenme: beslenme,
+                                surtunme: surtunme
                             },
                             success: function(data) {
                                 alert("Success");

@@ -9,11 +9,19 @@ if (isset($_POST)) {
     $surname = $_POST['surname'];
     $age = $_POST['age'];
     $not = $_POST['not'];
-
+    $uyaran = $_POST['uyaran'];
+    $nemlilik = $_POST['nemlilik'];
+    $aktivite = $_POST['aktivite'];
+    $hareket = $_POST['hareket'];
+    $beslenme = $_POST['beslenme'];
+    $surtunme = $_POST['surtunme'];
+    var_dump($uyaran);
     echo $name;
-    $sql = "INSERT INTO patients (id ,name, surname, age, notlar) VALUES(?,?,?,?,?)";
+    $sql = "INSERT INTO patients (id ,name, surname, age, notlar, uyaran, nemlilik, aktivite, hareket, beslenme, surtunme) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     $smtminsert = $db->prepare($sql);
-    $result = $smtminsert->execute([$id, $name, $surname, $age, $not]);
+    $result = $smtminsert->execute([
+        $id, $name, $surname, $age, $not, $uyaran, $nemlilik, $aktivite, $hareket, $beslenme, $surtunme
+    ]);
     if ($result) {
         echo 'success';
     } else {
