@@ -124,7 +124,7 @@ a {
 .navigation-wrapper {
     width: 100%;
     display: flex;
-    background: antiquewhite;
+    background: white;
     position: fixed;
     margin: unset;
     align-items: center;

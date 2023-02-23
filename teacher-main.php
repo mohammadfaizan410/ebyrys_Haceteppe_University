@@ -32,11 +32,12 @@ if (isset($_GET['logout'])) {
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="style.css" rel="stylesheet">
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="style.css" rel="stylesheet">
 
 </head>
 
@@ -45,16 +46,16 @@ if (isset($_GET['logout'])) {
         <div class="navigation-wrapper">
             <div class="navigation-left">
                 <a href="" class="">
-                    <h3 class=""><i class="fa fa-user-edit me-2"></i>e-BYRYS-KKDS</h3>
+                    <h3 class="title"><i class="fa fa-user-edit me-2"></i>e-BYRYS-KKDS</h3>
                 </a>
 
             </div>
             <div class="navigation-right">
                 <div class="nav-items-wrapper">
-                    <a href="formlar-teacher.php" id="formlar" class="nav-link nav-items formlar"> <i class="fa fa-table me-2 "></i>Öğrenciler</a>
-                    <a href="" class="nav-link "><i class="fa fa-chart-bar me-2"></i>Sınavlar</a>
-                    <a href="" class="nav-link"><i class="fa fa-th me-2"></i>Formlar</a>
-                    <a href="" class="nav-link"><i class="fa fa-comments me-2"></i>Mesajlar</a>
+                    <a href="formlar-teacher.php" id="formlar" class="nav-link nav-items formlar btn-success"> <i class="fa fa-table me-2 "></i>Öğrenciler</a>
+                    <a href="" class="nav-link nav-items btn-success"><i class="fa fa-chart-bar me-2"></i>Sınavlar</a>
+                    <a href="" class="nav-link nav-items btn-success"><i class="fa fa-th me-2"></i>Formlar</a>
+                    <a href="" class="nav-link nav-items btn-success"><i class="fa fa-comments me-2"></i>Mesajlar</a>
                 </div>
                 <div>
 
@@ -89,6 +90,7 @@ if (isset($_GET['logout'])) {
             }); // disable caching for all requests.
 
             // RAW Text/Html data from a file
+            $("#content").load("formlar-teacher");
 
             $(function() {
                 $("a.nav-items").on("click", function(e) {

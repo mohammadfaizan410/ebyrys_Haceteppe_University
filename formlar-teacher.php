@@ -31,12 +31,12 @@ if (isset($_GET['logout'])) {
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="style.css" rel="stylesheet">
 
 </head>
 
@@ -69,14 +69,14 @@ if (isset($_GET['logout'])) {
 
             <div class="patients-table dark-blue text-center rounded p-4" id="patients-table">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Öğrenciler</h6>
+                    <h6 class="mb-0 darkcyan table-title">Öğrenciler</h6>
 
                 </div>
 
                 <div class="table-responsive">
                     <table class="table text-start align-middle table-bordered table-hover mb-0">
                         <thead>
-                            <tr class="text-white">
+                            <tr class=" darkcyan table-head">
 
                                 <th scope="col">İsim</th>
                                 <th scope="col">Soyisim</th>
@@ -92,11 +92,11 @@ if (isset($_GET['logout'])) {
                                 <tr>
                                    
                                     <td style='
-                                    color: white;'>" . $value["name"] . "</td>
+                                    color: black; font-size: 18px;'>" . $value["name"] . "</td>
                                     <td style='
-                                    color: white;'>" . $value["surname"] . "</td>
+                                    color: black; font-size: 18px;'>" . $value["surname"] . "</td>
                                     <td style='
-                                    color: white;'>" . $value["email"] . "</td>
+                                    color: black; font-size: 18px;'>" . $value["email"] . "</td>
                                    
                                     
                                 </tr>"
