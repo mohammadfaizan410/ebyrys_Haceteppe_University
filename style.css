@@ -502,6 +502,7 @@ input[type="email"] {
 
 .girisimler-p {
     max-width: 350px;
+    min-width: 350px;
     padding: 18px;
 }
 
@@ -521,4 +522,9 @@ input[type="email"] {
 
 .girisimler-header {
     font-size: 20px;
+}
+
+.nav-center {
+    display: flex;
+    max-width: 1480px;
 }

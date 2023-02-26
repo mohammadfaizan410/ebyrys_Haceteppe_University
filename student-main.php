@@ -44,34 +44,39 @@ if (isset($_GET['logout'])) {
 <body class="stu-body">
     <div class="stu-body1">
         <div class="navigation-wrapper">
-            <div class="navigation-left">
-                <a href="" class="">
-                    <h3 class="title"><i class="fa fa-user-edit me-2"></i>e-BYRYS-KKDS</h3>
-                </a>
-
-            </div>
-            <div class="navigation-right">
-                <div class="nav-items-wrapper">
-                    <a href="formlar-student.php" id="formlar" class="nav-link nav-items formlar btn-success"> <i class="fa fa-table me-2 "></i>Formlar</a>
-                    <a href="hastalar-student.php" id="formlar" class="nav-link nav-items formlar btn-success"> <i class="fa fa-table me-2 "></i>Hastalar</a>
-                    <a href="" class="nav-link nav-items btn-success"><i class="fa fa-chart-bar me-2"></i>Sınavlar</a>
-                    <a href="" class="nav-link nav-items btn-success"><i class="fa fa-th me-2"></i>Öneriler</a>
-                    <a href="" class="nav-link nav-items btn-success"><i class="fa fa-comments me-2"></i>Mesajlar</a>
-                </div>
-                <div>
-
-                    <a href="#" class="nav-link " data-bs-toggle="dropdown">
-                        <span class="d-none d-lg-inline-flex username"><?php
-                                                                        echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
-                                                                        ?></span></a>
-                    <span class="status">Öğrenci</span>
-
-                    <a class="black" href="student-main.php?logout=true">Çıkış Yap</a>
+            <div class="nav-center">
+                <div class="navigation-left">
+                    <a href="" class="">
+                        <h3 class="title"><i class="fa fa-user-edit me-2"></i>e-BYRYS-KKDS</h3>
+                    </a>
 
                 </div>
+                <div class="navigation-right">
+                    <div class="nav-items-wrapper">
+                        <a href="formlar-student.php" id="formlar" class="nav-link nav-items formlar btn-success"> <i
+                                class="fa fa-table me-2 "></i>Formlar</a>
+                        <a href="hastalar-student.php" id="formlar" class="nav-link nav-items formlar btn-success"> <i
+                                class="fa fa-table me-2 "></i>Hastalar</a>
+                        <a href="" class="nav-link nav-items btn-success"><i
+                                class="fa fa-chart-bar me-2"></i>Sınavlar</a>
+                        <a href="" class="nav-link nav-items btn-success"><i class="fa fa-th me-2"></i>Öneriler</a>
+                        <a href="" class="nav-link nav-items btn-success"><i
+                                class="fa fa-comments me-2"></i>Mesajlar</a>
+                    </div>
+                    <div>
+
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">
+                            <span class="d-none d-lg-inline-flex username"><?php
+                                                                            echo '' . $_SESSION['userlogin']['name'] . ' ' . $_SESSION['userlogin']['surname'] . '';
+                                                                            ?></span></a>
+                        <span class="status">Öğrenci</span>
+
+                        <a class="black" href="student-main.php?logout=true">Çıkış Yap</a>
+
+                    </div>
+                </div>
+
             </div>
-
-
 
 
 
@@ -85,21 +90,21 @@ if (isset($_GET['logout'])) {
 
     </div>
     <script>
+    $(function() {
+        $.ajaxSetup({
+            cache: false
+        }); // disable caching for all requests.
+        $("#content").load("formlar-student.php");
+
+        // RAW Text/Html data from a file
         $(function() {
-            $.ajaxSetup({
-                cache: false
-            }); // disable caching for all requests.
-            $("#content").load("formlar-student.php");
-
-            // RAW Text/Html data from a file
-            $(function() {
-                $("a.nav-items").on("click", function(e) {
-                    e.preventDefault();
-                    $("#content").load(this.href);
-                })
+            $("a.nav-items").on("click", function(e) {
+                e.preventDefault();
+                $("#content").load(this.href);
             })
+        })
 
-        });
+    });
     </script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -112,9 +117,9 @@ if (isset($_GET['logout'])) {
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script>
-        $(window).on('load', function() {
-            $("body").removeClass("preload");
-        });
+    $(window).on('load', function() {
+        $("body").removeClass("preload");
+    });
     </script>
 
     <!-- Template Javascript -->
