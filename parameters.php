@@ -476,7 +476,7 @@ foreach ($values as &$value) {
     if ($nrs2 == 'option2') {
         $nrs2val = '<span class="girisimler-score bold block">2. Son 3 ay içinde kilo kaybı var mı? </span>
                                     <span class="girisimler-span">Hayır </span>';
-        $nrs1girisim = '<span class="girisimler-span">Skor 0</span>
+        $nrs2girisim = '<span class="girisimler-span">Skor 0</span>
                                     ';
         $nrsscore += 0;
     }

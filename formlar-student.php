@@ -496,7 +496,7 @@ $(window).on('load', function() {
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="nrs1radio" id="nrs1radio"
-                                    value="option1">
+                                    value="option2">
                                 <label class="form-check-label" for="nrs1radio">
                                     <span class="checkbox-header"> Hayır </span></label>
                             </div>
