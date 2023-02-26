@@ -337,7 +337,334 @@ $(window).on('load', function() {
                         </div>
                     </div>
 
-                    <input type="submit" class="form-control submit" name="submit" id="submit" value="Kaydet">
+                    <h1 class="braden-header">Cilt Değerlendirme</h1>
+
+                    <p class="braden-label">Cilt Rengi</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="renkradio" id="renkradio"
+                                    value="option1">
+                                <label class="form-check-label" for="renkradio">
+                                    <span class="checkbox-header"> 1. Cilt normal renklilikte </span>
+                                    Ciltte herhangi bir renk değişimi yok.</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="renkradio" id="renkradio"
+                                    value="option2">
+                                <label class="form-check-label" for="renkradio">
+                                    <span class="checkbox-header"> 2. Ciltte kızarıklıklar var </span>
+                                    Ciltte pozisyon sonrası geçen kızarıklık oluşumu mevcut.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="renkradio" id="renkradio"
+                                    value="option3">
+                                <label class="form-check-label" for="renkradio">
+                                    <span class="checkbox-header"> 3. Ciltte basmakla solmayan kızarıklıklar var </span>
+                                    Ciltte, özellikle basınç altında kalan bölgelerde basmakla solmayan kızarıklık
+                                    oluşumu mevcut.
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Cilt Sıcaklığı</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sicaklikradio" id="sicaklikradio"
+                                    value="option1">
+                                <label class="form-check-label" for="sicaklikradio">
+                                    <span class="checkbox-header"> 1. Normal cilt sıcaklığı </span>
+                                    Hastanın cilt sıcaklığı 33.5-36.9 °C aralığındadır. </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sicaklikradio" id="sicaklikradio"
+                                    value="option2">
+                                <label class="form-check-label" for="sicaklikradio">
+                                    <span class="checkbox-header">2. Artmış cilt sıcaklığı </span>
+                                    Hastanın cilt sıcaklığı 37 °C ve üzerindedir.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sicaklikradio" id="sicaklikradio"
+                                    value="option3">
+                                <label class="form-check-label" for="sicaklikradio">
+                                    <span class="checkbox-header">3. Düşük cilt sıcaklığı </span>
+                                    Hastanın cilt sıcaklığı 33.5 °C altındadır.
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Ödem</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="odemradio" id="odemradio"
+                                    value="option1">
+                                <label class="form-check-label" for="odemradio">
+                                    <span class="checkbox-header"> 1. Ciltte ödem yok </span>
+                                    Hastanın cilt sıcaklığı 33.5-36.9 °C aralığındadır. </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="odemradio" id="odemradio"
+                                    value="option2">
+                                <label class="form-check-label" for="odemradio">
+                                    <span class="checkbox-header">2. Cilt hafif derecede ödemli </span>
+                                    Gode derinliği 2 mm’dir ve basınçla oluşan çukur hızla kaybolur.
+
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="odemradio" id="odemradio"
+                                    value="option3">
+                                <label class="form-check-label" for="odemradio">
+                                    <span class="checkbox-header">3. Cilt orta derecede ödemli </span>
+                                    Gode derinliği 4 mm’dir ve basınçla oluşan çukur 10-15 saniyede kaybolur.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="odemradio" id="odemradio"
+                                    value="option4">
+                                <label class="form-check-label" for="odemradio">
+                                    <span class="checkbox-header">4. Cilt şiddetli derecede ödemli </span>
+                                    Gode derinliği 6 mm’dir ve basınçla oluşan çukurun kaybolması 1 dakikadan uzun
+                                    sürer.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="odemradio" id="odemradio"
+                                    value="option5">
+                                <label class="form-check-label" for="odemradio">
+                                    <span class="checkbox-header">5. Cilt çok şiddetli derecede ödemli</span>
+                                    Gode derinliği 8 mm’dir ve basınçla oluşan çukurun kaybolması 2 dakikadan uzun
+                                    sürer.
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Cilt Bütünlüğü</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="butunlukradio" id="butunlukradio"
+                                    value="option1">
+                                <label class="form-check-label" for="butunlukradio">
+                                    <span class="checkbox-header"> 1.Cilt bütünlüğü tam </span>
+                                    Cilt bütünlüğünde bozulma yok. </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="butunlukradio" id="butunlukradio"
+                                    value="option2">
+                                <label class="form-check-label" for="butunlukradio">
+                                    <span class="checkbox-header">2.Cilt bütünlüğü bozulmuş </span>
+                                    Hastanın cildinde değişen evrelerde basınç yaralanması/ları bulunmakta.
+                                </label>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <p class="usernamelabel">2.1. Mevcut basınç yaralanması/larının evresi ve bölgesini
+                        tanımlayınız.</p>
+                    <input type="text" class="form-control butunluknot not" required name="butunluknot" id="butunluknot"
+                        placeholder="Not giriniz">
+
+
+                    <h1 class="braden-header">NRS-2002 (Nütrisyonel Risk Tarama 2002)</h1>
+
+                    <p class="braden-label">Bölüm 1</p>
+                    <p class="braden-label">1.Vücut kitle indeksi 20,5 kg/m²'nin altında mı?</p>
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs1radio" id="nrs1radio"
+                                    value="option1">
+                                <label class="form-check-label" for="nrs1radio">
+                                    <span class="checkbox-header"> Evet </span></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs1radio" id="nrs1radio"
+                                    value="option1">
+                                <label class="form-check-label" for="nrs1radio">
+                                    <span class="checkbox-header"> Hayır </span></label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">2. Son 3 ay içinde kilo kaybı var mı?</p>
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs2radio" id="nrs2radio"
+                                    value="option1">
+                                <label class="form-check-label" for="nrs2radio">
+                                    <span class="checkbox-header"> Evet </span></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs2radio" id="nrs2radio"
+                                    value="option2">
+                                <label class="form-check-label" for="nrs2radio">
+                                    <span class="checkbox-header"> Hayır </span></label>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <p class="braden-label">3. Geçen haftya içinde besin alımında azalma var mı?</p>
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs3radio" id="nrs3radio"
+                                    value="option1">
+                                <label class="form-check-label" for="nrs3radio">
+                                    <span class="checkbox-header"> Evet </span></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs3radio" id="nrs3radio"
+                                    value="option2">
+                                <label class="form-check-label" for="nrs3radio">
+                                    <span class="checkbox-header"> Hayır </span></label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">4. Şiddetli bir hastalık var mı? (Yoğun bakım vb.)</p>
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs4radio" id="nrs4radio"
+                                    value="option1">
+                                <label class="form-check-label" for="nrs4radio">
+                                    <span class="checkbox-header"> Evet </span></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrs4radio" id="nrs4radio"
+                                    value="option2">
+                                <label class="form-check-label" for="nrs4radio">
+                                    <span class="checkbox-header"> Hayır </span></label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Bölüm 2</p>
+                    <p class="braden-label">Nutrisyon Durumundaki Bozulma</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nutrisyonradio" id="nutrisyonradio"
+                                    value="option1">
+                                <label class="form-check-label" for="nutrisyonradio">
+                                    <span class="checkbox-header"> Skor 0: </span>
+                                    Normal nutrisyon durumu </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nutrisyonradio" id="nutrisyonradio"
+                                    value="option2">
+                                <label class="form-check-label" for="nutrisyonradio">
+                                    <span class="checkbox-header">Skor 1: </span>
+                                    Üç ayda %5'in üzerinde kilo kaybı ya da geçen haftaki besin alımı normal
+                                    gereksinimlerin %50-75'inin altında.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nutrisyonradio" id="nutrisyonradio"
+                                    value="option3">
+                                <label class="form-check-label" for="nutrisyonradio">
+                                    <span class="checkbox-header">Skor 3: </span>
+                                    Bir ayda %5'in üzerinde kilo kaybı (3 ayda %15'in üzerinde) ya da BKİ 18,5'in
+                                    altında ve genel durum bozukluğu var ya da geçen haftaki besin alımı normal
+                                    gereksinimlerin %0-25'i kadar.
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Yaş</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrsyasradio" id="nrsyasradio"
+                                    value="option1">
+                                <label class="form-check-label" for="nrsyasradio">
+                                    <span class="checkbox-header"> Skor 0: </span>
+                                    Hasta 70 yaşından küçük</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="nrsyasradio" id="nrsyasradio"
+                                    value="option2">
+                                <label class="form-check-label" for="nrsyasradio">
+                                    <span class="checkbox-header">Skor 1: </span>
+                                    Hasta 70 yaşından büyük
+                                </label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <p class="braden-label">Hastalığın Şiddeti (Gereksinimlerde Artış)</p>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="siddetradio" id="siddetradio"
+                                    value="option1">
+                                <label class="form-check-label" for="siddetradio">
+                                    <span class="checkbox-header"> Skor 0: </span>
+                                    Normal besinsel gereksinimler</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="siddetradio" id="siddetradio"
+                                    value="option2">
+                                <label class="form-check-label" for="siddetradio">
+                                    <span class="checkbox-header">Skor 1: </span>
+                                    Kalça kemiğinde kırık, Özellikle akut komplikasyonları olan kronik hastalıklar:
+                                    Siroz, KOAH, kronik hemodiyaliz, diyabet, onkoloji
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="siddetradio" id="siddetradio"
+                                    value="option2">
+                                <label class="form-check-label" for="siddetradio">
+                                    <span class="checkbox-header">Skor 2: </span>
+                                    Major abdominal cerrahi, Şiddetli pnömoni, Hematolojik malignite
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="siddetradio" id="siddetradio"
+                                    value="option2">
+                                <label class="form-check-label" for="siddetradio">
+                                    <span class="checkbox-header">Skor 3: </span>
+                                    Kafa Travması, Kemik iliği transplantasyonu, APACHE skoru 10'dan büyük yoğun bakım
+                                    hastaları
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <input type="submit" class="form-control butunluknot submit" name="submit" id="submit"
+                        value="Kaydet">
 
                 </form>
             </div>
@@ -360,7 +687,7 @@ $(window).on('load', function() {
                     var surname = $('#surname').val();
                     var age = $('#age').val();
                     var not = $('#not').val();
-                    var not = $('#not').val();
+
 
 
 
@@ -417,11 +744,118 @@ $(window).on('load', function() {
 
                     }
                     console.log(surtunme);
+
+                    var ele = document.getElementsByName('renkradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var renk = ele[i].value;
+
+                    }
+                    console.log(renk);
+
+                    var ele = document.getElementsByName('sicaklikradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var sicaklik = ele[i].value;
+
+                    }
+                    console.log(sicaklik);
+
+                    var ele = document.getElementsByName('odemradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var odem = ele[i].value;
+
+                    }
+                    console.log(odem);
+
+                    var ele = document.getElementsByName('butunlukradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var butunluk = ele[i].value;
+
+                    }
+                    console.log(butunluk);
+
+                    var butunluknot = $('#butunluknot').val();
+
+                    var ele = document.getElementsByName('nrs1radio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nrs1 = ele[i].value;
+
+                    }
+                    console.log(nrs1);
+
+                    var ele = document.getElementsByName('nrs2radio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nrs2 = ele[i].value;
+
+                    }
+                    console.log(nrs2);
+
+                    var ele = document.getElementsByName('nrs3radio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nrs3 = ele[i].value;
+
+                    }
+                    console.log(nrs3);
+
+                    var ele = document.getElementsByName('nrs4radio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nrs4 = ele[i].value;
+
+                    }
+                    console.log(nrs4);
+
+                    var ele = document.getElementsByName('nutrisyonradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nutrisyon = ele[i].value;
+
+                    }
+                    console.log(nutrisyon);
+
+                    var ele = document.getElementsByName('nrsyasradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nrsyas = ele[i].value;
+
+                    }
+                    console.log(nrsyas);
+
+                    var ele = document.getElementsByName('siddetradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var siddet = ele[i].value;
+
+                    }
+                    console.log(siddet);
+
                     e.preventDefault()
 
                     if (uyaran == undefined || nemlilik == undefined || aktivite == undefined ||
                         hareket ==
-                        undefined || beslenme == undefined || surtunme == undefined) {
+                        undefined || beslenme == undefined || surtunme == undefined || renk ==
+                        undefined || sicaklik == undefined || odem == undefined || butunluk ==
+                        undefined || nrs1 == undefined || nrs2 == undefined || nrs3 == undefined ||
+                        nrs4 == undefined || nutrisyon == undefined || nrsyas == undefined || siddet ==
+                        undefined
+                    ) {
 
                         alert("Lütfen tüm alanları doldurunuz !");
 
@@ -440,7 +874,19 @@ $(window).on('load', function() {
                                 aktivite: aktivite,
                                 hareket: hareket,
                                 beslenme: beslenme,
-                                surtunme: surtunme
+                                surtunme: surtunme,
+                                renk: renk,
+                                sicaklik: sicaklik,
+                                odem: odem,
+                                butunluk: butunluk,
+                                butunluknot: butunluknot,
+                                nrs1: nrs1,
+                                nrs2: nrs2,
+                                nrs3: nrs3,
+                                nrs4: nrs4,
+                                nutrisyon: nutrisyon,
+                                nrsyas: nrsyas,
+                                siddet: siddet
                             },
                             success: function(data) {
                                 alert("Success");

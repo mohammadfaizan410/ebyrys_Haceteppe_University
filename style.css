@@ -359,6 +359,7 @@ input[type="email"] {
 
 .checkboxes {
     max-width: 600px;
+    width: 100%;
 }
 
 .braden-label {
@@ -527,4 +528,8 @@ input[type="email"] {
 .nav-center {
     display: flex;
     max-width: 1480px;
+}
+
+.butunluknot {
+    width: 50% !important;
 }
