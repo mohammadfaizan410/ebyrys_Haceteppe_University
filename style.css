@@ -121,6 +121,10 @@ a {
     padding-bottom: 0.5rem;
 }
 
+.navigation-both {
+    display: flex;
+}
+
 .navigation-wrapper {
     width: 100%;
     display: flex;
@@ -379,6 +383,7 @@ input[type="email"] {
 
 .content {
     margin-top: 100px;
+    width: 100%;
 }
 
 .form-check-input:checked {
@@ -532,4 +537,25 @@ input[type="email"] {
 
 .butunluknot {
     width: 50% !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.patient-detail-teacher-wrapper {
+    border: 2px solid black;
+    padding: 10px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.patient-detail-teacher {
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.patient-detail-button-teacher {
+    height: 36px;
+    align-self: center;
 }

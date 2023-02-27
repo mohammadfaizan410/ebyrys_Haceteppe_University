@@ -54,15 +54,15 @@ if (isset($_GET['logout'])) {
         } else {
             echo 'error';
         }
+
         $sql = "SELECT * FROM  patients";
-        $smtmselects = $db->prepare($sql);
-        $results = $smtmselects->execute();
+        $smtmselect = $db->prepare($sql);
+        $result = $smtmselect->execute();
         if ($result) {
             $patients = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
             echo 'error';
         }
-
         ?>
         <div class="send-patient">
 
@@ -87,7 +87,8 @@ if (isset($_GET['logout'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($values as &$value)
+                            <?php foreach ($values as &$value) {
+
                                 echo "
                                 <tr>
                                    
@@ -97,10 +98,69 @@ if (isset($_GET['logout'])) {
                                     color: black; font-size: 18px;'>" . $value["surname"] . "</td>
                                     <td style='
                                     color: black; font-size: 18px;'>" . $value["email"] . "</td>
-                                   
+                                    <td style='
+                                    color: black; font-size: 18px;
+                                    '> <button type='button' id = '" . $value['id'] . "' class='btn btn-success'>Detay</button> </td>
                                     
-                                </tr>"
+                                    <div id='myModal" . $value['id'] . "' class='modal none'>
 
+                                    <!-- Modal content -->
+                                        <div class='modal-content' id='modal-content" . $value['id'] . "'>
+                                            <span class='close" . $value['id'] . " closeBtn' id='close" . $value['id'] . "'>&times;</span>
+                                            <p>Öğrenci Adı: " . $value['name'] . "</p>
+                                            <p>Öğrenci Soyadı: " . $value['surname'] . "</p>
+                                            <p>Öğrenci Maili: " . $value['email'] . "</p>
+                                            ";
+                                foreach ($patients as &$patient) {
+                                    $stuid = $patient['id'];
+                                    if ($value['id'] == $stuid) {
+                                        require('patient-info-teacher.php');
+                                        //  require('patient-info-teacher.php');
+                                    } else {
+                                    }
+                                }
+                                echo "
+                                        </div>
+                                    </div>
+                                </tr>
+                                
+                             
+                                
+                                    
+                                
+                                <script>
+                            var modal" . $value['id'] . " = document.getElementById('myModal" . $value['id'] . "');
+
+                                // Get the button that opens the modal
+                                var btn" . $value['id'] . " = document.getElementById('" . $value['id'] . "');
+                        
+                                // Get the <span> element that closes the modal
+                                var span" . $value['id'] . " = document.getElementById('close" . $value['id'] . "');
+                               
+                                
+                                // When the user clicks on the button, open the modal
+                                btn" . $value['id'] . ".onclick = function() {
+                                    modal" . $value['id'] . ".classList.remove('none');
+                                    modal" . $value['id'] . ".classList.add('block');
+                                 
+
+                                span" . $value['id'] . ".onclick = function() {
+                                    modal" . $value['id'] . ".classList.remove('block');
+                                    modal" . $value['id'] . ".classList.add('none');
+                                }
+                    
+                                
+                                window.onclick = function(event) {
+                                    if (event.target == modal" . $value['id'] . ") {
+                                        modal" . $value['id'] . ".classList.remove('block');
+                                    
+                                    }
+                                }
+                                }
+                    
+                                
+                            </script>";
+                            }
                             ?>
 
 
@@ -110,56 +170,56 @@ if (isset($_GET['logout'])) {
             </div>
         </div>
         <script>
-            $(function() {
-                $('#submit').click(function(e) {
+        $(function() {
+            $('#submit').click(function(e) {
 
 
-                    var valid = this.form.checkValidity();
+                var valid = this.form.checkValidity();
 
-                    if (valid) {
-                        var id = <?php
+                if (valid) {
+                    var id = <?php
 
                                     $userid = $_SESSION['userlogin']['id'];
                                     echo $userid
                                     ?>;
-                        var name = $('#name').val();
-                        var surname = $('#surname').val();
-                        var age = $('#age').val();
-                        var not = $('#not').val();
+                    var name = $('#name').val();
+                    var surname = $('#surname').val();
+                    var age = $('#age').val();
+                    var not = $('#not').val();
 
 
-                        e.preventDefault()
+                    e.preventDefault()
 
-                        $.ajax({
-                            type: 'POST',
-                            url: 'student-patient.php',
-                            data: {
-                                id: id,
-                                name: name,
-                                surname: surname,
-                                age: age,
-                                not: not
+                    $.ajax({
+                        type: 'POST',
+                        url: 'student-patient.php',
+                        data: {
+                            id: id,
+                            name: name,
+                            surname: surname,
+                            age: age,
+                            not: not
 
-                            },
-                            success: function(data) {
-                                alert("Success");
-                                location.reload(true)
-                            },
-                            error: function(data) {
-                                Swal.fire({
-                                    'title': 'Errors',
-                                    'text': 'There were errors',
-                                    'type': 'error'
-                                })
-                            }
-                        })
+                        },
+                        success: function(data) {
+                            alert("Success");
+                            location.reload(true)
+                        },
+                        error: function(data) {
+                            Swal.fire({
+                                'title': 'Errors',
+                                'text': 'There were errors',
+                                'type': 'error'
+                            })
+                        }
+                    })
 
 
 
-                    }
-                })
+                }
+            })
 
-            });
+        });
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
