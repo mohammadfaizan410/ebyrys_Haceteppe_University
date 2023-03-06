@@ -86,7 +86,7 @@ if (isset($_GET['logout'])) {
                             </label>
                             <div class="form-group">
                                 <input type="submit" id="submit" class="form-control butunluknot submit pdf-upload-btn"
-                                    name="submit" value="Submit">
+                                    name="submit" value="Kaydet">
                             </div>
                         </div>
                     </form>
@@ -199,11 +199,7 @@ if (isset($_GET['logout'])) {
                         </tbody>
                     </table>
                 </div>
-                <?php
 
-                foreach ($vakalar as $vaka) {
-                }
-                ?>
 
             </div>
         </div>
@@ -233,16 +229,18 @@ if (isset($_GET['logout'])) {
                     var pdffile = document.getElementById("pdffile").files[0];
                     var uploadData = new FormData();
                     uploadData.append("file", pdffile);
-                    console.log($("#pdffile"));
-                    console.log(pdffile);
+                    // console.log($("#pdffile"));
+                    // console.log(pdffile);
                     e.preventDefault()
 
                     $.ajax({
                         type: 'POST',
                         url: 'vaka-db.php',
                         data: uploadData,
+
                         success: function(data) {
                             console.log(data);
+                            console.log(name);
                             location.reload(true)
                         },
                         error: function(data) {

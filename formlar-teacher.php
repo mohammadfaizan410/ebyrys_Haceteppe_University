@@ -63,6 +63,14 @@ if (isset($_GET['logout'])) {
         } else {
             echo 'error';
         }
+        $sql = "SELECT * FROM  vakalar";
+        $smtmselect = $db->prepare($sql);
+        $result = $smtmselect->execute();
+        if ($result) {
+            $vakalar = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            echo 'error';
+        }
         ?>
         <div class="send-patient">
 

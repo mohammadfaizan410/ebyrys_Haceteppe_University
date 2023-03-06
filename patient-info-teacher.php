@@ -341,6 +341,22 @@ echo "
                                                 <p>Hasta Adı:" . $patient['name'] . "</p>
                                                 <p>Hasta Soyadı:" . $patient['surname'] . "</p>
                                                 <p>Hasta yaşı:" . $patient['age'] . "</p>
+                                                ";
+foreach ($vakalar as $vaka) {
+    if ($vaka['id'] == $patient['fileid']) {
+        $vakapdf = $vaka["filename"];
+
+
+        $basePath = $vakapdf;
+        $fileLoc = strpos($basePath, 'vakalar');
+        $filePath = substr($basePath, $fileLoc);
+        if (file_exists($filePath)) {
+            echo "                    <iframe id='iframepdf' class='iframepdf' runat='server' src=" . $filePath . " title=''></iframe>
+                                                            ";
+        }
+    }
+}
+echo "
                                                 <p>Not:" . $patient['notlar'] . "</p>
                                                 <h1 class='braden-header'>Braden Parametreleri</h1>
                                                 <div class='girisimler'>
