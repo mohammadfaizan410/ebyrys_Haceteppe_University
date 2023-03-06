@@ -56,7 +56,10 @@ $(window).on('load', function() {
 
         ?>
         <div class="send-patient">
-
+            <div class="pdf-section">
+                <object data="Test_vakasi.pdf" width="800" height="500">
+                </object>
+            </div>
             <div class=" patients-save">
                 <form action="" method="POST" class="patients-save-fields">
                     <div class="patient-info">
