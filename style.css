@@ -632,7 +632,7 @@ input[type=file]::file-selector-button:hover {
 
 .iframepdf {
     width: 100%;
-    height: 850px;
+    height: 750px;
 }
 
 .pdf-upload-wrapper {

@@ -57,11 +57,7 @@ if (isset($_GET['logout'])) {
                                 class="fa fa-table me-2 "></i>Formlar</a>
                         <a href="hastalar-student.php" id="formlar" class="nav-link nav-items formlar btn-success"> <i
                                 class="fa fa-table me-2 "></i>Hastalar</a>
-                        <a href="" class="nav-link nav-items btn-success"><i
-                                class="fa fa-chart-bar me-2"></i>Sınavlar</a>
-                        <a href="" class="nav-link nav-items btn-success"><i class="fa fa-th me-2"></i>Öneriler</a>
-                        <a href="" class="nav-link nav-items btn-success"><i
-                                class="fa fa-comments me-2"></i>Mesajlar</a>
+
                     </div>
                     <div>
 
