@@ -127,8 +127,8 @@ if (isset($_GET['logout'])) {
  var_dump($vaka["filename"]);
  var_dump("aaaxxxx"); */
 
-
-                                echo "
+                                if (file_exists($filePath)) {
+                                    echo "
                                 <tr>
                                    
                                     <td style='
@@ -194,8 +194,8 @@ if (isset($_GET['logout'])) {
                     
                                 
                             </script>";
+                                }
                             }
-
                             ?>
 
 
