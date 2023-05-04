@@ -81,7 +81,7 @@ $(window).on('load', function() {
                             placeholder="Hasta Soyadı Giriniz">
 
                         <p class="usernamelabel">Hasta Yaşı</p>
-                        <input type="text" class="form-control" required name="age" id="age"
+                        <input type="number" class="form-control" required name="age" id="age"
                             placeholder="Hasta Yaşı Giriniz">
                     </div>
                     <div class="patient-info-left">
