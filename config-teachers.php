@@ -1,13 +1,7 @@
 <?php
-$dbhost = $_SERVER['e-byrys.cpcbxswdfvjg.eu-central-1.rds.amazonaws.com'];
-$dbport = $_SERVER['3306'];
-$dbname = $_SERVER['ebyrys_db'];
-$charset = 'utf8' ;
-
-
-$dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
-$username = $_SERVER['admin'];
-$password = $_SERVER['12345678'];
-
-$pdo = new PDO($dsn, $username, $password);
+$db_user = "admin";
+$db_pass = "12345678";
+$db_name = "kdse_db";
+$db_host = "ebyrys.cpcbxswdfvjg.eu-central-1.rds.amazonaws.com";
+$db = new PDO('mysql:host=' . $db_host .';dbname=' . $db_name . ';charset-utf8', $db_user, $db_pass);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
