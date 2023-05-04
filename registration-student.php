@@ -59,7 +59,11 @@ require_once("config-students.php");
         if (strlen($password) < 6) {
         // handle the error, for example:
             echo "<script>alert('Password must be at least 6 characters long.');</script>";
-}
+        }
+        else
+        {
+
+        
         $(function() {
             $('#register').click(function(e) {
 
@@ -108,7 +112,7 @@ require_once("config-students.php");
 
             })
 
-        })
+        })}
     </script>
 </body>
 
