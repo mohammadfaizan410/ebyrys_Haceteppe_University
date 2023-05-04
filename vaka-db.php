@@ -3,14 +3,12 @@ require_once("config-teachers.php");
 ?>
 <?php
 if (isset($_POST)) {
-    echo 'aasdafa';
+
     $pdffile = $_FILES['file'];
     $saveto = __DIR__ . DIRECTORY_SEPARATOR . 'vakalar' . DIRECTORY_SEPARATOR . time() . '_' . $pdffile['name'];
-    echo $saveto;
-    echo $_FILES;
     //Move file:
     move_uploaded_file($pdffile['tmp_name'], $saveto);
-    echo 'mmmmmmmmmmmm';
+
     echo $pdffile['name'];
 
     $sql = "INSERT INTO vakalar (filename) VALUES(?)";
