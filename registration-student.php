@@ -1,4 +1,9 @@
 <?php
+session_start();
+$message='';
+if(isset($_SESSION['email_alert'])){
+    $message = 'Email Already Existed';
+}
 require_once("config-students.php");
 ?>
 <!DOCTYPE html>
@@ -30,6 +35,7 @@ require_once("config-students.php");
 
                 <h1 class="header">e-BYRYS-KKDS</h1>
                 <h2 class="login">Sign Up as Student</h2>
+                <h3><?php echo $message; ?></h3>
 
                 <p class="usernamelabel">İsim</p>
                 <input type="text" required name="name" id="name" placeholder="İsim Giriniz">
@@ -107,42 +113,12 @@ require_once("config-students.php");
     </script>
     <script>
         function isEmailExist($email) {
-            $servername = "ebyrys.cpcbxswdfvjg.eu-central-1.rds.amazonaws.com";
-            $username = "admin";
-            $password = "12345678";
-            $dbname = "ebyrys_db";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            $sql = "Select * from students where email = '$email'";
+            $result = mysqli_query($conn, $sql);
+            $present= mysqli_num_rows($result);
+            if($present>0){
+                $_SESSION['email_alert']
             }
-
-            // Escape special characters to prevent SQL injection attacks
-            $email = mysqli_real_escape_string($conn, $email);
-
-            // SQL query to check if email exists
-            $sql = "SELECT COUNT(*) AS count FROM students WHERE email='$email'";
-
-            // Execute SQL query
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-            // Email exists in database
-                $row = $result->fetch_assoc();
-                if ($row["count"] > 0) {
-      // Show alert if email already exists
-                    echo "<script>alert('Email already exists in database. Please choose a different email.');</script>";
-                    return true;
-                }
-            }
-
-  // Close database connection
-            $conn->close();
-  
-             return false;
         }
 
     </script>
