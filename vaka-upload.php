@@ -117,9 +117,9 @@ if (isset($_GET['logout'])) {
                                 $basePath = $vakapdf;
                                 $fileLoc = strpos($basePath, 'vakalar');
                                 $filePath = substr($basePath, $fileLoc);
-                                var_dump($vakapdf);
-                                var_dump($basePath);
-                                var_dump($filePath);
+                                var_dump("vakaaaaaaaa" . $vakapdf);
+                                var_dump("baseeeeeeeee" . $basePath);
+                                var_dump("fileeeeeee" . $filePath);
                                 /*  var_dump(file_exists($filePath));
  var_dump($filePath);
 
