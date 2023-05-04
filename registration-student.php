@@ -41,7 +41,7 @@ require_once("config-students.php");
                 <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
 
                 <p class="passwordlabel">Şifre</p>
-                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz" minlength="6" oninput="this.value = this.value.replace(/[^a-zA-Z0-9_-]/g, '')">
 
                 <input type="submit" name="submit" id="register" value="Kayıt Ol">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
@@ -52,17 +52,6 @@ require_once("config-students.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $password = trim($password); // remove whitespace from the beginning and end of the string
-        $password = stripslashes($password); // remove backslashes from the string
-
-        // check if the password meets the minimum length requirement
-        if (strlen($password) < 6) {
-        // handle the error, for example:
-            echo "<script>alert('Password must be at least 6 characters long.');</script>";
-        }
-        else
-        {
-
         
         $(function() {
             $('#register').click(function(e) {
@@ -112,7 +101,7 @@ require_once("config-students.php");
 
             })
 
-        })}
+        })
     </script>
 </body>
 
