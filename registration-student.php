@@ -112,9 +112,11 @@ require_once("config-students.php");
             var passwordError = document.getElementById("password-error");
             if (passwordInput.value.length < 6) {
                 passwordError.style.display = "inline";
+                document.getElementById("register").disabled = true;
             }   
             else {
                 passwordError.style.display = "none";
+                document.getElementById("register").disabled = false;
             }
         }
     </script>
