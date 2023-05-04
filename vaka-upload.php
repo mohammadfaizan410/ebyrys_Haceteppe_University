@@ -126,9 +126,9 @@ if (isset($_GET['logout'])) {
  file_get_contents($vaka["filename"], FILE_USE_INCLUDE_PATH);
  var_dump($vaka["filename"]);
  var_dump("aaaxxxx"); */
-                                if (file_exists($filePath))
 
-                                    echo "
+
+                                echo "
                                 <tr>
                                    
                                     <td style='
