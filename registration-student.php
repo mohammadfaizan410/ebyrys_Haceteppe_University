@@ -38,7 +38,8 @@ require_once("config-students.php");
                 <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz">
 
                 <p class="usernamelabel">E-mail</p>
-                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
+                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz" oninput="sanitizeEmail()">
+                <span id="email-error" style="display:none; color:red;">Lütfen geçerli bir e-posta adresi giriniz.</span>
 
                 <p class="passwordlabel">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz" minlength="6" oninput="sanitizePassword()">
@@ -105,6 +106,47 @@ require_once("config-students.php");
         })
     </script>
     <script>
+        function isEmailExist($email) {
+            $servername = "ebyrys.cpcbxswdfvjg.eu-central-1.rds.amazonaws.com";
+            $username = "admin";
+            $password = "12345678";
+            $dbname = "ebyrys_db";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Escape special characters to prevent SQL injection attacks
+            $email = mysqli_real_escape_string($conn, $email);
+
+            // SQL query to check if email exists
+            $sql = "SELECT COUNT(*) AS count FROM students WHERE email='$email'";
+
+            // Execute SQL query
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+            // Email exists in database
+                $row = $result->fetch_assoc();
+                if ($row["count"] > 0) {
+      // Show alert if email already exists
+                    echo "<script>alert('Email already exists in database. Please choose a different email.');</script>";
+                    return true;
+                }
+            }
+
+  // Close database connection
+            $conn->close();
+  
+             return false;
+        }
+
+    </script>
+    <script>
         function sanitizePassword() {
             var passwordInput = document.getElementById("password");
             passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
@@ -120,6 +162,35 @@ require_once("config-students.php");
             }
         }
     </script>
+    <script>
+    function sanitizeEmail() {
+        var emailInput = document.getElementById("email");
+        emailInput.value = emailInput.value.replace(/[^a-zA-Z0-9@._-]/g, '');
+
+        var emailError = document.getElementById("email-error");
+        if (!isValidEmail(emailInput.value)) {
+            emailError.style.display = "inline";
+            document.getElementById("register-button").disabled = true;
+        } 
+        else {
+            emailError.style.display = "none";
+            document.getElementById("register-button").disabled = false;
+            if (isEmailExist(email)) {
+                emailInput.setCustomValidity("Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
+                emailError.style.display = "block";
+            } else {
+                emailInput.setCustomValidity("");
+                emailError.style.display = "none";
+            }
+        }
+}
+
+    function isValidEmail(email) {
+         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         return emailRegex.test(email);
+    }
+</script>
+
 </body>
 
 </html>
