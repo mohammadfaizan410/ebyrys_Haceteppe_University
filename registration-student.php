@@ -52,6 +52,14 @@ require_once("config-students.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        $password = trim($password); // remove whitespace from the beginning and end of the string
+        $password = stripslashes($password); // remove backslashes from the string
+
+        // check if the password meets the minimum length requirement
+        if (strlen($password) < 6) {
+        // handle the error, for example:
+         die("Password must be at least 6 characters long.");
+}
         $(function() {
             $('#register').click(function(e) {
 
