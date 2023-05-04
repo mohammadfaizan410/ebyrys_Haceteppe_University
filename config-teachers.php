@@ -1,7 +1,7 @@
 <?php
 $dbhost = $_SERVER['e-byrys.cpcbxswdfvjg.eu-central-1.rds.amazonaws.com'];
 $dbport = $_SERVER['3306'];
-$dbname = $_SERVER['e-byrys'];
+$dbname = $_SERVER['ebyrys_db'];
 $charset = 'utf8' ;
 
 
