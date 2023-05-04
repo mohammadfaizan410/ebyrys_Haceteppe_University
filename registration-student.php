@@ -41,7 +41,8 @@ require_once("config-students.php");
                 <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
 
                 <p class="passwordlabel">Şifre</p>
-                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz" minlength="6" oninput="this.value = this.value.replace(/[^a-zA-Z0-9_-]/g, '')">
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz" minlength="6" oninput="sanitizePassword()">
+                <span id="password-error" style="display:none; color:red;">Şifre en az 6 karakter uzunluğunda olmalıdır.</span>
 
                 <input type="submit" name="submit" id="register" value="Kayıt Ol">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
@@ -102,6 +103,20 @@ require_once("config-students.php");
             })
 
         })
+    </script>
+    <script>
+        function sanitizePassword() {
+            var passwordInput = document.getElementById("password");
+            passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
+
+            var passwordError = document.getElementById("password-error");
+            if (passwordInput.value.length < 6) {
+                passwordError.style.display = "inline";
+            }   
+            else {
+                passwordError.style.display = "none";
+            }
+        }
     </script>
 </body>
 
