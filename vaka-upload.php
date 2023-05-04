@@ -223,39 +223,49 @@ if (isset($_GET['logout'])) {
 
                 if (valid) {
                     console.log("aaaaaaaaaa");
+                    var fup = document.getElementById('pdffile');
+                    var fileName = fup.value;
+                    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+                    if (ext == "pdf") {
+                        var id = <?php
 
-                    var id = <?php
+                                        $userid = $_SESSION['userlogin']['id'];
+                                        echo $userid
+                                        ?>;
+                        var pdffile = document.getElementById("pdffile").files[0];
+                        var uploadData = new FormData();
+                        uploadData.append("file", pdffile);
+                        // console.log($("#pdffile"));
+                        // console.log(pdffile);
+                        e.preventDefault()
 
-                                    $userid = $_SESSION['userlogin']['id'];
-                                    echo $userid
-                                    ?>;
-                    var pdffile = document.getElementById("pdffile").files[0];
-                    var uploadData = new FormData();
-                    uploadData.append("file", pdffile);
-                    // console.log($("#pdffile"));
-                    // console.log(pdffile);
-                    e.preventDefault()
+                        $.ajax({
+                            type: 'POST',
+                            url: 'vaka-db.php',
+                            data: uploadData,
 
-                    $.ajax({
-                        type: 'POST',
-                        url: 'vaka-db.php',
-                        data: uploadData,
+                            success: function(data) {
+                                console.log(data);
+                                console.log(name);
+                                location.reload(true)
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    'title': 'Errors',
+                                    'text': 'There were errors',
+                                    'type': 'error'
+                                })
+                            },
+                            processData: false,
+                            contentType: false
+                        })
 
-                        success: function(data) {
-                            console.log(data);
-                            console.log(name);
-                            location.reload(true)
-                        },
-                        error: function(data) {
-                            Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
-                                'type': 'error'
-                            })
-                        },
-                        processData: false,
-                        contentType: false
-                    })
+                        return true;
+                    } else {
+                        alert("Lütfen PDF uzantılı dosya yükleyin");
+                        fup.focus();
+                        return false;
+                    }
 
 
 
