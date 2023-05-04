@@ -60,7 +60,6 @@ require_once("config-students.php");
         // handle the error, for example:
          $error_message = "Password must be at least 6 characters long.";
          echo $error_message;
-         die("Password must be at least 6 characters long.");
 }
         $(function() {
             $('#register').click(function(e) {
