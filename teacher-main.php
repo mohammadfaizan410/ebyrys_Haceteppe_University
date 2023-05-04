@@ -94,7 +94,7 @@ if (isset($_GET['logout'])) {
             }); // disable caching for all requests.
 
             // RAW Text/Html data from a file
-            $("#content").load("formlar-teacher");
+            $("#content").load("formlar-teacher.php");
 
             $(function() {
                 $("a.nav-items").on("click", function(e) {
