@@ -58,7 +58,7 @@ require_once("config-students.php");
         // check if the password meets the minimum length requirement
         if (strlen($password) < 6) {
         // handle the error, for example:
-        echo "<script>alert('Password must be at least 6 characters long.');</script>";
+            echo "<script>alert('Password must be at least 6 characters long.');</script>";
 }
         $(function() {
             $('#register').click(function(e) {
