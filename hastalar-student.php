@@ -86,40 +86,14 @@ if (isset($_GET['logout'])) {
                                 <th scope="col">Yaş</th>
                                 <th scope="col">Notlar</th>
                                 <th scope="col">Öneriler</th>
-                                <th scope="col">Delete</th>
 
                             </tr>
                         </thead>
 
                         <tbody>
-                            
                             <?php
 
-                            // require('parameters.php');
-                            foreach ($values as $key => $value) {
-                                echo "<tr>
-                                   
-                                <td style='
-                                color: black; font-size: 18px;
-                               '>" . $value["name"] . "</td>
-                                <td style='
-                                color: black; font-size: 18px;
-                                '>" . $value["surname"] . "</td>
-                                <td style='
-                                color: black; font-size: 18px;
-                                '>" . $value["age"] . "</td>
-                                <td style='
-                                color: black; font-size: 18px;
-                                '> " . $value["notlar"] . " </td>
-                                <td style='
-                                color: black; font-size: 18px;
-                                '> <a class='nav-items' id ='" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Detay</a> </td>
-                                <td style='
-                                color: black; font-size: 18px;
-                                '> <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td>
-                            ";
-                            }
-                            
+                            require('parameters.php');
                             ?>
 
 
@@ -128,22 +102,101 @@ if (isset($_GET['logout'])) {
                 </div>
             </div>
         </div>
-   
         <script>
-            console.log('hastalar-activated!!!!!!!!!')
-            $('#delete-patient').click(function (e) { 
-                e.preventDefault();
-                let patient_id = $("#delete-patient").val();
-                
-            $.ajax({
+        $(function() {
+            $('#submit').click(function(e) {
+
+
+                var valid = this.form.checkValidity();
+
+                if (valid) {
+                    var id = <?php
+
+                                    $userid = $_SESSION['userlogin']['id'];
+                                    echo $userid
+                                    ?>;
+                    var name = $('#name').val();
+                    var surname = $('#surname').val();
+                    var age = $('#age').val();
+                    var not = $('#not').val();
+                    var not = $('#not').val();
+
+
+
+                    var ele = document.getElementsByName('uyaranradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var uyaran = ele[i].value;
+
+                    }
+                    console.log(uyaran);
+
+                    var ele = document.getElementsByName('nemlilikradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var nemlilik = ele[i].value;
+
+                    }
+                    console.log(nemlilik);
+
+                    var ele = document.getElementsByName('aktiviteradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var aktivite = ele[i].value;
+
+                    }
+                    console.log(aktivite);
+
+                    var ele = document.getElementsByName('hareketradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var hareket = ele[i].value;
+
+                    }
+                    console.log(hareket);
+
+                    var ele = document.getElementsByName('beslenmeradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var beslenme = ele[i].value;
+
+                    }
+                    console.log(beslenme);
+
+                    var ele = document.getElementsByName('surtunmeradio');
+
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            var surtunme = ele[i].value;
+
+                    }
+                    console.log(surtunme);
+                    e.preventDefault()
+
+                    $.ajax({
                         type: 'POST',
-                        url: 'deletePatient.php',
+                        url: 'student-patient.php',
                         data: {
-                            patient_id: patient_id,
+                            id: id,
+                            name: name,
+                            surname: surname,
+                            age: age,
+                            not: not,
+                            uyaran: uyaran,
+                            nemlilik: nemlilik,
+                            aktivite: aktivite,
+                            hareket: hareket,
+                            beslenme: beslenme,
+                            surtunme: surtunme
                         },
                         success: function(data) {
-                            alert(data);
-                            $("#content").load('hastalar-student.php');
+                            alert("Success");
+                            location.reload(true)
                         },
                         error: function(data) {
                             Swal.fire({
@@ -153,15 +206,19 @@ if (isset($_GET['logout'])) {
                             })
                         }
                     })
-            
-        });
-                
 
+
+
+                }
+            })
+
+        });
+        </script>
+        <script>
         $(window).on('load', function() {
             $("body").removeClass("preload");
 
         });
-   
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
