@@ -368,13 +368,50 @@ foreach ($values as $value) {
             }
         }
     }
-    echo "
+    echo "                                 
                                             <p>Not:" . $value['notlar'] . "</p>
                                             <h1 class='braden-header'>Braden Parametreleri</h1>
                                             <div class='girisimler'>
                                                 <p class='girisimler-p'><span class='girisimler-span block girisimler-header'>Uyaranın Algılanması:</span>" . $uyaranval . "</p>
                                                 <p class='girisimler-p'><span class='girisimler-span block girisimler-header'>Önerilen Girişimler:</span>" . $girisim . "</p>
                                             </div>
+                                            <div class='checkbox-wrapper'>
+
+                                            <div class='checkboxes'>
+                                            <div class='form-check'>
+                                                <input class='form-check-input' type='radio' name='hareketradio' id='hareketradio1'
+                                                    value='option1' checked>
+                                                <label class='form-check-label' for='hareketradio1'>
+                                                    <span class='checkbox-header'> Skor 1: Tamamen Hareketsiz</span>
+                                                    Yardımsız pozisyon değiştiremiyor.
+                                            </div>
+                                            <div class='form-check'>
+                                                <input class='form-check-input' type='radio' name='hareketradio' id='hareketradio2'
+                                                    value='option2'>
+                                                <label class='form-check-label' for='hareketradio2'>
+                                                    <span class='checkbox-header'> Skor 2: Çok Hareketsiz </span>
+                                                    Vücut ve ekstremite pozisyonunda hafif değişiklik yapabiliyor.
+                                                    Kendiliğinden pozisyonunu değiştiremiyor.
+                                                </label>
+                                            </div>
+                                            <div class='form-check'>
+                                                <input class='form-check-input' type='radio' name='hareketradio' id='hareketradio3'
+                                                    value='option3'>
+                                                <label class='form-check-label' for='hareketradio3'>
+                                                    <span class='checkbox-header'> Skor 3: Az Hareketli </span>
+                                                    Vücut ve ekstremitelerinde sık, ancak hafif değişiklik yapabiliyor.
+                                                </label>
+                                            </div>
+                                            <div class='form-check'>
+                                                <input class='form-check-input' type='radio' name='hareketradio' id='hareketradio4'
+                                                    value='option4'>
+                                                <label class='form-check-label' for='hareketradio4'>
+                                                    <span class='checkbox-header'> Skor 4: Hareketli</span>
+                                                    Pozisyonunu yardımsız sıklıkla değiştirebiliyor.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                             <div class='girisimler'>
                                                 <p class='girisimler-p'><span class='girisimler-span block girisimler-header'>Nemlilik:</span>" . $nemlilikval . "</p>

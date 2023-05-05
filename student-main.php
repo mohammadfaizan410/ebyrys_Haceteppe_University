@@ -87,21 +87,21 @@ if (isset($_GET['logout'])) {
 
     </div>
     <script>
-    $(function() {
-        $.ajaxSetup({
-            cache: false
-        }); // disable caching for all requests.
-        $("#content").load("http://18.159.134.238/Hacettepe-e-BYRYS-KKDS/formlar-student.php");
-
-        // RAW Text/Html data from a file
-        $(function() {
-            $("a.nav-items").on("click", function(e) {
-                e.preventDefault();
-                $("#content").load(this.href);
-            })
-        })
-
+$(function() {
+    // disable caching for all requests
+    $.ajaxSetup({
+        cache: false
     });
+
+    // load the default content
+    $("#content").load("formlar-student.php");
+
+    // handle clicks on navigation links
+    $("a.nav-items").on("click", function(e) {
+        e.preventDefault();
+        $("#content").load(this.href);
+    });
+});
     </script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
