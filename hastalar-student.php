@@ -41,13 +41,13 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body style="background-color:white">
-    <div id='formCloser'>
-        <div id='openFormContainer' style='padding: 50px;'>
-            <div id="contentContainer" class="model-content"></div>
-        </div>
+<div id="formCloser" style="padding: 10px; width: 100%; height: 100%;">
+    <div id="openFormContainer">
+            <div class="container-fluid pt-4 px-4 modal-content" id='contentContainer'>
+                </div>  
+            </div>
     </div>
 
-    <div class="container-fluid pt-4 px-4">
         <?php
         require_once('config-students.php');
         $userid = $_SESSION['userlogin']['id'];
@@ -60,7 +60,7 @@ if (isset($_GET['logout'])) {
         } else {
             echo 'error';
         };
-
+        
         $sql = "SELECT * FROM  vakalar";
         $smtmselect = $db->prepare($sql);
         $result = $smtmselect->execute();
@@ -72,32 +72,32 @@ if (isset($_GET['logout'])) {
 
         ?>
         <div class="send-patient">
-
-            <div class=" patients-save">
-
-            </div>
-            <div class="patients-table text-center rounded p-4" id="patients-table">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0 darkcyan table-title">Hasta Listesi / Öneriler</h6>
-
+            
+            <div class="patients-save">
+                
                 </div>
-
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                            <tr class=" darkcyan table-head">
-
-                                <th scope="col">İsim</th>
-                                <th scope="col">Soyisim</th>
-                                <th scope="col">Yaş</th>
-                                <th scope="col">Notlar</th>
-                                <th scope="col">Öneriler</th>
-
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
+                <div class="patients-table text-center rounded p-4" id="patients-table">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0 darkcyan table-title">Hasta Listesi / Öneriler</h6>
+                        
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class=" darkcyan table-head">
+                                    
+                                    <th scope="col">İsim</th>
+                                    <th scope="col">Soyisim</th>
+                                    <th scope="col">Yaş</th>
+                                    <th scope="col">Notlar</th>
+                                    <th scope="col">Öneriler</th>
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <?php
 
                         // require('parameters.php');
                         // // require('parameters.php');
@@ -119,11 +119,11 @@ if (isset($_GET['logout'])) {
                             <td style='
                             color: black; font-size: 18px;
                             '>
-                             <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./showParameters.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Detay</a> </td>
+                             <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./showParameters.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
                             <td style='
                             color: black; font-size: 18px;
                             '> 
-                             <a class='nav-items' id ='showParams" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
+                             <a class='nav-items' id ='showParams" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>View Parameters</a> </td>
                             <td style='
                             color: black; font-size: 18px;
                             '> 
@@ -185,17 +185,20 @@ $("#closeOpenForm").css('display', 'none');
         })
     })
 
-            $('#formCloser').click(function(e) {
-                e.preventDefault();
-                $(".send-patient").css('display', 'block');
-                $("#openFormContainer").css('display', 'none');
-            });
+    $('#formCloser').click(function (e) { 
+    e.preventDefault();
+    $(".send-patient").css('display', 'block');
+    $("#formCloser").css('display', 'none');
+});
+
+$('#contentContainer').click(function (e) {
+    e.stopPropagation(); // stop event propagation
+});
         </script>
         <script>
-            $(window).on('load', function() {
-                $("body").removeClass("preload");
-                $("#openFormContainer").removeClass("preload");
-            });
+        $(window).on('load', function() {
+            $("#openFormContainer").removeClass("preload");
+        });
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

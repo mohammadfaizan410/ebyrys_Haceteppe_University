@@ -344,12 +344,6 @@ foreach ($values as $value) {
                                     <td style='
                                     color: black; font-size: 18px;
                                     '> <button type='button' id = '" . $value['patient_id'] . "' class='btn btn-success'>Detay</button> </td>
-                                    <td style='
-                                    color: black; font-size: 18px;
-                                    '> <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
-                                    <td style='
-                                    color: black; font-size: 18px;
-                                    '> <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
                                     
                                     <div id='myModal" . $value['patient_id'] . "' class='modal none'>
 
