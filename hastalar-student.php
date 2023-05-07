@@ -153,8 +153,6 @@ $("#closeOpenForm").css('display', 'none');
                     $(".send-patient").css('display', 'none');
                     $("#formCloser").css('display', 'block');
                     $("#closeOpenForm").css('display', 'block');
-               
-                    $('#contentContainer').load(this.href);  
                     $('#contentContainer').load(this.href);  
             })
         })
@@ -188,7 +186,7 @@ $("#closeOpenForm").css('display', 'none');
             $('#formCloser').click(function(e) {
                 e.preventDefault();
                 $(".send-patient").css('display', 'block');
-                $("#openFormContainer").css('display', 'none');
+                $("#formCloser").css('display', 'none');
             });
         </script>
         <script>
