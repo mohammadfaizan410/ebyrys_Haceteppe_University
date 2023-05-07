@@ -84,10 +84,33 @@ if (isset($_GET['logout'])) {
                                 ya da
                                 <input type="file" id="pdffile" accept="application/pdf, application/ms-word" required>
                             </label>
+                            <div class="checkbox-wrapper">
+                                <div class="checkboxes">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="student_group"
+                                            id="student_group" value="kontrol">
+                                        <label class="form-check-label" for="student_group">
+                                            <span class="checkbox-header"> Kontrol Grubu</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="student_group"
+                                            id="student_group" value="mudahale">
+                                        <label class="form-check-label" for="student_group">
+                                            <span class="checkbox-header"> Müdahale Grubu </span>
+
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="form-group">
-                                <input type="submit" id="submit" class="form-control butunluknot submit pdf-upload-btn" name="submit" value="Kaydet">
+                                <input type="submit" id="submit" class="form-control butunluknot submit pdf-upload-btn"
+                                    name="submit" value="Kaydet">
                             </div>
                         </div>
+
+
                     </form>
                 </div>
 
@@ -205,71 +228,85 @@ if (isset($_GET['logout'])) {
         </div>
 
         <script>
-            $(function() {
-                const url = new URL("C:\wamp\www\Hacettepe-e-BYRYS-KKDS\vakalar\1677970467_Biometrik.jpeg")
-                console.log("pathh");
-                console.log(url);
+        $(function() {
+            const url = new URL("C:\wamp\www\Hacettepe-e-BYRYS-KKDS\vakalar\1677970467_Biometrik.jpeg")
+            console.log("pathh");
+            console.log(url);
 
-                const re = new RegExp()
-                const file = re.exec(url);
-                console.log(file);
-                $('#submit').click(function(e) {
+            const re = new RegExp()
+            const file = re.exec(url);
+            console.log(file);
+            $('#submit').click(function(e) {
 
 
-                    var valid = this.form.checkValidity();
+                var valid = this.form.checkValidity();
 
-                    if (valid) {
-                        console.log("aaaaaaaaaa");
-                        var fup = document.getElementById('pdffile');
-                        var fileName = fup.value;
-                        var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
-                        if (ext == "pdf") {
-                            var id = <?php
+                if (valid) {
+                    console.log("aaaaaaaaaa");
+                    var fup = document.getElementById('pdffile');
+                    var fileName = fup.value;
+                    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+                    if (ext == "pdf") {
+                        var id = <?php
 
                                         $userid = $_SESSION['userlogin']['id'];
                                         echo $userid
                                         ?>;
-                            var pdffile = document.getElementById("pdffile").files[0];
-                            var uploadData = new FormData();
-                            uploadData.append("file", pdffile);
-                            // console.log($("#pdffile"));
-                            // console.log(pdffile);
-                            e.preventDefault()
+                        var ele = document.getElementsByName('student_group');
 
-                            $.ajax({
-                                type: 'POST',
-                                url: 'vaka-db.php',
-                                data: uploadData,
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var student_group = ele[i].value;
 
-                                success: function(data) {
-                                    console.log(data);
-                                    console.log(name);
-                                    location.reload(true)
-                                },
-                                error: function(data) {
-                                    Swal.fire({
-                                        'title': 'Hata',
-                                        'text': 'Hata',
-                                        'type': 'error'
-                                    })
-                                },
-                                processData: false,
-                                contentType: false
-                            })
-
-                            return true;
-                        } else {
-                            alert("Lütfen PDF uzantılı dosya yükleyin");
-                            fup.focus();
-                            return false;
                         }
+                        console.log(student_group);
+
+                        var pdffile = document.getElementById("pdffile").files[0];
+                        var uploadData = new FormData();
+                        uploadData.append("file", pdffile);
+                        uploadData.append("student_group", student_group)
+                        // console.log($("#pdffile"));
+                        // console.log(pdffile);
+
+
+                        e.preventDefault()
+
+                        $.ajax({
+                            type: 'POST',
+                            url: 'vaka-db.php',
+                            data: uploadData,
 
 
 
+                            success: function(data) {
+                                console.log(data);
+                                console.log(name);
+                                location.reload(true)
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    'title': 'Hata',
+                                    'text': 'Hata',
+                                    'type': 'error'
+                                })
+                            },
+                            processData: false,
+                            contentType: false
+                        })
+
+                        return true;
+                    } else {
+                        alert("Lütfen PDF uzantılı dosya yükleyin");
+                        fup.focus();
+                        return false;
                     }
-                })
 
-            });
+
+
+                }
+            })
+
+        });
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

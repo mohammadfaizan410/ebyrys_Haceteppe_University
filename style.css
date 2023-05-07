@@ -477,7 +477,6 @@ input[type="email"] {
 
 .closeBtn {
 
-    position: absolute;
     color: red;
     font-size: 50px;
     right: 120px;
@@ -580,6 +579,7 @@ input[type="email"] {
     color: #444;
     cursor: pointer;
     transition: background .2s ease-in-out, border .2s ease-in-out;
+    margin-bottom: 40px;
 }
 
 .drop-container:hover {
@@ -641,4 +641,16 @@ input[type=file]::file-selector-button:hover {
 
 .file-name {
     margin-top: 30px;
+}
+
+.grup-button {
+    margin-left: 40px;
+}
+
+.grup-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 18px;
 }

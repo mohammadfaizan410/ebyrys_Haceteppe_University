@@ -96,16 +96,65 @@ if (isset($_GET['logout'])) {
                         </thead>
                         <tbody>
                             <?php foreach ($values as &$value) {
-
+                                if ($value['student_group'] == "kontrol") {
+                                    $grup = "Kontrol";
+                                };
+                                if ($value['student_group'] == "mudahale") {
+                                    $grup = "Müdahale";
+                                };
+                                if ($value['student_group'] == NULL) {
+                                    $grup = "Grup Yok";
+                                }
                                 echo "
                                 <tr>
                                    
-                                    <td style='
+                                    <td class='
                                     color: black; font-size: 18px;'>" . $value["name"] . "</td>
                                     <td style='
                                     color: black; font-size: 18px;'>" . $value["surname"] . "</td>
                                     <td style='
                                     color: black; font-size: 18px;'>" . $value["email"] . "</td>
+                                    <td class='
+                                    grup-button-wrapper'> " . $grup . "  <button type='button' id = 'group" . $value['id'] . "' class='grup-button btn btn-success'>Öğrenci Grubu Değiştir</button></td>
+                           
+
+                                    <div id='groupModal" . $value['id'] . "' class='modal none'>
+
+                                    <!-- Modal content -->
+                                        <div class='modal-content' id='group-modal-content" . $value['id'] . "'>
+                                            <span class='close" . $value['id'] . " closeBtn' id='close" . $value['id'] . "'>&times;</span>
+                                            <p>Öğrenci Adı: " . $value['name'] . "</p>
+                                            <p>Öğrenci Soyadı: " . $value['surname'] . "</p>
+                                            <p>Öğrenci Maili: " . $value['email'] . "</p>
+                                            <div class='form-input py-2'>
+                                            
+                                            <div class='checkbox-wrapper'>
+                                                <div class='checkboxes'>
+                                                    <div class='form-check'>
+                                                        <input class='form-check-input' type='radio' name='student_group'
+                                                            id='student_group' value='kontrol'>
+                                                        <label class='form-check-label' for='student_group'>
+                                                            <span class='checkbox-header'> Kontrol Grubu</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class='form-check'>
+                                                        <input class='form-check-input' type='radio' name='student_group'
+                                                            id='student_group' value='mudahale'>
+                                                        <label class='form-check-label' for='student_group'>
+                                                            <span class='checkbox-header'> Müdahale Grubu </span>
+                
+                                                        </label>
+                                                    </div>
+                
+                                                </div>
+                                            </div>
+                                            <div class='form-group'>
+                                <input type='submit' id='submit" . $value['id'] . "' class='form-control butunluknot submit pdf-upload-btn'
+                                    name='submit' value='Kaydet'>
+                            </div>
+                                        </div>
+                                    </div>
+
                                     <td style='
                                     color: black; font-size: 18px;
                                     '> <button type='button' id = '" . $value['id'] . "' class='btn btn-success'>Detay</button> </td>
@@ -166,8 +215,85 @@ if (isset($_GET['logout'])) {
                                 }
                                 }
                     
+
+                                var groupModal" . $value['id'] . " = document.getElementById('groupModal" . $value['id'] . "');
+
+                                // Get the button that opens the modal
+                                var groupbtn" . $value['id'] . " = document.getElementById('group" . $value['id'] . "');
+                        
+                                // Get the <span> element that closes the modal
+                                var span" . $value['id'] . " = document.getElementById('close" . $value['id'] . "');
+                               
                                 
-                            </script>";
+                                // When the user clicks on the button, open the modal
+                                groupbtn" . $value['id'] . ".onclick = function() {
+                                    groupModal" . $value['id'] . ".classList.remove('none');
+                                    groupModal" . $value['id'] . ".classList.add('block');
+                                 
+
+                                span" . $value['id'] . ".onclick = function() {
+                                    groupModal" . $value['id'] . ".classList.remove('block');
+                                    groupModal" . $value['id'] . ".classList.add('none');
+                                }
+                    
+                                
+                                window.onclick = function(event) {
+                                    if (event.target == groupModal" . $value['id'] . ") {
+                                        groupModal" . $value['id'] . ".classList.remove('block');
+                                    
+                                    }
+                                }
+                                }
+                                
+
+                                $(function() {
+                                    $('#submit" . $value['id'] . "').click(function(e) {
+                    
+                    
+                    
+                                        
+                                            var ele = document.getElementsByName('student_group');
+
+                                            for (i = 0; i < ele.length; i++) {
+                                                if (ele[i].checked)
+                                                    var student_group = ele[i].value;
+                    
+                                            }
+                                            console.log(student_group);
+                                            var id = " . $value['id'] . ";
+                                           
+                    
+                    
+                                            e.preventDefault()
+                    
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'groupUpdate.php',
+                                                data: {
+                                                    id: id,
+                                                    student_group: student_group,           
+                                                },
+                                                success: function(data) {
+                                                    alert('Başarılı');
+                                                    location.reload(true)
+                                                },
+                                                error: function(data) {
+                                                    Swal.fire({
+                                                        'title': 'Hata',
+                                                        'text': 'Hata',
+                                                        'type': 'error'
+                                                    })
+                                                }
+                                            })
+                    
+                    
+                    
+                                        
+                                    })
+                    
+                                });
+                            </script>
+                            ";
                             }
                             ?>
 
