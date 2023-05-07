@@ -191,6 +191,7 @@ a {
     background-color: darkcyan !important;
     border: 12px solid darkcyan !important;
     border-radius: 20px;
+    padding: 0.5rem 1rem !important;
 }
 
 .nav-items:hover {

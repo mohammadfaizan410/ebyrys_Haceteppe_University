@@ -404,6 +404,8 @@ if (isset($_GET['patient_id'])) {
                     }
 
                     echo "
+                    <span class='close" . $value['patient_id'] . " closeBtn' id='close" . $value['patient_id'] . "'>&times;</span>
+
                                                                 <p>Not:" . $notlar . "</p>
                                                                 <h1 class='braden-header'>Braden Parametreleri</h1>
                                                                 <div class='girisimler'>
@@ -440,8 +442,24 @@ if (isset($_GET['patient_id'])) {
                                                             </div>
                     
                                                         </div>
-                                                    </tr>"
-
+                                                    </tr>
+                                                    <script>
+                                               
+                        
+                                                       
+                                                        // Get the <span> element that closes the modal
+                                                        var span" . $value['patient_id'] . " = document.getElementById('close" . $value['patient_id'] . "');
+                                                       
+                                                        
+                                                        
+                                                        span" . $value['patient_id'] . ".onclick = function() {
+                                                            modal" . $value['patient_id'] . ".classList.remove('block');
+                                                            modal" . $value['patient_id'] . ".classList.add('none');
+                                                        }
+                                            
+                                                      
+                                                        
+                                                    </script>";
                     ?>
 
 
