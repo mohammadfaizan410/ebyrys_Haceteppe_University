@@ -41,13 +41,13 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body style="background-color:white">
-<div id="formCloser" style="padding: 10px; width: 100%; height: 100%;">
-    <div id="openFormContainer">
-            <div class="container-fluid pt-4 px-4 modal-content" id='contentContainer'>
-                </div>  
-            </div>
+    <div id='formCloser'>
+        <div id='openFormContainer' style='padding: 50px;'>
+            <div id="contentContainer" class="model-content"></div>
+        </div>
     </div>
 
+    <div class="container-fluid pt-4 px-4">
         <?php
         require_once('config-students.php');
         $userid = $_SESSION['userlogin']['id'];
@@ -60,7 +60,7 @@ if (isset($_GET['logout'])) {
         } else {
             echo 'error';
         };
-        
+
         $sql = "SELECT * FROM  vakalar";
         $smtmselect = $db->prepare($sql);
         $result = $smtmselect->execute();
@@ -72,32 +72,32 @@ if (isset($_GET['logout'])) {
 
         ?>
         <div class="send-patient">
-            
-            <div class="patients-save">
-                
+
+            <div class=" patients-save">
+
+            </div>
+            <div class="patients-table text-center rounded p-4" id="patients-table">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0 darkcyan table-title">Hasta Listesi / Öneriler</h6>
+
                 </div>
-                <div class="patients-table text-center rounded p-4" id="patients-table">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0 darkcyan table-title">Hasta Listesi / Öneriler</h6>
-                        
-                    </div>
-                    
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class=" darkcyan table-head">
-                                    
-                                    <th scope="col">İsim</th>
-                                    <th scope="col">Soyisim</th>
-                                    <th scope="col">Yaş</th>
-                                    <th scope="col">Notlar</th>
-                                    <th scope="col">Öneriler</th>
-                                    
-                                </tr>
-                            </thead>
-                            
-                            <tbody>
-                                <?php
+
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                            <tr class=" darkcyan table-head">
+
+                                <th scope="col">İsim</th>
+                                <th scope="col">Soyisim</th>
+                                <th scope="col">Yaş</th>
+                                <th scope="col">Notlar</th>
+                                <th scope="col">Öneriler</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
 
                         // require('parameters.php');
                         // // require('parameters.php');
@@ -118,77 +118,82 @@ if (isset($_GET['logout'])) {
                             '> " . $value["notlar"] . " </td>
                             <td style='
                             color: black; font-size: 18px;
-                            '> <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
+                            '>
+                             <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./showParameters.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Detay</a> </td>
                             <td style='
                             color: black; font-size: 18px;
-                            '> <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
+                            '> 
+                             <a class='nav-items' id ='showParams" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
+                            <td style='
+                            color: black; font-size: 18px;
+                            '> 
+                            <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
                             ";
                         }
                         
                         ?>
 
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<script>
-$("#formCloser").css('display', 'none');
-$("#closeOpenForm").css('display', 'none');
- $(function() {
-     $.ajaxSetup({
-         cache: false
-        }); // disable caching for all requests.
-        
-        // RAW Text/Html data from a file
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+        $("#formCloser").css('display', 'none');
+        $("#closeOpenForm").css('display', 'none');
         $(function() {
-            $("a.nav-items").on("click", function(e) {
-                e.preventDefault();
-                $(".send-patient").css('display', 'none');
-                $("#formCloser").css('display', 'block');
-                $("#closeOpenForm").css('display', 'block');
-                $('#contentContainer').load(this.href);  
+            $.ajaxSetup({
+                cache: false
+            }); // disable caching for all requests.
+
+            // RAW Text/Html data from a file
+            $(function() {
+                $("a.nav-items").on("click", function(e) {
+                    e.preventDefault();
+                    $(".send-patient").css('display', 'none');
+                    $("#formCloser").css('display', 'block');
+                    $("#closeOpenForm").css('display', 'block');
+                    $('#contentContainer').load(this.href);
+                })
+            })
+
+        });
+
+        $(function() {
+            const deleteButtons = document.querySelectorAll('#delete-patient');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    var patient_id = e.target.value;
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: "./deletePatient.php",
+                        data: {
+                            patient_id: patient_id
+                        },
+                        success: function(response) {
+                            alert("successfully deleted patient")
+                            location.reload()
+                        },
+                        failure: function(response) {
+                            console.log(response)
+                            alert("error");
+                        }
+
+                    });
+                })
             })
         })
-        
-    });
- 
-    $(function() {
-    const deleteButtons = document.querySelectorAll('#delete-patient');
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function(e){
-                var patient_id = e.target.value;
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "./deletePatient.php",
-                    data: {patient_id : patient_id},
-                    success: function (response) {
-                        alert("successfully deleted patient")
-                        location.reload()
-                    },
-                    failure: function (response){
-                        console.log(response)
-                        alert("error");
-                    }
 
-                });
-            })
-        })
-    })
-
-    $('#formCloser').click(function (e) { 
-    e.preventDefault();
-    $(".send-patient").css('display', 'block');
-    $("#formCloser").css('display', 'none');
-});
-
-$('#contentContainer').click(function (e) {
-    e.stopPropagation(); // stop event propagation
-});
+        $('#formCloser').click(function(e) {
+            e.preventDefault();
+            $(".send-patient").css('display', 'block');
+            $("#formCloser").css('display', 'none');
+        });
         </script>
         <script>
         $(window).on('load', function() {
+            $("body").removeClass("preload");
             $("#openFormContainer").removeClass("preload");
         });
         </script>
