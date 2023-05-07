@@ -12,24 +12,24 @@ if (isset($_GET['logout'])) {
 
 $patient_id = '';
 $notlar = '';
-$uyaran ='';
+$uyaran = '';
 $nemlilik = '';
 $aktivite = '';
 $hareket = '';
 $beslenme = '';
 $surtunme = '';
-$fileid ='';
+$fileid = '';
 
-if(isset($_GET['patient_id'])){
-$patient_id = $_GET['patient_id'];
-$notlar = $_GET['notlar'];
-$uyaran = $_GET['uyaran'];
-$nemlilik = $_GET['nemlilik'];
-$aktivite = $_GET['aktivite'];
-$hareket = $_GET['hareket'];
-$beslenme = $_GET['beslenme'];
-$surtunme = $_GET['surtunme'];
-$fileid = $_GET['fileid'];
+if (isset($_GET['patient_id'])) {
+    $patient_id = $_GET['patient_id'];
+    $notlar = $_GET['notlar'];
+    $uyaran = $_GET['uyaran'];
+    $nemlilik = $_GET['nemlilik'];
+    $aktivite = $_GET['aktivite'];
+    $hareket = $_GET['hareket'];
+    $beslenme = $_GET['beslenme'];
+    $surtunme = $_GET['surtunme'];
+    $fileid = $_GET['fileid'];
 }
 
 
@@ -84,6 +84,8 @@ $fileid = $_GET['fileid'];
 
                     ?>
                     <form>
+                        <span class='closeBtn' id='close'>&times;</span>
+
                         <h1 class="braden-header">Braden Parametreleri</h1>
 
                         <p class="braden-label">Uyaranın Algılanması</p>
@@ -434,6 +436,7 @@ $fileid = $_GET['fileid'];
     });
     </script>
 
+    </script>";
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

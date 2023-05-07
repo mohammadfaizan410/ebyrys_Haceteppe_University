@@ -162,7 +162,6 @@ a {
 }
 
 .nav-link {
-    padding: 0;
     color: white;
     margin-right: 20px;
 
@@ -191,7 +190,7 @@ a {
     background-color: darkcyan !important;
     border: 12px solid darkcyan !important;
     border-radius: 20px;
-    padding: 0.5rem 1rem !important;
+    color: white !important;
 }
 
 .nav-items:hover {
@@ -481,8 +480,7 @@ input[type="email"] {
     position: absolute;
     color: red;
     font-size: 50px;
-    right: 20px;
-    top: 0;
+    right: 120px;
     cursor: pointer;
     z-index: 20;
 }
