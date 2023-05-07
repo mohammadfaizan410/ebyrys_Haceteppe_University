@@ -64,8 +64,7 @@ session_start()
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
 
                 <input type="submit" name="submit" id="register" value="Kayıt Ol">
-                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o"
-                        style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
+                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
         </form>
 
     </div>
@@ -73,55 +72,55 @@ session_start()
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-    $(function() {
-        $('#register').click(function(e) {
+        $(function() {
+            $('#register').click(function(e) {
 
-            var valid = this.form.checkValidity();
+                var valid = this.form.checkValidity();
 
-            if (valid) {
+                if (valid) {
 
-                var name = $('#name').val();
-                var surname = $('#surname').val();
-                var email = $('#email').val();
-                var password = $('#password').val();
+                    var name = $('#name').val();
+                    var surname = $('#surname').val();
+                    var email = $('#email').val();
+                    var password = $('#password').val();
 
-                e.preventDefault()
+                    e.preventDefault()
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'process-teachers.php',
-                    data: {
-                        name: name,
-                        surname: surname,
-                        email: email,
-                        password: password
-                    },
-                    success: function(data) {
-                        Swal.fire({
-                            'title': 'Success',
-                            'text': data,
-                            'type': 'success'
-                        })
-                        setTimeout('window.location.href = "main.php"', 1000);
+                    $.ajax({
+                        type: 'POST',
+                        url: 'process-teachers.php',
+                        data: {
+                            name: name,
+                            surname: surname,
+                            email: email,
+                            password: password
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                'title': 'Success',
+                                'text': data,
+                                'type': 'success'
+                            })
+                            setTimeout('window.location.href = "main.php"', 1000);
 
-                    },
-                    error: function(data) {
-                        Swal.fire({
-                            'title': 'Errors',
-                            'text': 'There were errors',
-                            'type': 'error'
-                        })
-                    }
-                })
+                        },
+                        error: function(data) {
+                            Swal.fire({
+                                'title': 'Errors',
+                                'text': 'There were errors',
+                                'type': 'error'
+                            })
+                        }
+                    })
 
 
-            } else {
+                } else {
 
-            }
+                }
 
-        });
+            })
 
-    });
+        })
     </script>
 </body>
 
