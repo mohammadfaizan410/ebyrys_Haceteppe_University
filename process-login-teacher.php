@@ -15,7 +15,7 @@ if ($result) {
         $_SESSION['userlogin'] = $user;
         echo 'Başarılı';
     } else {
-        echo 'Wrong e-mail or password';
+        echo ' Şifre veya mail yanlış';
     }
 } else {
     echo 'Hata';
