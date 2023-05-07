@@ -118,16 +118,10 @@ if (isset($_GET['logout'])) {
                             '> " . $value["notlar"] . " </td>
                             <td style='
                             color: black; font-size: 18px;
-                            '>
-                             <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./showParameters.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
+                            '> <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
                             <td style='
                             color: black; font-size: 18px;
-                            '> 
-                             <a class='nav-items' id ='showParams" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>View Parameters</a> </td>
-                            <td style='
-                            color: black; font-size: 18px;
-                            '> 
-                            <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
+                            '> <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
                             ";
                         }
                         
@@ -150,12 +144,10 @@ $("#closeOpenForm").css('display', 'none');
         $(function() {
             $("a.nav-items").on("click", function(e) {
                 e.preventDefault();
-                    $(".send-patient").css('display', 'none');
-                    $("#formCloser").css('display', 'block');
-                    $("#closeOpenForm").css('display', 'block');
-               
-                    $('#contentContainer').load(this.href);  
-                    $('#contentContainer').load(this.href);  
+                $(".send-patient").css('display', 'none');
+                $("#formCloser").css('display', 'block');
+                $("#closeOpenForm").css('display', 'block');
+                $('#contentContainer').load(this.href);  
             })
         })
         

@@ -90,19 +90,7 @@ require_once("config-students.php");
                                 'text': data,
                                 'type': 'success'
                             })
-                            $.ajax({
-                                type: "POST",
-                                url: "sendEmail.php",
-                                data: {
-                                    name: name,
-                                    surname: surname,
-                                    email: email,
-                                    password: password
-                                },
-                                success: function (response) {
-                                    setTimeout('window.location.href = "emailValidator.php"', 1000);
-                                }
-                            });
+                            setTimeout('window.location.href = "main.php"', 1000);
 
                         },
                         error: function(data) {
