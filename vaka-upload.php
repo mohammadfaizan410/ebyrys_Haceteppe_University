@@ -84,11 +84,12 @@ if (isset($_GET['logout'])) {
                                 ya da
                                 <input type="file" id="pdffile" accept="application/pdf, application/ms-word" required>
                             </label>
+                            <span id="error-message" class="validation-error-label"></span>
                             <div class="checkbox-wrapper">
                                 <div class="checkboxes">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="student_group"
-                                            id="student_group" value="kontrol">
+                                            id="student_group" value="kontrol" checked>
                                         <label class="form-check-label" for="student_group">
                                             <span class="checkbox-header"> Kontrol Grubu</span>
                                         </label>
@@ -236,6 +237,26 @@ if (isset($_GET['logout'])) {
             const re = new RegExp()
             const file = re.exec(url);
             console.log(file);
+
+            $(document).ready(function() {
+                $('#pdffile').on('change', function() {
+                    for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                        var file1 = $(this).get(0).files[i].size;
+                        if (file1) {
+                            var file_size = $(this).get(0).files[i].size;
+                            if (file_size > 1000000) {
+                                $('#error-message').html("File upload size is larger than 2MB");
+                                $('#error-message').css("display", "block");
+                                $('#error-message').css("color", "red");
+                                $('#submit').css("display", "none");
+
+                            } else {
+                                $('#error-message').css("display", "none");
+                            }
+                        }
+                    }
+                });
+            });
             $('#submit').click(function(e) {
 
 
