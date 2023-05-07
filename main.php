@@ -28,10 +28,8 @@
         <div class="buttons-wrapper">
             <a class="buttons" href="http://18.159.134.238/Hacettepe-e-BYRYS-KKDS/login-teacher.php">Öğretmen Girişi</a>
             <a class="buttons" href="http://18.159.134.238/Hacettepe-e-BYRYS-KKDS/login-student.php">Öğrenci Girişi</a>
-
             <a class="buttons" href="http://18.159.134.238/Hacettepe-e-BYRYS-KKDS/registration-teacher.php">Öğretmen Kaydı</a>
             <a class="buttons" href="http://18.159.134.238/Hacettepe-e-BYRYS-KKDS/registration-student.php">Öğrenci Kaydı</a>
-        </div>
     </div>
 
 
