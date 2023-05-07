@@ -41,12 +41,14 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body style="background-color:white">
-<div id="formCloser" style="padding: 10px; width: 100%; height: 100%;">
+    
+<div id="formCloser">
     <div id="openFormContainer">
-            <div class="container-fluid pt-4 px-4 modal-content" id='contentContainer'>
-                </div>  
-            </div>
+        <div class="container-fluid pt-4 px-4 modal-content" id='contentContainer'>
+            </div>  
+        </div>
     </div>
+        
 
         <?php
         require_once('config-students.php');
@@ -133,7 +135,7 @@ if (isset($_GET['logout'])) {
 </div>
 </div>
 <script>
-$("#formCloser").css('display', 'none');
+$("#openFormContainer").css('display', 'none');
 $("#closeOpenForm").css('display', 'none');
  $(function() {
      $.ajaxSetup({
@@ -145,7 +147,7 @@ $("#closeOpenForm").css('display', 'none');
             $("a.nav-items").on("click", function(e) {
                 e.preventDefault();
                 $(".send-patient").css('display', 'none');
-                $("#formCloser").css('display', 'block');
+                $("#openFormContainer").css('display', 'block');
                 $("#closeOpenForm").css('display', 'block');
                 $('#contentContainer').load(this.href);  
             })
@@ -178,14 +180,12 @@ $("#closeOpenForm").css('display', 'none');
     })
 
     $('#formCloser').click(function (e) { 
-    e.preventDefault();
-    $(".send-patient").css('display', 'block');
-    $("#formCloser").css('display', 'none');
-});
+        e.preventDefault();
+        $(".send-patient").css('display', 'block');
+        $("#openFormContainer").css('display', 'none');
+    });
 
-$('#contentContainer').click(function (e) {
-    e.stopPropagation(); // stop event propagation
-});
+
         </script>
         <script>
         $(window).on('load', function() {

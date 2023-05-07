@@ -408,7 +408,7 @@ $fileid = $_GET['fileid'];
 
         $.ajax({
             type: 'POST',
-            url: 'formUpdate.php',
+            url: 'updatePatient.php',
             data: {
                 patient_id: patient_id,
                 uyaran: uyaran,
@@ -420,7 +420,6 @@ $fileid = $_GET['fileid'];
             },
             success: function(data) {
                 alert(data);
-                location.reload()
             },
             error: function(data) {
                 Swal.fire({
