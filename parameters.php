@@ -443,48 +443,6 @@ foreach ($values as $value) {
                                 }
                                 }
                     
-                                $('#openFormContainer').css('display', 'none');
-                                $('#closeOpenForm').css('display', 'none');
-                                $(function() {
-                                    $.ajaxSetup({
-                                        cache: false
-                                    });
-                                    $('a.nav-items').on('click', function(e) {
-                                        e.preventDefault();
-                                        $('.send-patient').css('display', 'none');
-                                        $('#openFormContainer').css('display', 'block');
-                                        $('#closeOpenForm').css('display', 'block');
-                                        $('#contentContainer').load(this.href);
-                                    })
-                                    $(function() {
-                                        const deleteButtons = document.querySelectorAll('#delete-patient');
-                                        deleteButtons.forEach(button => {
-                                            button.addEventListener('click', function(e) {
-                                                var patient_id = e.target.value;
-                                                e.preventDefault();
-                                                $.ajax({
-                                                    type: 'POST',
-                                                    url: './deletePatient.php',
-                                                    data: {
-                                                        patient_id: patient_id
-                                                    },
-                                                    success: function(response) {
-                                                        alert('successfully deleted patient')
-                                                        location.reload()
-                                                    },
-                                                    failure: function(response) {
-                                                        console.log(response)
-                                                        alert('error');
-                                                    }
-                                                });
-                                            })
-                                        })
-                                    })
-                        
-                                    $('#formCloser').click(function(e) {
-                                        e.preventDefault();
-                                        $('.send-patient').css('display', 'block');
-                                        $('#openFormContainer').css('display', 'none');
-                                    });
+                                
                             </script>";
 }
