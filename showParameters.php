@@ -83,10 +83,6 @@ $fileid = $_GET['fileid'];
                     }
 
                     ?>
-                        <h1 class="braden-header">Braden Parametreleri</h1>
-
-                        <p class="braden-label">Uyaranın Algılanması</p>
-
                         <?php
                         
                         if ($uyaran == '') {
@@ -408,7 +404,7 @@ $fileid = $_GET['fileid'];
                         }
                     
                         echo "
-                                                                <p>Not:" . $value['notlar'] . "</p>
+                                                                <p>Not:" . $notlar . "</p>
                                                                 <h1 class='braden-header'>Braden Parametreleri</h1>
                                                                 <div class='girisimler'>
                                                                     <p class='girisimler-p'><span class='girisimler-span block girisimler-header'>Uyaranın Algılanması:</span>" . $uyaranval . "</p>

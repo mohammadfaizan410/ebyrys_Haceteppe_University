@@ -408,7 +408,7 @@ $fileid = $_GET['fileid'];
 
         $.ajax({
             type: 'POST',
-            url: 'formUpdate.php',
+            url: 'updatePatient.php',
             data: {
                 patient_id: patient_id,
                 uyaran: uyaran,
