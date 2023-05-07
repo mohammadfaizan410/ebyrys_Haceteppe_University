@@ -41,7 +41,15 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body style="background-color:white">
-    <div class="container-fluid pt-4 px-4">
+    
+<div id="formCloser">
+    <div id="openFormContainer">
+        <div class="container-fluid pt-4 px-4 modal-content" id='contentContainer'>
+            </div>  
+        </div>
+    </div>
+        
+
         <?php
         require_once('config-students.php');
         $userid = $_SESSION['userlogin']['id'];
@@ -54,7 +62,7 @@ if (isset($_GET['logout'])) {
         } else {
             echo 'error';
         };
-
+        
         $sql = "SELECT * FROM  vakalar";
         $smtmselect = $db->prepare($sql);
         $result = $smtmselect->execute();
@@ -66,158 +74,122 @@ if (isset($_GET['logout'])) {
 
         ?>
         <div class="send-patient">
-
-            <div class=" patients-save">
-
-            </div>
-            <div class="patients-table text-center rounded p-4" id="patients-table">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0 darkcyan table-title">Hasta Listesi / Öneriler</h6>
-
+            
+            <div class="patients-save">
+                
                 </div>
+                <div class="patients-table text-center rounded p-4" id="patients-table">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0 darkcyan table-title">Hasta Listesi / Öneriler</h6>
+                        
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class=" darkcyan table-head">
+                                    
+                                    <th scope="col">İsim</th>
+                                    <th scope="col">Soyisim</th>
+                                    <th scope="col">Yaş</th>
+                                    <th scope="col">Notlar</th>
+                                    <th scope="col">Öneriler</th>
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <?php
 
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                            <tr class=" darkcyan table-head">
-
-                                <th scope="col">İsim</th>
-                                <th scope="col">Soyisim</th>
-                                <th scope="col">Yaş</th>
-                                <th scope="col">Notlar</th>
-                                <th scope="col">Öneriler</th>
-
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
-
-                            require('parameters.php');
-                            ?>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <script>
-        $(function() {
-            $('#submit').click(function(e) {
-
-
-                var valid = this.form.checkValidity();
-
-                if (valid) {
-                    var id = <?php
-
-                                    $userid = $_SESSION['userlogin']['id'];
-                                    echo $userid
-                                    ?>;
-                    var name = $('#name').val();
-                    var surname = $('#surname').val();
-                    var age = $('#age').val();
-                    var not = $('#not').val();
-                    var not = $('#not').val();
-
-
-
-                    var ele = document.getElementsByName('uyaranradio');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var uyaran = ele[i].value;
-
-                    }
-                    console.log(uyaran);
-
-                    var ele = document.getElementsByName('nemlilikradio');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var nemlilik = ele[i].value;
-
-                    }
-                    console.log(nemlilik);
-
-                    var ele = document.getElementsByName('aktiviteradio');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var aktivite = ele[i].value;
-
-                    }
-                    console.log(aktivite);
-
-                    var ele = document.getElementsByName('hareketradio');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var hareket = ele[i].value;
-
-                    }
-                    console.log(hareket);
-
-                    var ele = document.getElementsByName('beslenmeradio');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var beslenme = ele[i].value;
-
-                    }
-                    console.log(beslenme);
-
-                    var ele = document.getElementsByName('surtunmeradio');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var surtunme = ele[i].value;
-
-                    }
-                    console.log(surtunme);
-                    e.preventDefault()
-
-                    $.ajax({
-                        type: 'POST',
-                        url: 'student-patient.php',
-                        data: {
-                            id: id,
-                            name: name,
-                            surname: surname,
-                            age: age,
-                            not: not,
-                            uyaran: uyaran,
-                            nemlilik: nemlilik,
-                            aktivite: aktivite,
-                            hareket: hareket,
-                            beslenme: beslenme,
-                            surtunme: surtunme
-                        },
-                        success: function(data) {
-                            alert("Success");
-                            location.reload(true)
-                        },
-                        error: function(data) {
-                            Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
-                                'type': 'error'
-                            })
+                        // require('parameters.php');
+                        // // require('parameters.php');
+                        foreach ($values as $key => $value) {
+                            echo "<tr>
+                            
+                            <td style='
+                            color: black; font-size: 18px;
+                            '>" . $value["name"] . "</td>
+                            <td style='
+                            color: black; font-size: 18px;
+                            '>" . $value["surname"] . "</td>
+                            <td style='
+                            color: black; font-size: 18px;
+                            '>" . $value["age"] . "</td>
+                            <td style='
+                            color: black; font-size: 18px;
+                            '> " . $value["notlar"] . " </td>
+                            <td style='
+                            color: black; font-size: 18px;
+                            '> <a class='nav-items' id ='openform" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
+                            <td style='
+                            color: black; font-size: 18px;
+                            '> <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
+                            ";
                         }
-                    })
+                        
+                        ?>
 
-
-
-                }
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
+$("#openFormContainer").css('display', 'none');
+$("#closeOpenForm").css('display', 'none');
+ $(function() {
+     $.ajaxSetup({
+         cache: false
+        }); // disable caching for all requests.
+        
+        // RAW Text/Html data from a file
+        $(function() {
+            $("a.nav-items").on("click", function(e) {
+                e.preventDefault();
+                $(".send-patient").css('display', 'none');
+                $("#openFormContainer").css('display', 'block');
+                $("#closeOpenForm").css('display', 'block');
+                $('#contentContainer').load(this.href);  
             })
+        })
+        
+    });
+ 
+    $(function() {
+    const deleteButtons = document.querySelectorAll('#delete-patient');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(e){
+                var patient_id = e.target.value;
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "./deletePatient.php",
+                    data: {patient_id : patient_id},
+                    success: function (response) {
+                        alert("successfully deleted patient")
+                        location.reload()
+                    },
+                    failure: function (response){
+                        console.log(response)
+                        alert("error");
+                    }
 
-        });
+                });
+            })
+        })
+    })
+
+    $('#formCloser').click(function (e) { 
+        e.preventDefault();
+        $(".send-patient").css('display', 'block');
+        $("#openFormContainer").css('display', 'none');
+    });
+
+
         </script>
         <script>
         $(window).on('load', function() {
-            $("body").removeClass("preload");
-
+            $("#openFormContainer").removeClass("preload");
         });
         </script>
         <!-- JavaScript Libraries -->

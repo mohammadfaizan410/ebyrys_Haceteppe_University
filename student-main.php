@@ -91,7 +91,7 @@ if (isset($_GET['logout'])) {
         $.ajaxSetup({
             cache: false
         }); // disable caching for all requests.
-        $("#content").load("http://18.159.134.238/Hacettepe-e-BYRYS-KKDS/formlar-student.php");
+        $("#content").load("hastalar-student.php");
 
         // RAW Text/Html data from a file
         $(function() {

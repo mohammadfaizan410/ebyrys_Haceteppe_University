@@ -10,6 +10,17 @@ if (isset($_GET['logout'])) {
     header("Location: main.php");
 }
 
+$patient_id = '';
+$notlar = '';
+$uyaran ='';
+$nemlilik = '';
+$aktivite = '';
+$hareket = '';
+$beslenme = '';
+$surtunme = '';
+$fileid ='';
+
+if(isset($_GET['patient_id'])){
 $patient_id = $_GET['patient_id'];
 $notlar = $_GET['notlar'];
 $uyaran = $_GET['uyaran'];
@@ -19,6 +30,10 @@ $hareket = $_GET['hareket'];
 $beslenme = $_GET['beslenme'];
 $surtunme = $_GET['surtunme'];
 $fileid = $_GET['fileid'];
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +48,10 @@ $fileid = $_GET['fileid'];
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <link href="style.css" rel="stylesheet">
 
@@ -47,21 +65,18 @@ $fileid = $_GET['fileid'];
             <div class="patients-table text-center rounded p-4" id="patients-table">
                 <div class="d-flex align-items-center flex-column justify-content-between mb-4">
                     <?php
-                    require_once('config-students.php');
-                    $sql = "SELECT * FROM  vakalar where id =" . $fileid;
+                    require('config-students.php');
+                    $sql = "SELECT * FROM  vakalar where id = ?";
                     $smtmselect = $db->prepare($sql);
-                    $result = $smtmselect->execute();
+                    $result = $smtmselect->execute([$fileid]);
                     if ($result) {
                         $vaka = $smtmselect->fetch(PDO::FETCH_ASSOC);
                         $vakapdf = $vaka["filename"];
-
-
                         $basePath = $vakapdf;
                         $fileLoc = strpos($basePath, 'vakalar');
                         $filePath = substr($basePath, $fileLoc);
                         if (file_exists($filePath)) {
-                            echo "<iframe id='iframepdf' class='iframepdf' runat='server' src=" . $filePath . " title=''></iframe>
-                ";
+                            echo "<iframe id='iframepdf' class='iframepdf' runat='server' src=" . $filePath . " title=''></iframe>";
                         }
                     } else {
                         echo 'error';
@@ -378,7 +393,6 @@ $fileid = $_GET['fileid'];
 
     $('#update').click(function(e) {
         e.preventDefault();
-        console.log("updated")
         let id = <?php
 
                         $userid = $_SESSION['userlogin']['id'];
@@ -405,7 +419,6 @@ $fileid = $_GET['fileid'];
                 surtunme: surtunme
             },
             success: function(data) {
-
                 alert(data);
             },
             error: function(data) {
