@@ -103,122 +103,169 @@ if (isset($_GET['logout'])) {
             </div>
         </div>
         <script>
-        $(function() {
-            $('#submit').click(function(e) {
+            $("#openFormContainer").css('display', 'none');
+            $("#closeOpenForm").css('display', 'none');
+            $(function() {
+                $.ajaxSetup({
+                    cache: false
+                });
+                $(function() {
+                    $('#submit').click(function(e) {
 
 
-                var valid = this.form.checkValidity();
+                        var valid = this.form.checkValidity();
 
-                if (valid) {
-                    var id = <?php
+                        if (valid) {
+                            var id = <?php
 
-                                    $userid = $_SESSION['userlogin']['id'];
-                                    echo $userid
-                                    ?>;
-                    var name = $('#name').val();
-                    var surname = $('#surname').val();
-                    var age = $('#age').val();
-                    var not = $('#not').val();
-                    var not = $('#not').val();
+                                        $userid = $_SESSION['userlogin']['id'];
+                                        echo $userid
+                                        ?>;
+                            var name = $('#name').val();
+                            var surname = $('#surname').val();
+                            var age = $('#age').val();
+                            var not = $('#not').val();
+                            var not = $('#not').val();
 
 
 
-                    var ele = document.getElementsByName('uyaranradio');
+                            var ele = document.getElementsByName('uyaranradio');
 
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var uyaran = ele[i].value;
+                            for (i = 0; i < ele.length; i++) {
+                                if (ele[i].checked)
+                                    var uyaran = ele[i].value;
 
-                    }
-                    console.log(uyaran);
+                            }
+                            console.log(uyaran);
 
-                    var ele = document.getElementsByName('nemlilikradio');
+                            var ele = document.getElementsByName('nemlilikradio');
 
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var nemlilik = ele[i].value;
+                            for (i = 0; i < ele.length; i++) {
+                                if (ele[i].checked)
+                                    var nemlilik = ele[i].value;
 
-                    }
-                    console.log(nemlilik);
+                            }
+                            console.log(nemlilik);
 
-                    var ele = document.getElementsByName('aktiviteradio');
+                            var ele = document.getElementsByName('aktiviteradio');
 
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var aktivite = ele[i].value;
+                            for (i = 0; i < ele.length; i++) {
+                                if (ele[i].checked)
+                                    var aktivite = ele[i].value;
 
-                    }
-                    console.log(aktivite);
+                            }
+                            console.log(aktivite);
 
-                    var ele = document.getElementsByName('hareketradio');
+                            var ele = document.getElementsByName('hareketradio');
 
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var hareket = ele[i].value;
+                            for (i = 0; i < ele.length; i++) {
+                                if (ele[i].checked)
+                                    var hareket = ele[i].value;
 
-                    }
-                    console.log(hareket);
+                            }
+                            console.log(hareket);
 
-                    var ele = document.getElementsByName('beslenmeradio');
+                            var ele = document.getElementsByName('beslenmeradio');
 
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var beslenme = ele[i].value;
+                            for (i = 0; i < ele.length; i++) {
+                                if (ele[i].checked)
+                                    var beslenme = ele[i].value;
 
-                    }
-                    console.log(beslenme);
+                            }
+                            console.log(beslenme);
 
-                    var ele = document.getElementsByName('surtunmeradio');
+                            var ele = document.getElementsByName('surtunmeradio');
 
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            var surtunme = ele[i].value;
+                            for (i = 0; i < ele.length; i++) {
+                                if (ele[i].checked)
+                                    var surtunme = ele[i].value;
 
-                    }
-                    console.log(surtunme);
-                    e.preventDefault()
+                            }
+                            console.log(surtunme);
+                            e.preventDefault()
 
-                    $.ajax({
-                        type: 'POST',
-                        url: 'student-patient.php',
-                        data: {
-                            id: id,
-                            name: name,
-                            surname: surname,
-                            age: age,
-                            not: not,
-                            uyaran: uyaran,
-                            nemlilik: nemlilik,
-                            aktivite: aktivite,
-                            hareket: hareket,
-                            beslenme: beslenme,
-                            surtunme: surtunme
-                        },
-                        success: function(data) {
-                            alert("Success");
-                            location.reload(true)
-                        },
-                        error: function(data) {
-                            Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
-                                'type': 'error'
+                            $.ajax({
+                                type: 'POST',
+                                url: 'student-patient.php',
+                                data: {
+                                    id: id,
+                                    name: name,
+                                    surname: surname,
+                                    age: age,
+                                    not: not,
+                                    uyaran: uyaran,
+                                    nemlilik: nemlilik,
+                                    aktivite: aktivite,
+                                    hareket: hareket,
+                                    beslenme: beslenme,
+                                    surtunme: surtunme
+                                },
+                                success: function(data) {
+                                    alert("Success");
+                                    location.reload(true)
+                                },
+                                error: function(data) {
+                                    Swal.fire({
+                                        'title': 'Errors',
+                                        'text': 'There were errors',
+                                        'type': 'error'
+                                    })
+                                }
                             })
+
+
+
                         }
                     })
 
-
-
-                }
+                });
+                $("a.nav-items").on("click", function(e) {
+                    e.preventDefault();
+                    $(".send-patient").css('display', 'none');
+                    $("#openFormContainer").css('display', 'block');
+                    $("#closeOpenForm").css('display', 'block');
+                    $('#contentContainer').load(this.href);
+                })
             })
 
-        });
+
+
+            $(function() {
+                const deleteButtons = document.querySelectorAll('#delete-patient');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        var patient_id = e.target.value;
+                        e.preventDefault();
+                        $.ajax({
+                            type: "POST",
+                            url: "./deletePatient.php",
+                            data: {
+                                patient_id: patient_id
+                            },
+                            success: function(response) {
+                                alert("successfully deleted patient")
+                                location.reload()
+                            },
+                            failure: function(response) {
+                                console.log(response)
+                                alert("error");
+                            }
+                        });
+                    })
+                })
+            })
+
+            $('#formCloser').click(function(e) {
+                e.preventDefault();
+                $(".send-patient").css('display', 'block');
+                $("#openFormContainer").css('display', 'none');
+            });
         </script>
         <script>
-        $(window).on('load', function() {
-            $("body").removeClass("preload");
-
-        });
+            $(window).on('load', function() {
+                $("body").removeClass("preload");
+                $("#openFormContainer").removeClass("preload");
+            });
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
