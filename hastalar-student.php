@@ -58,7 +58,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         };
 
         $sql = "SELECT * FROM  vakalar";
@@ -67,7 +67,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $vakalar = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
 
         ?>
@@ -123,11 +123,11 @@ if (isset($_GET['logout'])) {
                             <td style='
                             color: black; font-size: 18px;
                             '> 
-                             <a class='nav-items' id ='showParams" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Update</a> </td>
+                             <a class='nav-items' id ='showParams" . $value['patient_id'] . "' href='./openForm.php/?patient_id=" . $value['patient_id'] . "&notlar=" . $value['notlar'] . "&uyaran=" . $value['uyaran'] . "&nemlilik=" . $value['nemlilik'] . "&aktivite=" . $value['aktivite'] . "&hareket=" . $value['hareket'] . "&beslenme=" . $value['beslenme'] . "&surtunme=" . $value['surtunme'] . "&fileid=" . $value['fileid'] . "' class='btn btn-success'>Güncelle</a> </td>
                             <td style='
                             color: black; font-size: 18px;
                             '> 
-                            <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Delete</button> </td></tr>
+                            <button class='btn btn-success' id='delete-patient' value='" . $value['patient_id'] . "'>Sil</button> </td></tr>
                             ";
                             }
 
@@ -139,63 +139,63 @@ if (isset($_GET['logout'])) {
             </div>
         </div>
         <script>
-            $("#formCloser").css('display', 'none');
-            $("#closeOpenForm").css('display', 'none');
+        $("#formCloser").css('display', 'none');
+        $("#closeOpenForm").css('display', 'none');
+        $(function() {
+            $.ajaxSetup({
+                cache: false
+            }); // disable caching for all requests.
+
+            // RAW Text/Html data from a file
             $(function() {
-                $.ajaxSetup({
-                    cache: false
-                }); // disable caching for all requests.
-
-                // RAW Text/Html data from a file
-                $(function() {
-                    $("a.nav-items").on("click", function(e) {
-                        e.preventDefault();
-                        $(".send-patient").css('display', 'none');
-                        $("#formCloser").css('display', 'block');
-                        $("#closeOpenForm").css('display', 'block');
-                        $('#contentContainer').load(this.href);
-                    })
-                })
-
-            });
-
-            $(function() {
-                const deleteButtons = document.querySelectorAll('#delete-patient');
-                deleteButtons.forEach(button => {
-                    button.addEventListener('click', function(e) {
-                        var patient_id = e.target.value;
-                        e.preventDefault();
-                        $.ajax({
-                            type: "POST",
-                            url: "./deletePatient.php",
-                            data: {
-                                patient_id: patient_id
-                            },
-                            success: function(response) {
-                                alert("successfully deleted patient")
-                                location.reload()
-                            },
-                            failure: function(response) {
-                                console.log(response)
-                                alert("error");
-                            }
-
-                        });
-                    })
+                $("a.nav-items").on("click", function(e) {
+                    e.preventDefault();
+                    $(".send-patient").css('display', 'none');
+                    $("#formCloser").css('display', 'block');
+                    $("#closeOpenForm").css('display', 'block');
+                    $('#contentContainer').load(this.href);
                 })
             })
 
-            $('#formCloser').click(function(e) {
-                e.preventDefault();
-                $(".send-patient").css('display', 'block');
-                $("#formCloser").css('display', 'none');
-            });
+        });
+
+        $(function() {
+            const deleteButtons = document.querySelectorAll('#delete-patient');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    var patient_id = e.target.value;
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: "./deletePatient.php",
+                        data: {
+                            patient_id: patient_id
+                        },
+                        success: function(response) {
+                            alert("Hasta başarıyla silindi")
+                            location.reload()
+                        },
+                        failure: function(response) {
+                            console.log(response)
+                            alert("Hata");
+                        }
+
+                    });
+                })
+            })
+        })
+
+        $('#formCloser').click(function(e) {
+            e.preventDefault();
+            $(".send-patient").css('display', 'block');
+            $("#formCloser").css('display', 'none');
+        });
         </script>
         <script>
-            $(window).on('load', function() {
-                $("body").removeClass("preload");
-                $("#openFormContainer").removeClass("preload");
-            });
+        $(window).on('load', function() {
+            $("body").removeClass("preload");
+            $("#openFormContainer").removeClass("preload");
+        });
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -25,9 +25,9 @@ if (isset($_POST)) {
         $id, $name, $surname, $age, $not, $uyaran, $nemlilik, $aktivite, $hareket, $beslenme, $surtunme, $fileid
     ]);
     if ($result) {
-        echo 'success';
+        echo 'Başarılı';
     } else {
-        echo 'error';
+        echo 'Hata';
     }
 } else
     echo 'no data';

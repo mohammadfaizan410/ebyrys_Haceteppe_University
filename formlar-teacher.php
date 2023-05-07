@@ -52,7 +52,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
 
         $sql = "SELECT * FROM  patients";
@@ -61,7 +61,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $patients = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
         $sql = "SELECT * FROM  vakalar";
         $smtmselect = $db->prepare($sql);
@@ -69,7 +69,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $vakalar = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
         ?>
         <div class="send-patient">
@@ -178,56 +178,56 @@ if (isset($_GET['logout'])) {
             </div>
         </div>
         <script>
-        $(function() {
-            $('#submit').click(function(e) {
+            $(function() {
+                $('#submit').click(function(e) {
 
 
-                var valid = this.form.checkValidity();
+                    var valid = this.form.checkValidity();
 
-                if (valid) {
-                    var id = <?php
+                    if (valid) {
+                        var id = <?php
 
                                     $userid = $_SESSION['userlogin']['id'];
                                     echo $userid
                                     ?>;
-                    var name = $('#name').val();
-                    var surname = $('#surname').val();
-                    var age = $('#age').val();
-                    var not = $('#not').val();
+                        var name = $('#name').val();
+                        var surname = $('#surname').val();
+                        var age = $('#age').val();
+                        var not = $('#not').val();
 
 
-                    e.preventDefault()
+                        e.preventDefault()
 
-                    $.ajax({
-                        type: 'POST',
-                        url: 'student-patient.php',
-                        data: {
-                            id: id,
-                            name: name,
-                            surname: surname,
-                            age: age,
-                            not: not
+                        $.ajax({
+                            type: 'POST',
+                            url: 'student-patient.php',
+                            data: {
+                                id: id,
+                                name: name,
+                                surname: surname,
+                                age: age,
+                                not: not
 
-                        },
-                        success: function(data) {
-                            alert("Success");
-                            location.reload(true)
-                        },
-                        error: function(data) {
-                            Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
-                                'type': 'error'
-                            })
-                        }
-                    })
+                            },
+                            success: function(data) {
+                                alert("Başarılı");
+                                location.reload(true)
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    'title': 'Hata',
+                                    'text': 'Hata',
+                                    'type': 'error'
+                                })
+                            }
+                        })
 
 
 
-                }
-            })
+                    }
+                })
 
-        });
+            });
         </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -51,7 +51,7 @@ $(window).on('load', function() {
         if ($result) {
             $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
 
         $sql = "SELECT * FROM  vakalar";
@@ -60,7 +60,7 @@ $(window).on('load', function() {
         if ($result) {
             $vakalar = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
         ?>
         <div class="send-patient">
@@ -566,13 +566,13 @@ $(window).on('load', function() {
 
                         },
                         success: function(data) {
-                            alert("Success");
+                            alert("Başarılı");
                             location.reload(true)
                         },
                         error: function(data) {
                             Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
+                                'title': 'Hata',
+                                'text': 'Hata',
                                 'type': 'error'
                             })
                         }

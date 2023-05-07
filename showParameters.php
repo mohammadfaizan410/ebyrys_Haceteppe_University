@@ -74,7 +74,7 @@ if (isset($_GET['patient_id'])) {
                             echo "<iframe id='iframepdf' class='iframepdf' runat='server' src=" . $filePath . " title=''></iframe>";
                         }
                     } else {
-                        echo 'error';
+                        echo 'Hata';
                     }
 
                     ?>

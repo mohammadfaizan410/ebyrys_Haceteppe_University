@@ -15,9 +15,9 @@ if (isset($_POST)) {
     $smtminsert = $db->prepare($sql);
     $result = $smtminsert->execute([$saveto]);
     if ($result) {
-        echo 'success';
+        echo 'Başarılı';
     } else {
-        echo 'error';
+        echo 'Hata';
     }
 } else
     echo 'no data';

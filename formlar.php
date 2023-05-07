@@ -55,7 +55,7 @@ if (isset($_GET['logout'])) {
 
             var_dump($values);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
 
         ?>

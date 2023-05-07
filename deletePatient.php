@@ -8,9 +8,9 @@ if (isset($_POST)) {
     $stmt = $db->prepare($sql);
     $result = $stmt->execute([$patient_id]);
     if ($result) {
-        echo 'Successfully deleted!';
+        echo 'Silme işlemi başarılı';
     } else {
-        echo 'there was an error deleting the patient';
+        echo 'Silme işlemi başarısız';
     }
 } else {
     echo 'No data';

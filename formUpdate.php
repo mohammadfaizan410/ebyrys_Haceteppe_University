@@ -16,9 +16,9 @@ if (isset($_POST)) {
         $uyaran, $nemlilik, $aktivite, $hareket, $beslenme, $surtunme, $patient_id
     ]);
     if ($result) {
-        echo 'successfully updated!';
+        echo 'Güncelleme başarılı';
     } else {
-        echo 'error';
+        echo 'Hata';
     }
 } else {
     echo 'no data';

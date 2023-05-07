@@ -37,9 +37,9 @@ session_start()
             $smtminsert = $db->prepare($sql);
             $result = $smtminsert->execute([$name, $surname, $email, $password]);
             if ($result) {
-                echo 'success';
+                echo 'Başarılı';
             } else {
-                echo 'error';
+                echo 'Hata';
             }
         }
         ?>
@@ -97,7 +97,7 @@ session_start()
                         },
                         success: function(data) {
                             Swal.fire({
-                                'title': 'Success',
+                                'title': 'Başarılı',
                                 'text': data,
                                 'type': 'success'
                             })
@@ -106,8 +106,8 @@ session_start()
                         },
                         error: function(data) {
                             Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
+                                'title': 'Hata',
+                                'text': 'Hata',
                                 'type': 'error'
                             })
                         }

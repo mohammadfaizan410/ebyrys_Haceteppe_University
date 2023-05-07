@@ -68,12 +68,12 @@ if (isset($_SESSION['userlogin'])) {
                 },
                 success: function(data) {
                     alert(data)
-                    if ($.trim(data) === "Successful") {
+                    if ($.trim(data) === "Başarılı") {
                         setTimeout('window.location.href = "student-main.php"', 1000);
                     }
                 },
                 error: function(data) {
-                    alert('error');
+                    alert('Hata');
                 }
             })
 
