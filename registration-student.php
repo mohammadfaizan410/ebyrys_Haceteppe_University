@@ -193,10 +193,10 @@ require_once("config-students.php");
                 isPresent = false;
             },
             error: function (response){
-                alert("response");
+                alert(response);
             }
           });
-            if(isPresent){
+            if(!isPresent){
                 $_SESSION['email_alert']
             }
         }
