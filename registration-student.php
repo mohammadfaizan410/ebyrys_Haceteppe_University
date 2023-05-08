@@ -179,6 +179,7 @@ require_once("config-students.php");
                 email: email,
                 },
                 success: function(response) {
+                    console.log("hello from email check")
                 var isPresent = (response === 'exists');
                 callback(isPresent);
                 },
@@ -216,7 +217,7 @@ require_once("config-students.php");
             emailError.style.display = "none";
             document.getElementById("register").disabled = false;
             document.getElementById("register").disabled = false;
-    isEmailExist(emailInput.value, function(isPresent) {
+     isEmailExist(emailInput.value, function(isPresent) {
       if (isPresent) {
         emailInput.setCustomValidity(
           "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");

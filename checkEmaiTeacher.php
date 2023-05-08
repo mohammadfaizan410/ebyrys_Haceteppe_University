@@ -3,10 +3,8 @@ require_once("config-students.php");
 ?>
 <?php
 if (isset($_POST)) {
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
+
     $email = $_POST['email'];
-    $password = sha1(($_POST['password']));
     
     $sql = "Select * from teachers where email = '$email'";
     $result = mysqli_query($conn, $sql);
