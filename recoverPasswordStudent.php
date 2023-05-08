@@ -121,7 +121,7 @@ if (isset($_SESSION['userlogin'])) {
             else{
                 $.ajax({
                     type: "POST",
-                    url: "changePassword.php",
+                    url: "changePasswordStudent.php",
                     data: {
                         email :email,
                         password :password
