@@ -26,7 +26,7 @@ if (isset($_POST)) {
     $mail->setFrom('muhammadfaizan41000@gmail.com', 'e-BYRYS');
     $mail->addAddress($email, '');
     $mail->Subject = 'E-BYRYS';
-    $mail->Body = 'Verify your account with the code below: ' . $code;
+    $mail->Body = 'Verify your account with this code: ' . $code;
 
     try {
         $mail->send();

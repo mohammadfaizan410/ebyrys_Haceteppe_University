@@ -122,7 +122,7 @@ require_once("config-students.php");
                                         if(emailCode === $("#code").val()){
                                             $.ajax({
                                         type: 'POST',
-                                        url: 'process-teacher.php',
+                                        url: 'process-teachers.php',
                                         data: {
                                             name: name,
                                             surname: surname,
