@@ -215,14 +215,16 @@ require_once("config-students.php");
             document.getElementById("register").disabled = true;
         } else {
             emailError.style.display = "none";
-            document.getElementById("register").disabled = false;
-            document.getElementById("register").disabled = false;
      isEmailExist(emailInput.value, function(isPresent) {
       if (isPresent) {
+        emailError.innerText =  "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.";
         emailInput.setCustomValidity(
           "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
         emailError.style.display = "block";
+        document.getElementById("register").disabled = true;
       } else {
+        document.getElementById("register").disabled = false;
+
         emailInput.setCustomValidity("");
         emailError.style.display = "none";
       }
