@@ -215,7 +215,7 @@ require_once("config-students.php");
         var emailError = document.getElementById("email-error");
         if (!isValidEmail(emailInput.value)) {
             emailError.style.display = "inline";
-            document.getElementById("register-button").disabled = true;
+            document.getElementById("register").disabled = true;
         } else {
             emailError.style.display = "none";
             document.getElementById("register").disabled = false;
