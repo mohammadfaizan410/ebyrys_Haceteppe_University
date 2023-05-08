@@ -67,9 +67,10 @@ if (isset($_SESSION['userlogin'])) {
                 <h2 class="login">Password Recovery</h2>
 
                 <p class="labels">New password</p>
-                <input type="text" required name="email" id="password" placeholder="Mail Giriniz">
+                <input type="text" required name="email" id="password" placeholder="Mail Giriniz" oninput="sanitizePasswordRecovery()">
                 <p class="labels">Confirm password</p>
-                <input type="text" required name="email" id="confirm-password" placeholder="Mail Giriniz">
+                <input type="text" required name="email" id="confirm-password" placeholder="Mail Giriniz" oninput="sanitizePasswordRecovery()">
+                <p id="password-error" style='color:red;'></p>
                 <input type="submit" name="submit" id="change-password" value="Done">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o"
                         style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
@@ -84,6 +85,7 @@ if (isset($_SESSION['userlogin'])) {
         var email = '';
         $("#validation-box").css("display", "none");
         $("#password-box").css("display", "none");
+        $("#change-password").css("display", "none");
 
 //send code
     $(function() {
@@ -94,7 +96,38 @@ if (isset($_SESSION['userlogin'])) {
     })
 
 
-    //validate codde
+//password checking
+function sanitizePasswordRecovery() {
+  var passwordInput = document.getElementById("password");
+  var confirmPasswordInput = document.getElementById("confirm-password");
+  var passwordError = document.getElementById("password-error");
+
+  if (passwordInput.value.length < 6) {
+    passwordError.innerText = "Şifreniz en az 6 karakter uzunluğunda olmalıdır.";
+    passwordError.style.display = "inline";
+    document.getElementById("change-password").style.display = 'none';
+  } else {
+    passwordError.style.display = "none";
+    if (passwordInput.value !== confirmPasswordInput.value) {
+    passwordError.innerText = "şifreler aynı değil";
+    passwordError.style.display = "inline";
+    confirmPasswordInput.setCustomValidity("Şifreler eşleşmiyor.");
+    document.getElementById("change-password").style.display = 'none';
+  } else {
+    confirmPasswordInput.setCustomValidity("");
+    if (passwordError.style.display === "none") {
+        passwordError.style.display = "none";
+      document.getElementById("change-password").style.display = 'block';
+    }
+  }
+  }
+
+
+}
+
+
+
+    //validate code
     $(function() {
         $('#validate').click(function(e) {
             e.preventDefault();
@@ -114,7 +147,6 @@ if (isset($_SESSION['userlogin'])) {
             e.preventDefault();
             var password = $("#password").val();
             var confirmPassword = $("#confirm-password").val();
-            console.log("change pass clicked",password, confirmPassword)
             if(password !== confirmPassword || password==''){
                 alert("passwords do not match");
             }
@@ -127,7 +159,6 @@ if (isset($_SESSION['userlogin'])) {
                         password :password
                     },
                     success: function (response) {
-                        console.log(response)
                         if(response == "success"){
                             alert("your password has been changed!")
                             window.location.href = "main.php"
@@ -157,7 +188,6 @@ if (isset($_SESSION['userlogin'])) {
                                     email: email,
                                 },
                                 success: function (response) {
-                                    console.log(response)
                                         $("#recovery-box").css("display", 'none');
                                         $("#validation-box").css("display", 'block');
                                        emailCode = response;

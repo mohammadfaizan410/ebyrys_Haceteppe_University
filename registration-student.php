@@ -190,54 +190,94 @@ require_once("config-students.php");
             }
 
     </script>
-    <script>
+      <script>
     function sanitizePassword() {
-        var passwordInput = document.getElementById("password");
-        passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
+  var passwordInput = document.getElementById("password");
+  passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
 
-        var passwordError = document.getElementById("password-error");
-        if (passwordInput.value.length < 6) {
-            passwordError.style.display = "inline";
-            document.getElementById("register").disabled = true;
-        } else {
-            passwordError.style.display = "none";
-            document.getElementById("register").disabled = false;
-        }
+  var passwordError = document.getElementById("password-error");
+  var emailInput = document.getElementById("email");
+  var emailError = document.getElementById("email-error");
+
+  // Check if email is valid
+  if (!isValidEmail(emailInput.value)) {
+    emailError.style.display = "inline";
+    document.getElementById("register").style.display = 'none';
+    return;
+  } else {
+    emailError.style.display = "none";
+  }
+
+  // Check if email is present in the database
+  isEmailExist(emailInput.value, function(isPresent) {
+    if (isPresent) {
+      emailError.innerText =  "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.";
+      emailInput.setCustomValidity(
+        "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
+      emailError.style.display = "block";
+      document.getElementById("register").style.display = 'none';
+    } else {
+      emailInput.setCustomValidity("");
+      emailError.style.display = "none";
+
+      // Check if password is valid
+      if (passwordInput.value.length < 6) {
+        passwordError.style.display = "inline";
+        document.getElementById("register").style.display = 'none';
+      } else {
+        passwordError.style.display = "none";
+        document.getElementById("register").style.display = 'block';
+      }
     }
+  });
+}
     </script>
     <script>
-    function sanitizeEmail() {
-        var emailInput = document.getElementById("email");
-        emailInput.value = emailInput.value.replace(/[^a-zA-Z0-9@._-]/g, '');
-        var emailError = document.getElementById("email-error");
-        if (!isValidEmail(emailInput.value)) {
-            emailError.style.display = "inline";
-            document.getElementById("register").disabled = true;
-        } else {
-            emailError.style.display = "none";
-     isEmailExist(emailInput.value, function(isPresent) {
-      if (isPresent) {
-        emailError.innerText =  "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.";
-        emailInput.setCustomValidity(
-          "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
-        emailError.style.display = "block";
-        document.getElementById("register").disabled = true;
-      } else {
-        document.getElementById("register").disabled = false;
+   function sanitizeEmail() {
+  var emailInput = document.getElementById("email");
+  emailInput.value = emailInput.value.replace(/[^a-zA-Z0-9@._-]/g, '');
+  var emailError = document.getElementById("email-error");
+  var passwordInput = document.getElementById("password");
+  var passwordError = document.getElementById("password-error");
 
-        emailInput.setCustomValidity("");
-        emailError.style.display = "none";
+  // Check if email is valid
+  if (!isValidEmail(emailInput.value)) {
+    emailError.style.display = "inline";
+    document.getElementById("register").style.display = 'none';
+    return;
+  } else {
+    emailError.style.display = "none";
+  }
+
+  // Check if email is present in the database
+  isEmailExist(emailInput.value, function(isPresent) {
+    if (isPresent) {
+      emailError.innerText =  "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.";
+      emailInput.setCustomValidity(
+        "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
+      emailError.style.display = "block";
+      document.getElementById("register").style.display = 'none';
+    } else {
+      emailInput.setCustomValidity("");
+      emailError.style.display = "none";
+
+      // Check if password is valid
+      if (passwordInput.value.length < 6) {
+        passwordError.style.display = "inline";
+        document.getElementById("register").style.display = 'none';
+      } else {
+        passwordError.style.display = "none";
+        document.getElementById("register").style.display = 'block';
       }
-    })
-        }
     }
+  });
+}
     function isValidEmail(email) {
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
    
 </script>
-
 </body>
 
 </html>

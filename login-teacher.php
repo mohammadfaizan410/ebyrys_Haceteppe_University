@@ -40,10 +40,9 @@ session_start()
                 <input type="submit" name="submit" id="login" value="Giriş Yap">
                 <div style="display: flex;"><a class="btn btn-primary"  href="recoverPasswordTeacher.php" >Forgot password</a>
                 <a href="main.php" class="lower-buttons"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
-                <div>
+                </div>
         </form>
 
-    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>,
     <script>

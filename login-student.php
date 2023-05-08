@@ -59,7 +59,6 @@ if (isset($_SESSION['userlogin'])) {
             if (valid) {
                 var email = $('#email').val();
                 var password = $('#password').val();
-                console.log(email)
             }
             e.preventDefault();
 
