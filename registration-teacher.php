@@ -58,10 +58,16 @@ session_start()
                 <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz">
 
                 <p class="usernamelabel">E-mail</p>
-                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
+                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz"
+                    oninput="sanitizeEmail()">
+                <span id="email-error" style="display:none; color:red;">Lütfen geçerli bir e-posta adresi
+                    giriniz.</span>
 
                 <p class="passwordlabel">Şifre</p>
-                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz" minlength="6"
+                    oninput="sanitizePassword()">
+                <span id="password-error" style="display:none; color:red;">Şifre en az 6 karakter uzunluğunda
+                    olmalıdır.</span>
 
                 <input type="submit" name="submit" id="register" value="Kayıt Ol">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
