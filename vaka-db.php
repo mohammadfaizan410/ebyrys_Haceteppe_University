@@ -3,7 +3,7 @@ require_once("config-teachers.php");
 ?>
 <?php
 if (isset($_POST)) {
-
+    $student_group = $_POST['student_group'];
     $pdffile = $_FILES['file'];
     $saveto = __DIR__ . DIRECTORY_SEPARATOR . 'vakalar' . DIRECTORY_SEPARATOR . time() . '_' . $pdffile['name'];
     //Move file:
@@ -11,13 +11,13 @@ if (isset($_POST)) {
 
     echo $pdffile['name'];
 
-    $sql = "INSERT INTO vakalar (filename) VALUES(?)";
+    $sql = "INSERT INTO vakalar (filename, student_group) VALUES(?,?)";
     $smtminsert = $db->prepare($sql);
-    $result = $smtminsert->execute([$saveto]);
+    $result = $smtminsert->execute([$saveto, $student_group]);
     if ($result) {
-        echo 'success';
+        echo 'Başarılı';
     } else {
-        echo 'error';
+        echo 'Hata';
     }
 } else
     echo 'no data';

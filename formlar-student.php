@@ -44,6 +44,7 @@ $(window).on('load', function() {
         <?php
         require_once('config-students.php');
         $userid = $_SESSION['userlogin']['id'];
+        $student_group = $_SESSION['userlogin']['student_group'];
         //echo $userid;
         $sql = "SELECT * FROM  patients  WHERE id =" . $userid;
         $smtmselect = $db->prepare($sql);
@@ -51,8 +52,9 @@ $(window).on('load', function() {
         if ($result) {
             $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
+
 
         $sql = "SELECT * FROM  vakalar";
         $smtmselect = $db->prepare($sql);
@@ -60,8 +62,10 @@ $(window).on('load', function() {
         if ($result) {
             $vakalar = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
+
+
         ?>
         <div class="send-patient">
 
@@ -108,8 +112,9 @@ $(window).on('load', function() {
                             var_dump($vaka["filename"]);
                             var_dump("aaaxxxx"); */
                             if (file_exists($filePath)) {
+                                if ($vaka['student_group'] == $student_group){
 
-                                echo "<div class='form-check'>
+                                    echo "<div class='form-check'>
                                 <input class='form-check-input' type='radio' name='vakaradio' id='vakaradio' 
                                     value='" . $vaka['id'] . "'>
                                     <tr>
@@ -181,7 +186,7 @@ $(window).on('load', function() {
                             </script>
                             </div>";
                             }
-                        }
+                        }}
                         ?>
 
 
@@ -566,13 +571,13 @@ $(window).on('load', function() {
 
                         },
                         success: function(data) {
-                            alert("Success");
+                            alert("Başarılı");
                             location.reload(true)
                         },
                         error: function(data) {
                             Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
+                                'title': 'Hata',
+                                'text': 'Hata',
                                 'type': 'error'
                             })
                         }

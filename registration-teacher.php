@@ -37,9 +37,9 @@ session_start()
             $smtminsert = $db->prepare($sql);
             $result = $smtminsert->execute([$name, $surname, $email, $password]);
             if ($result) {
-                echo 'success';
+                echo 'Başarılı';
             } else {
-                echo 'error';
+                echo 'Hata';
             }
         }
         ?>
@@ -58,10 +58,16 @@ session_start()
                 <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz">
 
                 <p class="usernamelabel">E-mail</p>
-                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz">
+                <input type="email" required name="email" id="email" placeholder="E-mail Giriniz"
+                    oninput="sanitizeEmail()">
+                <span id="email-error" style="display:none; color:red;">Lütfen geçerli bir e-posta adresi
+                    giriniz.</span>
 
                 <p class="passwordlabel">Şifre</p>
-                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
+                <input type="password" name="password" id="password" required placeholder="Şifre Giriniz" minlength="6"
+                    oninput="sanitizePassword()">
+                <span id="password-error" style="display:none; color:red;">Şifre en az 6 karakter uzunluğunda
+                    olmalıdır.</span>
 
                 <input type="submit" name="submit" id="register" value="Kayıt Ol">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o" style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
@@ -97,7 +103,7 @@ session_start()
                         },
                         success: function(data) {
                             Swal.fire({
-                                'title': 'Success',
+                                'title': 'Başarılı',
                                 'text': data,
                                 'type': 'success'
                             })
@@ -106,8 +112,8 @@ session_start()
                         },
                         error: function(data) {
                             Swal.fire({
-                                'title': 'Errors',
-                                'text': 'There were errors',
+                                'title': 'Hata',
+                                'text': 'Hata',
                                 'type': 'error'
                             })
                         }
@@ -121,6 +127,49 @@ session_start()
             })
 
         })
+    </script>
+    <script>
+    function sanitizePassword() {
+        var passwordInput = document.getElementById("password");
+        passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
+
+        var passwordError = document.getElementById("password-error");
+        if (passwordInput.value.length < 6) {
+            passwordError.style.display = "inline";
+            document.getElementById("register").disabled = true;
+        } else {
+            passwordError.style.display = "none";
+            document.getElementById("register").disabled = false;
+        }
+    }
+    </script>
+    <script>
+    function sanitizeEmail() {
+        var emailInput = document.getElementById("email");
+        emailInput.value = emailInput.value.replace(/[^a-zA-Z0-9@._-]/g, '');
+
+        var emailError = document.getElementById("email-error");
+        if (!isValidEmail(emailInput.value)) {
+            emailError.style.display = "inline";
+            document.getElementById("register-button").disabled = true;
+        } else {
+            emailError.style.display = "none";
+            document.getElementById("register-button").disabled = false;
+            if (isEmailExist(email)) {
+                emailInput.setCustomValidity(
+                    "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
+                emailError.style.display = "block";
+            } else {
+                emailInput.setCustomValidity("");
+                emailError.style.display = "none";
+            }
+        }
+    }
+
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
     </script>
 </body>
 

@@ -52,7 +52,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $values = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
 
         $sql = "SELECT * FROM  vakalar";
@@ -61,7 +61,7 @@ if (isset($_GET['logout'])) {
         if ($result) {
             $vakalar = $smtmselect->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            echo 'error';
+            echo 'Hata';
         }
         ?>
         <div class="send-patient">
@@ -84,11 +84,34 @@ if (isset($_GET['logout'])) {
                                 ya da
                                 <input type="file" id="pdffile" accept="application/pdf, application/ms-word" required>
                             </label>
+                            <span id="error-message" class="validation-error-label"></span>
+                            <div class="checkbox-wrapper">
+                                <div class="checkboxes">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="student_group"
+                                            id="student_group" value="kontrol" checked>
+                                        <label class="form-check-label" for="student_group">
+                                            <span class="checkbox-header"> Kontrol Grubu</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="student_group"
+                                            id="student_group" value="mudahale">
+                                        <label class="form-check-label" for="student_group">
+                                            <span class="checkbox-header"> Müdahale Grubu </span>
+
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <input type="submit" id="submit" class="form-control butunluknot submit pdf-upload-btn"
                                     name="submit" value="Kaydet">
                             </div>
                         </div>
+
+
                     </form>
                 </div>
 
@@ -214,6 +237,26 @@ if (isset($_GET['logout'])) {
             const re = new RegExp()
             const file = re.exec(url);
             console.log(file);
+
+            $(document).ready(function() {
+                $('#pdffile').on('change', function() {
+                    for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                        var file1 = $(this).get(0).files[i].size;
+                        if (file1) {
+                            var file_size = $(this).get(0).files[i].size;
+                            if (file_size > 1000000) {
+                                $('#error-message').html("File upload size is larger than 2MB");
+                                $('#error-message').css("display", "block");
+                                $('#error-message').css("color", "red");
+                                $('#submit').css("display", "none");
+
+                            } else {
+                                $('#error-message').css("display", "none");
+                            }
+                        }
+                    }
+                });
+            });
             $('#submit').click(function(e) {
 
 
@@ -230,17 +273,31 @@ if (isset($_GET['logout'])) {
                                         $userid = $_SESSION['userlogin']['id'];
                                         echo $userid
                                         ?>;
+                        var ele = document.getElementsByName('student_group');
+
+                        for (i = 0; i < ele.length; i++) {
+                            if (ele[i].checked)
+                                var student_group = ele[i].value;
+
+                        }
+                        console.log(student_group);
+
                         var pdffile = document.getElementById("pdffile").files[0];
                         var uploadData = new FormData();
                         uploadData.append("file", pdffile);
+                        uploadData.append("student_group", student_group)
                         // console.log($("#pdffile"));
                         // console.log(pdffile);
+
+
                         e.preventDefault()
 
                         $.ajax({
                             type: 'POST',
                             url: 'vaka-db.php',
                             data: uploadData,
+
+
 
                             success: function(data) {
                                 console.log(data);
@@ -249,8 +306,8 @@ if (isset($_GET['logout'])) {
                             },
                             error: function(data) {
                                 Swal.fire({
-                                    'title': 'Errors',
-                                    'text': 'There were errors',
+                                    'title': 'Hata',
+                                    'text': 'Hata',
                                     'type': 'error'
                                 })
                             },

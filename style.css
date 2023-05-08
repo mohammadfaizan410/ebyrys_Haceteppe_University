@@ -162,7 +162,6 @@ a {
 }
 
 .nav-link {
-    padding: 0;
     color: white;
     margin-right: 20px;
 
@@ -191,6 +190,7 @@ a {
     background-color: darkcyan !important;
     border: 12px solid darkcyan !important;
     border-radius: 20px;
+    color: white !important;
 }
 
 .nav-items:hover {
@@ -477,13 +477,11 @@ input[type="email"] {
 
 .closeBtn {
 
-    position: absolute;
     color: red;
     font-size: 50px;
-    right: 20px;
-    top: 0;
+    right: 120px;
     cursor: pointer;
-
+    z-index: 20;
 }
 
 .close:hover,
@@ -581,6 +579,7 @@ input[type="email"] {
     color: #444;
     cursor: pointer;
     transition: background .2s ease-in-out, border .2s ease-in-out;
+    margin-bottom: 40px;
 }
 
 .drop-container:hover {
@@ -642,4 +641,16 @@ input[type=file]::file-selector-button:hover {
 
 .file-name {
     margin-top: 30px;
+}
+
+.grup-button {
+    margin-left: 40px;
+}
+
+.grup-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 18px;
 }
