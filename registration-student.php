@@ -171,26 +171,22 @@ require_once("config-students.php");
 
     </script>
     <script>
-        function isEmailExist(email) {
-            var isPresent = '';
-          $.ajax({
-            type: "POST",
-            url: "checkEmail.php",
-            data: {
-                                            email: email,
-                                        },
-            success: function (response) {
-                if(response === 'exists'){
-                    isPresent = true;
+        function isEmailExist(email, callback) {
+            $.ajax({
+                type: "POST",
+                url: "checkEmail.php",
+                data: {
+                email: email,
+                },
+                success: function(response) {
+                var isPresent = (response === 'exists');
+                callback(isPresent);
+                },
+                error: function(response) {
+                callback(false);
                 }
-                isPresent = false;
-            },
-            error: function (response){
-                isPresent = false;
+            });
             }
-          });
-          return isPresent;
-        }
 
     </script>
     <script>
@@ -219,14 +215,17 @@ require_once("config-students.php");
         } else {
             emailError.style.display = "none";
             document.getElementById("register").disabled = false;
-            if (!isEmailExist(emailInput)) {
-                emailInput.setCustomValidity(
-                    "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
-                emailError.style.display = "block";
-            } else {
-                emailInput.setCustomValidity("");
-                emailError.style.display = "none";
-            }
+            document.getElementById("register").disabled = false;
+    isEmailExist(emailInput.value, function(isPresent) {
+      if (isPresent) {
+        emailInput.setCustomValidity(
+          "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
+        emailError.style.display = "block";
+      } else {
+        emailInput.setCustomValidity("");
+        emailError.style.display = "none";
+      }
+    })
         }
     }
     function isValidEmail(email) {
