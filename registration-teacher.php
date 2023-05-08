@@ -122,6 +122,49 @@ session_start()
 
         })
     </script>
+    <script>
+    function sanitizePassword() {
+        var passwordInput = document.getElementById("password");
+        passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
+
+        var passwordError = document.getElementById("password-error");
+        if (passwordInput.value.length < 6) {
+            passwordError.style.display = "inline";
+            document.getElementById("register").disabled = true;
+        } else {
+            passwordError.style.display = "none";
+            document.getElementById("register").disabled = false;
+        }
+    }
+    </script>
+    <script>
+    function sanitizeEmail() {
+        var emailInput = document.getElementById("email");
+        emailInput.value = emailInput.value.replace(/[^a-zA-Z0-9@._-]/g, '');
+
+        var emailError = document.getElementById("email-error");
+        if (!isValidEmail(emailInput.value)) {
+            emailError.style.display = "inline";
+            document.getElementById("register-button").disabled = true;
+        } else {
+            emailError.style.display = "none";
+            document.getElementById("register-button").disabled = false;
+            if (isEmailExist(email)) {
+                emailInput.setCustomValidity(
+                    "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
+                emailError.style.display = "block";
+            } else {
+                emailInput.setCustomValidity("");
+                emailError.style.display = "none";
+            }
+        }
+    }
+
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    </script>
 </body>
 
 </html>
