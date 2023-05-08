@@ -171,20 +171,13 @@ require_once("config-students.php");
 
     </script>
     <script>
-        function isEmailExist($email) {
+        function isEmailExist(email) {
             var isPresent = '';
-            var name = $('#name').val();
-                    var surname = $('#surname').val();
-                    var email = $('#email').val();
-                    var password = $('#password').val();
           $.ajax({
             type: "POST",
             url: "checkEmail.php",
             data: {
-                                            name: name,
-                                            surname: surname,
                                             email: email,
-                                            password: password
                                         },
             success: function (response) {
                 if(response === 'exists'){
@@ -193,12 +186,10 @@ require_once("config-students.php");
                 isPresent = false;
             },
             error: function (response){
-                alert(response);
+                isPresent = false;
             }
           });
-            if(!isPresent){
-                $_SESSION['email_alert']
-            }
+          return isPresent;
         }
 
     </script>
@@ -228,7 +219,7 @@ require_once("config-students.php");
         } else {
             emailError.style.display = "none";
             document.getElementById("register").disabled = false;
-            if (isEmailExist(email)) {
+            if (!isEmailExist(emailInput)) {
                 emailInput.setCustomValidity(
                     "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.");
                 emailError.style.display = "block";
