@@ -30,7 +30,6 @@ if (isset($_SESSION['userlogin'])) {
     <div>
         <form action="" method="post">
             <div class="login-box login-login">
-
                 <h1 class="header">e-BYRYS-KKDS</h1>
                 <h2 class="login">Öğrenci Girişi</h2>
 
@@ -39,15 +38,21 @@ if (isset($_SESSION['userlogin'])) {
                 <p class="labels">Şifre</p>
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
                 <input type="submit" name="submit" id="login" value="Giriş Yap">
-                <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o"
-                        style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
+                
+                <div style="display: flex;"><a class="btn btn-primary"  href="recoverPassword.php" >Forgot password</a>
+                <a href="main.php" class="lower-buttons"><i class="gg-arrow-left-o"
+                style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a></div>
+            </div>
         </form>
 
-    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>,
     <script>
+
+        
+
+
     $(function() {
         $('#login').click(function(e) {
             var valid = this.form.checkValidity();
@@ -80,6 +85,20 @@ if (isset($_SESSION['userlogin'])) {
         })
     })
     </script>
+    <script>
+        $(function() {
+            $("#change-password").click(function (e) { 
+                e.preventDefault();
+                
+            });
+
+
+          })
+
+    </script>
+
+
+
 </body>
 
 </html>

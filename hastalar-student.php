@@ -190,6 +190,10 @@ if (isset($_GET['logout'])) {
                 $(".send-patient").css('display', 'block');
                 $("#formCloser").css('display', 'none');
             });
+            $("#contentContainer").click(function (e) { 
+                e.stopPropagation();
+                
+            });
         </script>
         <script>
         $(window).on('load', function() {

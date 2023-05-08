@@ -48,7 +48,6 @@ if (isset($_GET['patient_id'])) {
 
     <!-- Favicon -->
 
-    <link href="style.css" rel="stylesheet">
 
 
 
