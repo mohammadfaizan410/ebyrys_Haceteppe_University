@@ -98,7 +98,6 @@ require_once("config-students.php");
                                     password: password
                                 },
                                 success: function (response) {
-                                    console.log(response)
                                         $("#registrationForm").css("display", 'none');
                                         $("#validation-box").css("display", 'block');
                                        emailCode = response;
@@ -118,7 +117,6 @@ require_once("config-students.php");
                                 var email = $('#email').val();
                                 var password = $('#password').val();
                                                 
-                                        console.log("validator clicked", )
                                         if(emailCode === $("#code").val()){
                                             $.ajax({
                                         type: 'POST',
@@ -152,9 +150,7 @@ require_once("config-students.php");
 
         $(function() {
             $('#register').click(function(e) {
-                console.log("clicked")
                 e.preventDefault()
-                console.log("clicked")
                     sendEmail();
             })
         })
@@ -176,7 +172,6 @@ require_once("config-students.php");
                 email: email,
                 },
                 success: function(response) {
-                    console.log("hello from email check")
                 var isPresent = (response === 'exists');
                 callback(isPresent);
                 },
