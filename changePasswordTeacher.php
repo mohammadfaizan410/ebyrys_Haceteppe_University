@@ -12,7 +12,7 @@ if (isset($_POST)) {
         echo 'success';
     }
     else{
-        echo 'failed';
+        echo 'hata';
     }
 
 } else

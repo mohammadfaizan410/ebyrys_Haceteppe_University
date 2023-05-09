@@ -9,7 +9,7 @@ if (isset($_POST)) {
     $smtmupdate = $db->prepare($sql);
     $result = $smtmupdate->execute([ $password,$email]);
     if($result){
-        echo 'başarı';
+        echo 'success';
     }
     else{
         echo 'hata';

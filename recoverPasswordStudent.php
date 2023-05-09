@@ -163,6 +163,7 @@ function sanitizePasswordRecovery() {
                             alert("Şifreniz değişti.!")
                             window.location.href = "main.php"
                         }else{
+                            console.log(response)
                             alert("Server hatası!")
                         }
                     },
