@@ -71,6 +71,10 @@ if (isset($_GET['logout'])) {
                         <a class="black" href="teacher-main.php?logout=true">Çıkış Yap</a>
 
                     </div>
+                    <div>
+                    <a href="delete-account.php?type=teacher" id="deleteAccount" class="nav-link btn" style="background-color:red;"> <i
+                                class="fa fa-table me-2 "></i>Delete</a>
+                    </div>
                 </div>
 
                 <div>

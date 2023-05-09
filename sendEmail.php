@@ -19,11 +19,11 @@ if (isset($_POST)) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'muhammadfaizan41000@gmail.com';
-    $mail->Password = 'edqslczsnkuktntb';
+    $mail->Username = 'kdsebypys@gmail.com';
+    $mail->Password = 'cuasjanoopxghbue';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
-    $mail->setFrom('muhammadfaizan41000@gmail.com', 'e-BYRYS');
+    $mail->setFrom('kdsebypys@gmail.com', 'e-BYRYS');
     $mail->addAddress($email, '');
     $mail->Subject = 'E-BYRYS';
     $mail->Body = 'Hesabınızı bu kodla doğrulayın: ' . $code;
