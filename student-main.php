@@ -76,7 +76,7 @@ if (isset($_GET['logout'])) {
 
                     <div>
                     <a href="delete-account.php?type=student" id="deleteAccount" class="nav-link btn" style="background-color:red;"> <i
-                                class="fa fa-table me-2 "></i>Delete</a>
+                                class="fa fa-table me-2 "></i>silmek</a>
                     </div>
                 </div>
 

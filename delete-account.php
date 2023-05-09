@@ -61,7 +61,7 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
                 success: function(data) {
                     alert(data)
                     if ($.trim(data) === "Başarılı") {
-                        setTimeout('window.location.href = "main.php"', 1000);
+                        setTimeout('window.location.href = "main.php"', 600);
                     }
                 },
                 error: function(data) {

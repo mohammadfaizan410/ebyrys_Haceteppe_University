@@ -38,7 +38,7 @@ if (isset($_POST)) {
             session_destroy();
             echo 'Başarılı';
         } else {
-            echo 'Hata';
+            echo 'Hataa';
         }
     }
 } else
