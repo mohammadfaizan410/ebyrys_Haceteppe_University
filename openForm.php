@@ -83,8 +83,6 @@ if (isset($_GET['patient_id'])) {
 
                     ?>
                     <form>
-                        <span class='closeBtn' id='close'>&times;</span>
-
                         <h1 class="braden-header">Braden Parametreleri</h1>
 
                         <p class="braden-label">Uyaranın Algılanması</p>
