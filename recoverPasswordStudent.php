@@ -91,6 +91,7 @@ if (isset($_SESSION['userlogin'])) {
     $(function() {
         $('#send-code').click(function(e) {
             e.preventDefault();
+
             sendEmail();                
         })
     })
@@ -184,6 +185,14 @@ function sanitizePasswordRecovery() {
                     
                     $.ajax({
                                 type: "POST",
+                                url: "checkEmailStudent.php",
+                                data: {
+                                    email: email,
+                                },
+                                success: function (response) {
+                                       if(response == 'exists'){
+                                        $.ajax({
+                                type: "POST",
                                 url: "sendEmail.php",
                                 data: {
                                     email: email,
@@ -197,6 +206,17 @@ function sanitizePasswordRecovery() {
                                     console.log(response)
                                 }
                             });   
+                                       }else{
+                                        alert("email does not exist")
+                                       }
+                                },
+                                error :function(response){
+                                    console.log(response)
+                                }
+                            });   
+
+
+
         }
     </script>
 

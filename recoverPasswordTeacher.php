@@ -182,6 +182,14 @@ function sanitizePasswordRecovery() {
                     
                     $.ajax({
                                 type: "POST",
+                                url: "checkEmailTeacher.php",
+                                data: {
+                                    email: email,
+                                },
+                                success: function (response) {
+                                       if(response == 'exists'){
+                                        $.ajax({
+                                type: "POST",
                                 url: "sendEmail.php",
                                 data: {
                                     email: email,
@@ -195,6 +203,17 @@ function sanitizePasswordRecovery() {
                                     console.log(response)
                                 }
                             });   
+                                       }else{
+                                        alert("email does not exist")
+                                       }
+                                },
+                                error :function(response){
+                                    console.log(response)
+                                }
+                            });   
+
+
+
         }
     </script>
 
