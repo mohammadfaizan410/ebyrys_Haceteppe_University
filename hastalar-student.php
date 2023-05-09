@@ -214,7 +214,6 @@ $("#formCloser").css('display', 'none');
                 
             });
                 
-            });
         </script>
         <script>
         $(window).on('load', function() {
