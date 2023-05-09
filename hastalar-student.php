@@ -42,7 +42,7 @@ if (isset($_GET['logout'])) {
 
 <body style="background-color:white">
     <div id='formCloser'>
-    <span class='closeBtn' id='close' style='display: flex; justify-content: center; margin-bottom:0px;'>&times;</span>
+            <span class='closeBtn' id='close' style='display: flex; justify-content: center; margin-bottom:0px;'>&times;</span>
         <div id='openFormContainer' style='padding: 50px;'>
             <div id="contentContainer" class="model-content"></div>
         </div>
@@ -171,13 +171,13 @@ $("#formCloser").css('display', 'none');
             })
 
         });
-        $("#close").click(function (e) { 
+        
+             $("#close").click(function (e) { 
             e.preventDefault();
             console.log("close button clicked")
             $(".send-patient").css('display', 'block');
                 $("#formCloser").css('display', 'none');
         });
-    
         $(function() {
             const deleteButtons = document.querySelectorAll('#delete-patient');
             deleteButtons.forEach(button => {
@@ -204,13 +204,15 @@ $("#formCloser").css('display', 'none');
             })
         })
 
-            $('#formCloser').click(function(e) {
+          $('#formCloser').click(function(e) {
                 e.preventDefault();
                 $(".send-patient").css('display', 'block');
                 $("#formCloser").css('display', 'none');
             });
             $("#contentContainer").click(function (e) { 
                 e.stopPropagation();
+                
+            });
                 
             });
         </script>
