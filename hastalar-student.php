@@ -202,7 +202,6 @@ if (isset($_GET['logout'])) {
                 
             });
                 
-            });
         </script>
         <script>
         $(window).on('load', function() {
