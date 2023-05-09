@@ -33,11 +33,11 @@ if (isset($_SESSION['userlogin'])) {
             <div class="login-box login-login" style= 'width : 50%;'>
 
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">An email was sent to you, please enter the code</h2>
+                <h2 class="login">Size bir e-posta gönderildi, lütfen kodu girin</h2>
 
                 <p class="labels">Kodu</p>
-                <input type="text" required name="code" id="code" placeholder="enter code">
-                <input type="submit" name="submit" id="validate" value="Giriş Yap">
+                <input type="text" required name="code" id="code" placeholder="Kodu girin">
+                <input type="submit" name="submit" id="validate" value="devam">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o"
                         style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
             </div>
@@ -49,11 +49,11 @@ if (isset($_SESSION['userlogin'])) {
         <form action="" method="post">
             <div class="login-box login-login">
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Password Recovery</h2>
+                <h2 class="login">Şifre kurtarma</h2>
 
-                <p class="labels">Confirm Mail</p>
+                <p class="labels">Mail Onayla</p>
                 <input type="text" required name="email" id="email" placeholder="Mail Giriniz">
-                <input type="submit" name="submit" id="send-code" value="Send Code">
+                <input type="submit" name="submit" id="send-code" value="Kodu gönder">
                 <a href="main.php" class="lower-buttons" style="padding-top:10px"><i class="gg-arrow-left-o"
                         style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a>
                 </div>
@@ -64,11 +64,11 @@ if (isset($_SESSION['userlogin'])) {
         <form action="" method="post">
             <div class="login-box login-login">
                 <h1 class="header">e-BYRYS-KKDS</h1>
-                <h2 class="login">Password Recovery</h2>
+                <h2 class="login">Şifre kurtarma</h2>
 
-                <p class="labels">New password</p>
+                <p class="labels">Yeni Şifre</p>
                 <input type="text" required name="email" id="password" placeholder="Mail Giriniz" oninput="sanitizePasswordRecovery()">
-                <p class="labels">Confirm password</p>
+                <p class="labels">Şifreyi Onayla</p>
                 <input type="text" required name="email" id="confirm-password" placeholder="Mail Giriniz" oninput="sanitizePasswordRecovery()">
                 <p id="password-error" style='color:red;'></p>
                 <input type="submit" name="submit" id="change-password" value="Done">
