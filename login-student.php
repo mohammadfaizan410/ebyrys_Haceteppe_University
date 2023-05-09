@@ -39,7 +39,7 @@ if (isset($_SESSION['userlogin'])) {
                 <input type="password" name="password" id="password" required placeholder="Şifre Giriniz">
                 <input type="submit" name="submit" id="login" value="Giriş Yap">
                 
-                <div style="display: flex;"><a class="btn btn-primary"  href="recoverPasswordStudent.php" >Forgot password</a>
+                <div style="display: flex;"><a class="btn btn-primary"  href="recoverPasswordStudent.php" >şifremi unuttum</a>
                 <a href="main.php" class="lower-buttons"><i class="gg-arrow-left-o"
                 style="margin: 0; margin-right: 20px;"></i>Ana Sayfaya Dön</a></div>
             </div>
