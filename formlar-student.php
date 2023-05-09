@@ -92,7 +92,8 @@ $(window).on('load', function() {
 
                         <p class="usernamelabel">Notlar</p>
                         <input type="text" class="form-control not" required name="not" id="not"
-                            placeholder="Not giriniz">
+                            placeholder="Not giriniz" maxlength="250">
+                        <span class="error" style="display:none;">Lütfen en fazla 250 karakter giriniz.</span>
                     </div>
                 </div>
                 <h1 class="braden-header">Vaka Seçiniz </h1>
@@ -474,7 +475,20 @@ $(window).on('load', function() {
                 var name = $('#name').val();
                 var surname = $('#surname').val();
                 var age = $('#age').val();
-                var not = $('#not').val();
+                var input = document.getElementById("not");
+                var error = document.querySelector(".error");
+
+                // Add an event listener to the input element
+                input.addEventListener("input", function() {
+                    // Check if the input exceeds the maximum length
+                    if (input.value.length > 250) {
+                        // Display the error message
+                        error.style.display = "block";
+                    } else {
+                        // Hide the error message
+                        error.style.display = "none";
+                    }
+                });
 
 
                 var ele = document.getElementsByName('vakaradio');
