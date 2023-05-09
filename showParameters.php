@@ -398,7 +398,6 @@ if (isset($_GET['patient_id'])) {
                     }
 
                     echo "
-                    <span class='close" . $value['patient_id'] . " closeBtn' id='close" . $value['patient_id'] . "'>&times;</span>
 
                                                                 <p>Not:" . $notlar . "</p>";
                     foreach ($vakalar as $vaka) {
