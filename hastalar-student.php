@@ -41,9 +41,9 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body style="background-color:white">
-    <div id='formCloser'>
+    <div id='formCloser' style="padding: 50px;">
+        <div id='openFormContainer' style='background-color: white;'>
             <span class='closeBtn' id='close' style='display: flex; justify-content: center; margin-bottom:0px;'>&times;</span>
-        <div id='openFormContainer' style='padding: 50px;'>
             <div id="contentContainer" class="model-content"></div>
         </div>
     </div>
