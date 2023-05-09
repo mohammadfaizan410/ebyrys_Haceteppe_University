@@ -26,13 +26,13 @@ if (isset($_POST)) {
     $mail->setFrom('muhammadfaizan41000@gmail.com', 'e-BYRYS');
     $mail->addAddress($email, '');
     $mail->Subject = 'E-BYRYS';
-    $mail->Body = 'Verify your account with this code: ' . $code;
+    $mail->Body = 'Hesabınızı bu kodla doğrulayın: ' . $code;
 
     try {
         $mail->send();
         echo $code;
     } catch (Exception $e) {
-        echo 'Email could not be sent: ', $mail->ErrorInfo;
+        echo 'e-posta gönderilemedi: ', $mail->ErrorInfo;
     }
 
 

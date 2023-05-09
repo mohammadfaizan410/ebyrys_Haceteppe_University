@@ -138,7 +138,7 @@ function sanitizePasswordRecovery() {
                 $("#password-box").css("display", "block");
             }
             else{
-                alert("codes do not match try again");
+                alert("Kodlar eşleşmiyor! Tekrar deneyin.");
             }
         })
     })
@@ -148,7 +148,7 @@ function sanitizePasswordRecovery() {
             var password = $("#password").val();
             var confirmPassword = $("#confirm-password").val();
             if(password !== confirmPassword || password==''){
-                alert("passwords do not match");
+                alert("Şifreniz değişti");
             }
             else{
                 $.ajax({
@@ -160,10 +160,10 @@ function sanitizePasswordRecovery() {
                     },
                     success: function (response) {
                         if(response == "success"){
-                            alert("your password has been changed!")
+                            alert("Şifreniz değişti.!")
                             window.location.href = "main.php"
                         }else{
-                            alert("server error")
+                            alert("Server hatası!")
                         }
                     },
                     error :function(response){
