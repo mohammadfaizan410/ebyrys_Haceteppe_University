@@ -44,7 +44,7 @@ $(window).on('load', function() {
         <?php
         require_once('config-students.php');
         $userid = $_SESSION['userlogin']['id'];
-        $student_group = $_SESSION['userlogin']['student_group'];
+        $student_group = $_SESSION['userlogin']['student_group'];  
         //echo $userid;
         $sql = "SELECT * FROM  patients  WHERE id =" . $userid;
         $smtmselect = $db->prepare($sql);
@@ -72,7 +72,7 @@ $(window).on('load', function() {
 
 
         </div>
-        <div class=" patients-save">
+        <div class="patients-save">
             <form action="" method="POST" class="patients-save-fields">
                 <div class="patient-info">
                     <div class="patient-info-left">

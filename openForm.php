@@ -62,6 +62,7 @@ if (isset($_GET['patient_id'])) {
     <div class="container-fluid pt-4 px-4">
         <div class="send-patient">
             <div class="patients-table text-center rounded p-4" id="patients-table">
+
                 <div class="d-flex align-items-center flex-column justify-content-between mb-4">
                     <?php
                     require('config-students.php');
@@ -75,7 +76,8 @@ if (isset($_GET['patient_id'])) {
                         $fileLoc = strpos($basePath, 'vakalar');
                         $filePath = substr($basePath, $fileLoc);
                         if (file_exists($filePath)) {
-                            echo "<iframe id='iframepdf' class='iframepdf' runat='server' src=" . $filePath . " title=''></iframe>";
+                            echo "
+                            <iframe id='iframepdf' class='iframepdf' runat='server' src=" . $filePath . " title=''></iframe>";
                         }
                     } else {
                         echo 'Hata';
@@ -83,7 +85,6 @@ if (isset($_GET['patient_id'])) {
 
                     ?>
                     <form>
-                        <span class='closeBtn' id='close'>&times;</span>
 
                         <h1 class="braden-header">Braden Parametreleri</h1>
 
@@ -367,6 +368,7 @@ if (isset($_GET['patient_id'])) {
                 $(this).prop('checked', true);
             }
         });
+
 
 
         $('#update').click(function(e) {

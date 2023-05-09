@@ -128,7 +128,6 @@ require_once("config-students.php");
                                             password: password
                                         },
                                         success: function(data) {
-                                         
                                             alert("registration successfull")
                                             window.location.href= './login-teacher.php';
                                         },
