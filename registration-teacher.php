@@ -55,11 +55,11 @@ require_once("config-students.php");
             <h2 class="login">Öğretmen Kaydı</h2>
 
             <p class="usernamelabel">İsim</p>
-            <input type="text" required name="name" id="name" placeholder="İsim Giriniz">
-
+            <input type="text" required name="name" id="name" placeholder="İsim Giriniz" oninput="sanitizeName()">
+            <span id="name-error" style="display:none; color:red;">Name cannot be empty</span>
             <p class="usernamelabel">Soyisim</p>
-            <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz">
-
+            <input type="text" required name="surname" id="surname" placeholder="Soyisim Giriniz" oninput="sanitizeName()">
+            <span id="surname-error" style="display:none; color:red;">Surname cannot be empty</span>
             <p class="usernamelabel">E-mail</p>
             <input type="email" required name="email" id="email" placeholder="E-mail Giriniz"
                 oninput="sanitizeEmail()">
@@ -168,11 +168,12 @@ require_once("config-students.php");
         function isEmailExist(email, callback) {
             $.ajax({
                 type: "POST",
-                url: "checkEmailTeacher.php",
+                url: "checkEmailAll.php",
                 data: {
                 email: email,
                 },
                 success: function(response) {
+                console.log(response)
                 var isPresent = (response === 'exists');
                 callback(isPresent);
                 },
@@ -184,6 +185,24 @@ require_once("config-students.php");
 
     </script>
     <script>
+    // function sanitizeName(){
+    //     var nameInput = document.getElementById("name");
+    //     var surnameInput = document.getElementById("surname");
+    //     var nameError = document.getElementById('name-error')
+    //     var surnameError = document.getElementById('surname-error')
+
+    //     if(nameInput === ''){
+    //         nameError.style.display = 'inline'
+    //         document.getElementById("register").style.display = 'none';
+    //     }
+    //    if(surnameInput === ''){
+    //         surnameError.style.display = 'inline'
+    //         document.getElementById("register").style.display = 'none';
+    //     }
+    
+    // }
+
+
     function sanitizePassword() {
   var passwordInput = document.getElementById("password");
   passwordInput.value = passwordInput.value.replace(/[^a-zA-Z0-9_-]/g, '');
@@ -192,7 +211,6 @@ require_once("config-students.php");
   var emailInput = document.getElementById("email");
   var emailError = document.getElementById("email-error");
 
-  // Check if email is valid
   if (!isValidEmail(emailInput.value)) {
     emailError.style.display = "inline";
     document.getElementById("register").style.display = 'none';
@@ -201,7 +219,6 @@ require_once("config-students.php");
     emailError.style.display = "none";
   }
 
-  // Check if email is present in the database
   isEmailExist(emailInput.value, function(isPresent) {
     if (isPresent) {
       emailError.innerText =  "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.";
@@ -213,7 +230,6 @@ require_once("config-students.php");
       emailInput.setCustomValidity("");
       emailError.style.display = "none";
 
-      // Check if password is valid
       if (passwordInput.value.length < 6) {
         passwordError.style.display = "inline";
         document.getElementById("register").style.display = 'none';
@@ -233,7 +249,6 @@ require_once("config-students.php");
   var passwordInput = document.getElementById("password");
   var passwordError = document.getElementById("password-error");
 
-  // Check if email is valid
   if (!isValidEmail(emailInput.value)) {
     emailError.style.display = "inline";
     document.getElementById("register").style.display = 'none';
@@ -242,7 +257,6 @@ require_once("config-students.php");
     emailError.style.display = "none";
   }
 
-  // Check if email is present in the database
   isEmailExist(emailInput.value, function(isPresent) {
     if (isPresent) {
       emailError.innerText =  "Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi seçin.";
@@ -254,7 +268,6 @@ require_once("config-students.php");
       emailInput.setCustomValidity("");
       emailError.style.display = "none";
 
-      // Check if password is valid
       if (passwordInput.value.length < 6) {
         passwordError.style.display = "inline";
         document.getElementById("register").style.display = 'none';

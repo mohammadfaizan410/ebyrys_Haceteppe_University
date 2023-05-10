@@ -172,7 +172,7 @@ require_once("config-students.php");
         function isEmailExist(email, callback) {
             $.ajax({
                 type: "POST",
-                url: "checkEmailStudent.php",
+                url: "checkEmailAll.php",
                 data: {
                 email: email,
                 },
